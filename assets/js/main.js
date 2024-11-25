@@ -1,17 +1,17 @@
-const offset = 0;
-const limit = 10;
-const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
+function convertPomonTypesToLi(pokemonTypesArray) {
+    
+    return pokemonTypesArray.map((typeItem) => `<li class="type">${typeItem.type.name}</li>`)
+}
 
-//função para converter a lista de 
+//função para converter a lista com os detalhes dos pokemons da função "getPokemons()" para converter em trecho HTML
 function convertPokemonToHtml(pokemon) {
     return `
         <li class="pokemon">
-                <span class="number">#001</span>
+                <span class="number">#${pokemon.id}</span>
                 <span class="name">${pokemon.name}</span>
                 <div class="detail">
                     <ol class="types">
-                        <li class="type">grass</li>
-                        <li class="type">poison</li>
+                        ${convertPomonTypesToLi(pokemon.types).join("")}
                     </ol>
                     <img src="https://img.pokemondb.net/sprites/home/normal/bulbasaur.png" alt="${pokemon.name}">
                 </div>
@@ -19,38 +19,18 @@ function convertPokemonToHtml(pokemon) {
     `
 }
 
-
-//utilizando a biblioteca client http FETCH API para trabalhar com o json do endpoint POKEAPI
-//fazedo requisição utilizando o fetch  
-fetch(url)
-    //o then permite manipularmos a "response" da requisição que realizamos. Obs.: o ".then",".catch" e ".finally" são usados para trabalhar com a resposta do "fetch(url),  que é uma "promisse". "
-    .then(function (response) {
-        //usando o ".json()" na response para visualizar o stream em formato "json"
-        return response.json()
-    })
-    .then(function (jsonBody) {
-        return jsonBody.results
-    })
-    //este ".then" está utlizando o return do ".then" acima que retornou o body em fromato "json"
-    .then(function (pokemonList) { 
-        console.log(pokemonList);
-
-        for(let i = 0;i < pokemonList.length; i++) {
-            const pokemon = pokemonList[i];
-            const LiPokemon = convertPokemonToHtml(pokemon);
-            const OlPokemon = document.getElementById("pokemonList");
-            OlPokemon.innerHTML += LiPokemon;
-        }
-
-    })
-    // o ".catch" está capturando possivel resposta de erro para manipularmos 
-    .catch(function (error) {
-        console.log(error);
-    })
-    //o ".finally" indica o fim da requisição com, ou sem, erro.
-    .finally(function () {
-        console.log("requisição concluída");
-    })
+const IdPokemonListFromHtml = document.getElementById("pokemonList");
+//chamando a função "pokeApi.getPokemons" e passando o Array de retorno da função para a lista "pokemonList", que está definida por default como uma lista vazia
+pokeApi.getPokemons().then(function (pokemonList = []) {         
+    //Usando a função "map()" para converter o atual array "pokemonList", que recebeus o dados do Array retornado da função "getPokemons()", em uma nova Array "newHtml" com um trecho HTML editado. No caso, com a função "map()", substituímos a necessidade de usar o "for" para iterar cada item do Array, o "map() já faz essa iteração para cada item por traz dos panos.     
+    const newHtml = pokemonList.map(convertPokemonToHtml).join("");
+    //chamando a variável que contem o caminho para o elemento HTML que queremos manipular para acrescentar o newHtml
+    IdPokemonListFromHtml.innerHTML += newHtml;
+})
+//o ".finally" indica o fim da requisição com, ou sem, erro.
+.finally(function () {
+    console.log("requisição concluída");
+})
 
 const x = 10 + 10;
 console.log(x);
