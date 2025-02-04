@@ -2,15 +2,6 @@
     font-family: 'Roboto', 'sans-serif';
     box-sizing: border-box;
 }
-body {
-    background-color: #f6f8fc;
-}
-.content {
-    width: 100vw;
-    height: 100vh;
-    padding: 1rem;
-    background-color: #ffffff;
-}
 /* On screens that are 992px or less, set the background color to blue */
 @media screen and (min-width: 992px) {
     .content {
