@@ -57,6 +57,7 @@ loadMoreButton.addEventListener('click', () => {
     }
     console.log('offset: '+ offset)
 })
+
 openAboutPokemon.forEach(pokemon => {
     pokemon.addEventListener("click", () => {
         console.log("clique funcionou")
