@@ -1,7 +1,7 @@
 const IdPokemonListFromHtml = document.getElementById("pokemonList");
-const loadMoreButton = document.getElementById("loadMoreButton")
-/**identificando clique em algum pokemon da lista */
-const openAboutPokemon = document.querySelectorAll('[class^=pokemon ]');
+const loadMoreButton = document.getElementById("loadMoreButton");
+/**trazendo todas as <li> que foram geradas dinamicamente dentro da <ol> através da ID da <ol> */
+const aboutPokemon = document.getElementById("pokemonList");
 
 const maxRecortds = 151
 let limit = 10;
@@ -40,7 +40,7 @@ loadMoreButton.addEventListener('click', () => {
     offset += limit;
    
     console.log('offset: '+ offset)
-
+    
     let maxNextPag = offset+limit;
     console.log(maxNextPag)
 
@@ -58,8 +58,11 @@ loadMoreButton.addEventListener('click', () => {
     console.log('offset: '+ offset)
 })
 
-openAboutPokemon.forEach(pokemon => {
-    pokemon.addEventListener("click", () => {
-        console.log("clique funcionou")
-    });
-});
+/* Criando evento para identificar clique nas <li> existentes.*/
+aboutPokemon.addEventListener('click', event => {
+    if (event.target.closest('li.pokemon')) {
+      const pokemon = event.target.closest('li.pokemon');
+      const pokemonName = pokemon.querySelector('.name').textContent;
+      console.log(`Você clicou em ${pokemonName}`);
+    }
+  });
