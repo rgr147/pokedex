@@ -61,8 +61,16 @@ loadMoreButton.addEventListener('click', () => {
 /* Criando evento para identificar clique nas <li> existentes.*/
 aboutPokemon.addEventListener('click', event => {
     if (event.target.closest('li.pokemon')) {
-      const pokemon = event.target.closest('li.pokemon');
-      const pokemonName = pokemon.querySelector('.name').textContent;
-      console.log(`Você clicou em ${pokemonName}`);
+        const pokemon = event.target.closest('li.pokemon');
+        const pokemonNumber = pokemon.querySelector('.number').textContent;
+        return pokemonNumber.substring(1)
     }
-  });
+});
+
+// aboutPokemon.addEventListener('click', event => {
+//     if (event.target.closest('li.pokemon')) {
+//       const pokemon = event.target.closest('li.pokemon');
+//       const pokemonName = pokemon.querySelector('.name').textContent;
+//       console.log(`Você clicou em ${pokemonName}`);
+//     }
+//   });  
