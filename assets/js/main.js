@@ -1,7 +1,7 @@
 const IdPokemonListFromHtml = document.getElementById("pokemonList");
 const loadMoreButton = document.getElementById("loadMoreButton");
 /**trazendo todas as <li> que foram geradas dinamicamente dentro da <ol> através da ID da <ol> */
-const aboutPokemon = document.getElementById("pokemonList");
+const openAboutPokemon = document.getElementById("pokemonList");
 
 const maxRecortds = 151
 let limit = 10;
@@ -58,19 +58,15 @@ loadMoreButton.addEventListener('click', () => {
     console.log('offset: '+ offset)
 })
 
-/* Criando evento para identificar clique nas <li> existentes.*/
-aboutPokemon.addEventListener('click', event => {
-    if (event.target.closest('li.pokemon')) {
-        const pokemon = event.target.closest('li.pokemon');
-        const pokemonNumber = pokemon.querySelector('.number').textContent;
-        return pokemonNumber.substring(1)
+/**Identifica qual tag LI foi clicada e para puxar o nome do pokemon e redirecionar para a página-about*/
+openAboutPokemon.addEventListener("click", (event) => {
+    /**identificando o event do click com o TARGET para saber qual LI que possui a CLASSE POKEMON foi a clicada. CLOSEST identifica a LI mais próxima do click */
+    if (event.target.closest("li.pokemon")){
+        const pokemon = event.target.closest("li.pokemon");
+        /**Guardando apenas o nome do pokemon existente na LI.POKEMON que foi clicada */
+        const pokemonName = pokemon.querySelector(".name").textContent;
+        console.log(pokemonName);
+        /**abrindo uma página nova e passando um parametro que recebera o nome do pokemon como string */
+        window.open(`pagina-about.html?name=${pokemonName}`);
     }
 });
-
-// aboutPokemon.addEventListener('click', event => {
-//     if (event.target.closest('li.pokemon')) {
-//       const pokemon = event.target.closest('li.pokemon');
-//       const pokemonName = pokemon.querySelector('.name').textContent;
-//       console.log(`Você clicou em ${pokemonName}`);
-//     }
-//   });  

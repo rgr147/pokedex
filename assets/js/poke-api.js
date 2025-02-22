@@ -1,8 +1,8 @@
 
 const pokeApi = {}
 
-function convertPokeApiDetailToPokemon(pokeDetail) {
-    const pokemon = new Pokemon()
+function convertPokeApiDetailToPokemonSimple(pokeDetail) {
+    const pokemon = new PokemonSimple()
     pokemon.number = pokeDetail.id
     pokemon.name = pokeDetail.name
 
@@ -20,9 +20,10 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
 pokeApi.getPokemonDetail = (arrayPokemons) => {
     return fetch(arrayPokemons.url)
         .then((response) => response.json())
-        .then(convertPokeApiDetailToPokemon)
+        .then(convertPokeApiDetailToPokemonSimple)
 }
 
+/**função responsável por puxar as informações dos pokemons da API Poke API */
 pokeApi.getPokemons = (offset, limit) => {
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
     //utilizando a biblioteca client http "FETCH API" para receber os dados da requiseção e, poeteriormente, converter o que é de enteresse em ".json".
@@ -44,3 +45,4 @@ pokeApi.getPokemons = (offset, limit) => {
             console.log(error);
         })
     } 
+
