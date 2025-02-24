@@ -1,13 +1,30 @@
-
-/**teste para saber se a página está lendo o arquivo about.js*/
-console.log(">>> ...rodando about.js. Olá Mundo!");
-
-
-
-/** receebendo o nome do pokemon que está contido no url como string */
+/** receebendo o nome do pokemon clicado na página index.html */
 const url = new URLSearchParams(window.location.search);
 const nameParam = url.get("name");
 
-console.log(nameParam);
+//selecionando os elementos do HTML
+const nameHtml = document.getElementById("name");
+const numberHtml = document.getElementById("number");
+const typesHtml = document.getElementById("types");
+const spriteHtml = document.getElementById("sprite");
+const specieHtml = document.getElementById("specie");
+const heightHtml = document.getElementById("height");
+const weightHtml = document.getElementById("weight");
+const abilitiesHtml = document.getElementById("abilities");
+const genderHtml = document.getElementById("gender");
+const eggGroupsHtml = document.getElementById("eggGroups");
+const eggCicleHtml = document.getElementById("eggCicle");
 
-pokeApiDetails.getDetailsPokemon(nameParam);
+
+pokeApiDetails.getNameParam(nameParam);
+
+
+function inputDetailsInHtml(poke) {
+    nameHtml.innerText = poke.name;
+    numberHtml.innerText = poke.id;
+    // typesHtml.innerText = poke.types;
+    spriteHtml.src = poke.sprite;
+
+}
+
+

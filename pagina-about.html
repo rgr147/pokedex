@@ -23,18 +23,18 @@
     </header>
     <main class="content">
         <section class="content__pokemon">  
-            <!-- Teste para puxar informações do pokemon -->
+            <!-- Pokemon Details -->
             <ol class="content__pokemon__details">
                 <li class="content__pokemon__details__selected">
-                    <span class="content__pokemon__details__selected__name">Bulbasaur</span>
-                    <span class="content__pokemon__details__selected__number">#01 </span>
+                    <span class="content__pokemon__details__selected__name" id="name">Bulbasaur</span>
+                    <span class="content__pokemon__details__selected__number" id="number">#01 </span>
                 </li>
-                <ol class="content__pokemon__details__types">
+                <ol class="content__pokemon__details__types" id="types">
                     <li class="content__pokemon__details__type">grass</li>
                     <li class="content__pokemon__details__type">poison</li>
                 </ol>
-                <div class="content__pokemon__details__sprite" alt="Bulbasaur">
-                    <img class="content__pokemon__details__sprite__image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg">
+                <div class="content__pokemon__details__sprite" alt="Pokemon Sprite">
+                    <img class="content__pokemon__details__sprite__image" id="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg">
                 </div>    
             </ol>
         </section>
@@ -62,23 +62,20 @@
                         </div>
                     </section>
                     <section class="content__description-pokemon__stats__about__status">
-                        <div class="content__description-pokemon__stats__about__status__start">
-                            <p>Seed</p>
-                            <p>2'3,6 (0.70 cm)</p>
-                            <p>15.2lbs (6.9 kg)</p>
-                            <p>Overgrow, Chlorophyl</p>
+                        <div class="content__description-pokemon__stats__about__status__start" id="about-status-start">
+                            <p id="specie">Seed</p>
+                            <p id="height">2'3,6 (0.70 cm)</p>
+                            <p id="weight">15.2lbs (6.9 kg)</p>
+                            <p id="abilities">Overgrow, Chlorophyl</p>
                         </div>
-                        <div class="content__description-pokemon__stats__about__status__end">
+                        <div class="content__description-pokemon__stats__about__status__end" id="about-status-end">
                             <br>                            
-                            <p>&#9794; 87.5% &#9792; 12.5%</p>
-                            <p>Moster</p>
-                            <p>Gras</p>
+                            <p id="gender"   >&#9794; 87.5% &#9792; 12.5%</p>
+                            <p id="eggGroups">Moster</p>
+                            <p id="eggCicle" >Gras</p>
                         </div>  
                     </section>
                 </div>
-                <!-- <div id="base-stats" class="content__description-pokemon__stats__base-stats">
-                    
-                </div> -->
             </div>
         </section>
     </main>
@@ -86,6 +83,7 @@
 
     </footer>
     <script defer src="./assets/js/poke-api-about.js"></script>
+    <script defer src="./assets/js/pokemon-models.js"></script>
     <script defer src="./assets/js/about.js"></script>
 </body>
 </html>
