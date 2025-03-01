@@ -103,6 +103,9 @@ body {
     padding: 1rem;
     border-radius: 1rem;
 }
+.pokemon:hover {
+    cursor: pointer;
+}
 .pokemon .name {
     color: #ffffff;    
     margin-bottom: 0.25rem;
@@ -178,4 +181,8 @@ body {
     border: none;
     border-radius: 1rem;
     font-size: .825rem;
+}
+.pagination button:hover {
+    cursor:pointer;
+    background-color: #9c79db;
 }

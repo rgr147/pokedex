@@ -14,12 +14,10 @@ const abilitiesHtml = document.getElementById("abilities");
 const genderHtml = document.getElementById("gender");
 const eggGroupsHtml = document.getElementById("eggGroups");
 const eggCicleHtml = document.getElementById("eggCicle");
-
-const backgroundPokemonHtml = document.getElementById("pokemon")
+const backgroundPokemonHtml = document.getElementById("pokemon");
 
 
 pokeApiDetails.getDataPokeApi(nameParam);
-
 
 function createLiTypesHtml(types) {
     //Adicionando os elementos de acordo com a quantidade de tipos que o pokemon possui

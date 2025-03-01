@@ -39,7 +39,6 @@ pokeApi.getPokemons = (offset, limit) => {
         .then((promises) => Promise.all(promises))
         // .then(pokemonDetails => pokemonDetails)
         .then(pokemonDetails => {
-            console.log(pokemonDetails)
             return pokemonDetails})
         .catch(function (error) {
             console.log(error);

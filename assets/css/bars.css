@@ -1,0 +1,26 @@
+
+.content__description-pokemon__stats__base-stats__descriptions__skills {
+    width: 100%;
+    background-color: red;
+}
+.content__description-pokemon__stats__base-stats__descriptions__skills__list {
+    list-style-type: none;
+    padding: 0;
+}
+.content__description-pokemon__stats__base-stats__descriptions__skills__list li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content__description-pokemon__stats__base-stats__descriptions__skills__list__text {
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+}
+.content__description-pokemon__stats__base-stats__descriptions__skills__list li .bars {
+    background-color: #cccccc;
+    display: block;
+    width: 65%;
+    border-radius: 20px;
+    position: relative;
+}

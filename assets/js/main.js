@@ -34,15 +34,11 @@ function loadPokemonItens(offset,limit) {
 }
 
 loadPokemonItens(offset, limit);
-console.log('offset: '+offset);
 
 loadMoreButton.addEventListener('click', () => {
     offset += limit;
-   
-    console.log('offset: '+ offset)
     
     let maxNextPag = offset+limit;
-    console.log(maxNextPag)
 
     if (maxNextPag >= maxRecortds) {
 
@@ -53,9 +49,7 @@ loadMoreButton.addEventListener('click', () => {
         loadMoreButton.parentElement.removeChild(loadMoreButton)
     } else {
         loadPokemonItens(offset, limit);
-        console.log('offset: '+offset);
     }
-    console.log('offset: '+ offset)
 })
 
 /**Identifica qual tag LI foi clicada e para puxar o nome do pokemon e redirecionar para a página-about*/
@@ -65,7 +59,6 @@ openAboutPokemon.addEventListener("click", (event) => {
         const pokemon = event.target.closest("li.pokemon");
         /**Guardando apenas o nome do pokemon existente na LI.POKEMON que foi clicada */
         const pokemonName = pokemon.querySelector(".name").textContent;
-        console.log(pokemonName);
         /**abrindo uma página nova e passando um parametro que recebera o nome do pokemon como string */
         window.open(`pagina-about.html?name=${pokemonName}`);
     }

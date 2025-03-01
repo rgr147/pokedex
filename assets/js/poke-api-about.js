@@ -3,25 +3,24 @@ const pokeApiDetails = {};
 //Função responsável por criar o o objeto pokemon com todas as informações necessárias, usando como base o objeto json recebido da função que a chamou.
 async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,type,sprite,height,weight,abilities*/) {
     const poke = new PokemonDetailed()
-    
+
     poke.name = jsonBody.name;//buscando o nome do pokemon no PokeApi; 
     poke.id = jsonBody.id;//buscando o ID do pokemon no PokeApi;
+
     const types = jsonBody.types.map((typeSlot) => typeSlot.type.name);//buscando os tipos do pokemon no PokeAPi;
     const [type] = types;//identificando o tipo principal do pokemon
+    const breeding = await pokeApiDetails.breedingInfo(poke.name);
+    const specie = await pokeApiDetails.getSpecie(poke.id);
+
     poke.types = types;
     poke.type = type; 
     poke.sprite = jsonBody.sprites.other.dream_world.front_default; //busanco a imagem do pokemon no PokeApi;
     poke.height = jsonBody.height; //buscando a altura do pokemon no PokeAPI;
     poke.weight = jsonBody.weight;//buscando o peso do pokemon no PokeAPI;
-    poke.abilities = jsonBody.abilities.map((abilitiesSlot) => abilitiesSlot.ability.name);//
-
-    const breeding = await pokeApiDetails.breedingInfo(poke.name);
-    const specie = await pokeApiDetails.getSpecie(poke.id);
-
+    poke.abilities = jsonBody.abilities.map((abilitiesSlot) => abilitiesSlot.ability.name);
     poke.gender = breeding.gender;
     poke.eggGroups = breeding.eggGroup;
     poke.eggCicle = breeding.eggCicle;
-
     poke.specie = specie;
 
     return poke;
@@ -60,9 +59,9 @@ pokeApiDetails.breedingInfo = (pokemonName) => {
 pokeApiDetails.getSpecie = (idPokemon) => {
     const url = `https://pokeapi.co/api/v2/pokemon-species/${idPokemon}/`;
     
-    /**requisição HTTP para Poke APi retornar uma Promise com o corpo da requiseção(em JSON) */
+    // requisição HTTP para Poke APi retornar uma Promise com o corpo da requiseção(em JSON)
     return fetch(url)
-        /**tratamento da Promise para aconverte-la em um objeto javascript */
+        // tratamento da Promise para aconverte-la em um objeto javascript 
         .then(function (response) {
             return response.json();
         })
@@ -77,7 +76,7 @@ pokeApiDetails.getSpecie = (idPokemon) => {
 //função responsável por receber o parametro "name" com o nome do pokemon passado via url e realizar o get via http com a API PokeAPI
 pokeApiDetails.getDataPokeApi = (nameParam) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${nameParam}`;
-    
+
     return fetch(url)
     .then(function (response) {
 
