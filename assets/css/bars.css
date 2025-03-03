@@ -14,13 +14,15 @@
     padding: 0;
 
 }
+.content__description-pokemon__stats__base-stats__descriptions__skills__list p {
+    opacity: 50%;
+}
 .content__description-pokemon__stats__base-stats__descriptions__skills__list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 1rem 0;
 }
-
 .content__description-pokemon__stats__base-stats__descriptions__skills__list__text {
     display: flex;
     width: 30%;
@@ -41,8 +43,20 @@
     background-color: #00bb00;
 
 }
+.content__description-pokemon__stats__base-stats__descriptions__skills__type-defenses {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 10% 0;
+}
+.content__description-pokemon__stats__base-stats__descriptions__skills__type-defenses > p {
+    margin:0.5rem 0;
+}
+.content__description-pokemon__stats__base-stats__descriptions__skills__type-defenses__text {
+    opacity: 50%;
+}
 
-/*animando barras de skills com Keyframes do CSS*/
+/*inicio configuração animando barras de skills com Keyframes do CSS*/
 .hp {
     width: 45%;
     animation: hp 1s;
@@ -115,3 +129,4 @@
         width: 45%;
     }
 }
+/*fim configuração da animação das barras de skills*/

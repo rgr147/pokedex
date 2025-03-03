@@ -59,16 +59,16 @@ body {
     padding: 27% 7% 5% 7%;
 }
 .content__pokemon__details__selected     {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 .content__pokemon__details__selected__name {
     font-size: 43px;
 }
 .content__pokemon__details__selected__number {
-        text-align: end;
-        font-size: 18px;
+    text-align: end;
+    font-size: 18px;
 }
 .content__pokemon__details__types {
     display: flex;
@@ -110,10 +110,7 @@ body {
 }
 .content__description-pokemon__stats {
     height: 80%;
-    width: 85%;   
-    
-    /*cor apenas para referência*/
-    /* background-color: #ff0000; */
+    width: 85%;
 }
 .content__description-pokemon__stats__nav {
     position:relative;
@@ -121,9 +118,6 @@ body {
     flex-direction: row;
     justify-content: space-between;
     z-index: 1;
-
-    /*cor apenas para referência*/
-    /* background-color: #af02f5; */
 }
 .content__description-pokemon__stats__nav a {
     text-decoration: none;
@@ -137,10 +131,6 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-
-    
-    /*cor de background apenas para referência*/
-    /* background-color: pink; */
 }
 .content__description-pokemon__stats__about__features {
     width: 32%;
@@ -148,9 +138,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
-    /*cor background apenas para referência*/
-    /* background-color: #00ff00; */
 }
 .content__description-pokemon__stats__about__features__start p {
     opacity: 50%;
@@ -176,9 +163,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
-    /*cor background apenas para referência*/
-    /* background-color: #0000ff; */
 }
 .content__description-pokemon__stats__about__status__start {
     display: flex;
@@ -192,15 +176,3 @@ body {
     gap: 1rem;
     margin: 2rem 0;
 }
-/* .content__description-pokemon__stats__base-stats {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-
-    
-    cor de background apenas para referência
-    background-color: silver;
-} */
