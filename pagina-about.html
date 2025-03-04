@@ -45,16 +45,18 @@
         <!-- inicio da segunda seção onde consta informações detalhadas do pokemon selecionado -->
         <section class="content__description-pokemon">
             <div class="content__description-pokemon__stats">
+                
+                <!-- menu de navegação -->
                 <nav class="content__description-pokemon__stats__nav">
-                    <a href="#about" id="link-about">About</a>
-                    <a href="#base-stats" id="link-base-stats">Base Stats</a>
-                    <a href="#evolution">Evolution</a>
-                    <a href="#moves">Moves</a>
+                    <a href="#about" id="link-about" class="link-active">About</a>
+                    <a href="#base-stats" id="link-base-stats" class="link-inactive">Base Stats</a>
+                    <a href="#evolution" id="link-evolution" class="link-inactive">Evolution</a>
+                    <a href="#moves" id="link-moves" class="link-inactive">Moves</a>
                 </nav>
                 <!-- fim do menu de navegação -->
 
                 <!-- inicio página "About" do menu navegação -->
-                <div id="about" class="content__description-pokemon__stats__about">
+                <div id="about" class="content__description-pokemon__stats__about content-div">
                     <section class="content__description-pokemon__stats__about__features">
                         <div class="content__description-pokemon__stats__about__features__start">
                             <p>Species</p> 
@@ -87,7 +89,7 @@
                 <!-- fim da página "About" -->
                 
                 <!-- início da página "Base Stats" do menu de navegação -->
-                <div id="base-stats" class="content__description-pokemon__stats__base-stats hidden">
+                <div id="base-stats" class="content__description-pokemon__stats__base-stats content-div hidden">
                     <section class="content__description-pokemon__stats__base-stats__descriptions">
                         <div class="content__description-pokemon__stats__base-stats__descriptions__skills" id="base-stats-skills">
                             <ul class="content__description-pokemon__stats__base-stats__descriptions__skills__list">
@@ -102,7 +104,7 @@
                                 </li>
                                 <li>
                                     <div class="content__description-pokemon__stats__base-stats__descriptions__skills__list__text">
-                                        <p>Attack</p>
+                                        <p>Atack</p>
                                         <span>60</span>
                                     </div>
                                     <span class="bars">
@@ -155,10 +157,6 @@
                                     </span>        
                                 </li>
                             </ul>   
-                            <div class="content__description-pokemon__stats__base-stats__descriptions__skills__type-defenses">
-                                <p class="content__description-pokemon__stats__base-stats__descriptions__skills__type-defenses__title"><strong>Type defenses</strong></p>
-                                <p class="content__description-pokemon__stats__base-stats__descriptions__skills__type-defenses__text">The effectivenes of each type on Charmander.</p>
-                            </div>
                         </div>
                     </section>
                 </div>

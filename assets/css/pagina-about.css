@@ -120,6 +120,7 @@ body {
     z-index: 1;
 }
 .content__description-pokemon__stats__nav a {
+    text-align: center;
     text-decoration: none;
     color: #000000;
     cursor:pointer;
@@ -176,15 +177,22 @@ body {
     gap: 1rem;
     margin: 2rem 0;
 }
-/* ocultando a visualização das abas que não foram clicadas do menu de navegação*/
-.hidden {
+
+/*inicio da configuração de teste para o menu de navegação sobre o pokemon*/
+
+
+.hidden { /*classe que será utilizada para ocultar as divs que não foram clicadas*/
     display: none;
 }
-.content__description-pokemon__stats__nav a.active {
-    border-bottom: 0.1rem solid #0000aa;
-    font-weight: bold;
+.link-active { /*class do botão que foi clicado na navegação*/
+    border-bottom: 0.1rem #0000ff solid;
+    padding-bottom: 1.3rem;
+    width: 25%;
+
 }
-.content__description-pokemon__stats__nav a.deactivate {
-    border-bottom: none;
+.link-inactive { /*classe de botões dos links que não estão em exibição no momento*/
+    border-bottom: 0.1rem #aaaaaa solid;
+    padding-bottom: 1.3rem;
+    width: 25%;
     opacity: 50%;
 }
