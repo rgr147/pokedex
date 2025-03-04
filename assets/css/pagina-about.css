@@ -176,3 +176,15 @@ body {
     gap: 1rem;
     margin: 2rem 0;
 }
+/* ocultando a visualização das abas que não foram clicadas do menu de navegação*/
+.hidden {
+    display: none;
+}
+.content__description-pokemon__stats__nav a.active {
+    border-bottom: 0.1rem solid #0000aa;
+    font-weight: bold;
+}
+.content__description-pokemon__stats__nav a.deactivate {
+    border-bottom: none;
+    opacity: 50%;
+}
