@@ -11,6 +11,7 @@ const spriteHtml = document.getElementById("sprite");
 const backgroundPokemonHtml = document.getElementById("pokemon");
 
 
+
 //selecionando os campos que receberão as informações detalhadas da página About no HTML
 const specieHtml = document.getElementById("specie");
 const heightHtml = document.getElementById("height");
@@ -43,7 +44,7 @@ linkAbout.addEventListener("click", () => {
 })
 
 
-//funções correspondentes ao links do menu de navegação. Puxam os dados e dão efeitos visuais nos links selecionados
+//função correspondenteao ao link About do menu de navegação. Puxa os dados do pokemon e dá efeito de botão ativado
 function selectAbout() {
     allLinks.forEach(function(link) {
         link.classList.remove("link-active");
@@ -59,7 +60,7 @@ function selectAbout() {
 
     aboutDiv.classList.remove("hidden");
 }
-
+//função correspondenteao ao link Base Stats do menu de navegação. Puxa os dados do pokemon e dá efeito de botão ativado
 function selectBaseStats() {
     allLinks.forEach(function(link) {
         link.classList.remove("link-active");
@@ -83,13 +84,34 @@ pokeApiDetails.getDataPokeApi(nameParam);
 //preenchendo as informações básicas e informações do About sobre o pokemon
 function inputDetailsInHtml(poke) {
     nameHtml.innerText = poke.name;
-    numberHtml.innerText = `#${poke.id}`;
+    formatIdPokemon(poke.id);
     createLiTypesHtml(poke.types);
-    backgroundPokemonHtml.id = `pokemon ${poke.type}`;
+    backgroundPokemonHtml.classList.add(poke.type);
     spriteHtml.src = poke.sprite;  
     
     inputAboutDataInHtml(poke);
     inputBaseStatsDataInHtml(poke);
+}
+//função responsável por formatar o ID do pokemon e manter 3 dígitos
+function formatIdPokemon(id){
+    const idString = id.toString();
+    if(idString.length < 2){
+        numberHtml.innerText = `#00${idString}`;
+    } else if(idString.length < 3) {
+        numberHtml.innerText = `#0${idString}`;
+    } else {
+        numberHtml.innerText = `#${idString}`;
+    }
+}
+//função responsável por inserir LIs no HTML com os tipos do pokemon 
+function createLiTypesHtml(types) {
+    //Adicionando os elementos de acordo com a quantidade de tipos que o pokemon possui
+    types.map((type) => {
+        const liTypePokemon = document.createElement("li");
+        liTypePokemon.className = `content__pokemon__details__type ${type}`;
+        liTypePokemon.innerText = type;
+        typesHtml.appendChild(liTypePokemon);
+    });
 }
 
 //preenchendo as informações detalhadas da aba About
@@ -105,18 +127,10 @@ function inputAboutDataInHtml(poke) {
 
 //preenchendo as informações detalhadas da aba Base Stats
 function inputBaseStatsDataInHtml(poke) {
-    console.log(poke);
+
 }
 
 
 
-function createLiTypesHtml(types) {
-    //Adicionando os elementos de acordo com a quantidade de tipos que o pokemon possui
-    types.map((type) => {
-        const liTypePokemon = document.createElement("li");
-        liTypePokemon.className = "content__pokemon__details__type";
-        liTypePokemon.innerText = type;
-        typesHtml.appendChild(liTypePokemon);
-    });
-}
+
 
