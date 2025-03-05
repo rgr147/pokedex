@@ -146,24 +146,7 @@ body {
     max-width: 100%;
     height: 90px;
 }
-/* On screens that are 992px or less, set the background color to blue */
-@media screen and (max-width: 384px) {
-    .pokemons {
-        grid-template-columns: 1fr;
-    }
-}
-/* On screens that are 992px or less, set the background color to blue */
-@media screen and (min-width: 576px) {
-    .pokemons {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
-/* On screens that are 992px or less, set the background color to blue */
-@media screen and (min-width: 992px) {
-    .pokemons {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-}
+
 .pagination {
     display: flex;
     flex-direction: row;
@@ -185,4 +168,22 @@ body {
 .pagination button:hover {
     cursor:pointer;
     background-color: #9c79db;
+}
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 384px) {
+    .pokemons {
+        grid-template-columns: 1fr;
+    }
+}
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (min-width: 576px) {
+    .pokemons {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (min-width: 992px) {
+    .pokemons {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 }

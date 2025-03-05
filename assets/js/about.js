@@ -2,6 +2,8 @@
 const url = new URLSearchParams(window.location.search);
 const nameParam = url.get("name");
 
+//selecionando o botão de retornar para a página anterior
+const buttonBack = document.getElementById("button-back");
 
 //selecionando os campos que receberão as informações básicas do pokemon no HTML
 const nameHtml = document.getElementById("name");
@@ -34,7 +36,7 @@ const aboutDiv = document.getElementById("about");
 const allDivsContent = document.querySelectorAll(".content-div");
 
 
-//ouvindo cliques nos botões do menu de navegação para chamar as informações correspondentes. 
+//ouvindo cliques nos botões do menu de navegação sobre o pokemon. 
 linkBaseStats.addEventListener("click", () => {
     selectBaseStats();
 });
@@ -43,6 +45,17 @@ linkAbout.addEventListener("click", () => {
     selectAbout();
 })
 
+//ouvindo o botão de retornar para a página principal
+buttonBack.addEventListener("click", () => {
+    window.location.href = "./index.html";
+})
+
+//função 
+
+//unção do botão de retornar para a página principal
+function showMessageConsole() {
+    console.log("clicou no botão");
+}
 
 //função correspondenteao ao link About do menu de navegação. Puxa os dados do pokemon e dá efeito de botão ativado
 function selectAbout() {

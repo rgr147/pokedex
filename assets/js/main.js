@@ -60,6 +60,6 @@ openAboutPokemon.addEventListener("click", (event) => {
         /**Guardando apenas o nome do pokemon existente na LI.POKEMON que foi clicada */
         const pokemonName = pokemon.querySelector(".name").textContent;
         /**abrindo uma página nova e passando um parametro que recebera o nome do pokemon como string */
-        window.open(`pagina-about.html?name=${pokemonName}`);
+        window.location.href = `pagina-about.html?name=${pokemonName}`;
     }
 });

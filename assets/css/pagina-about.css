@@ -6,7 +6,6 @@
 body {
     height: 100vh;
     width: 100vw;
-    box-sizing: border-box;
 }
 .normal {
     background-color: #a6a877;
@@ -82,7 +81,7 @@ body {
 .menu {
     position: absolute;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 }
 .menu__buttons {
     display: flex;
@@ -134,6 +133,7 @@ body {
 }
 .content__pokemon__details__selected__name {
     font-size: 43px;
+    text-transform: capitalize;
 }
 .content__pokemon__details__selected__number {
     text-align: end;
@@ -150,6 +150,7 @@ body {
     margin: 0 0.3rem 0 0;
     padding: 0.3rem 0.9rem;
     filter: brightness(1.1);
+    text-transform: capitalize;
 }
 .content__pokemon__details__sprite {
     display: flex;
@@ -246,9 +247,6 @@ body {
     margin: 2rem 0;
 }
 
-/*inicio da configuração de teste para o menu de navegação sobre o pokemon*/
-
-
 .hidden { /*classe que será utilizada para ocultar as divs que não foram clicadas*/
     display: none;
 }
@@ -263,4 +261,9 @@ body {
     padding-bottom: 1.3rem;
     width: 25%;
     opacity: 50%;
+}
+@media screen and (max-width: 768px) {
+    * {
+        max-width: 768px
+    }
 }
