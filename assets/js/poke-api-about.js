@@ -27,6 +27,8 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
 
     poke.stats = stats;
 
+    poke.totalPercentage = ((poke.stats.total / 600) * 100).toFixed();
+
     return poke;
 }
 

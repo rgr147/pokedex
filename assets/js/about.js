@@ -62,13 +62,6 @@ buttonBack.addEventListener("click", () => {
     window.location.href = "./index.html";
 })
 
-//função 
-
-//unção do botão de retornar para a página principal
-function showMessageConsole() {
-    console.log("clicou no botão");
-}
-
 //função correspondenteao ao link About do menu de navegação. Puxa os dados do pokemon e dá efeito de botão ativado
 function selectAbout() {
     allLinks.forEach(function(link) {
@@ -117,6 +110,8 @@ function inputDetailsInHtml(poke) {
     
     inputAboutDataInHtml(poke);
     inputBaseStatsDataInHtml(poke);
+    addAnimationBars(poke);
+
 }
 //função responsável por formatar o ID do pokemon e manter 3 dígitos
 function formatIdPokemon(id){
@@ -161,3 +156,4 @@ function inputBaseStatsDataInHtml(poke) {
     baseStatsSpeed.innerText = poke.stats.speed;
     baseStatsTotal.innerText = poke.stats.total;
 }
+

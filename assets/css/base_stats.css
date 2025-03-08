@@ -20,7 +20,7 @@
     width: 30%;
     justify-content: space-between;
 }
-.content__description-pokemon__stats__base-stats__descriptions__skills__list li .bars {
+.content__description-pokemon__stats__base-stats__descriptions__skills__list li .bars-green {
     display: block;
     position: relative;
     height: 4px;
@@ -29,10 +29,26 @@
     background-color: #dddddd;
     overflow: hidden;
 }
-.content__description-pokemon__stats__base-stats__descriptions__skills__list li .bars > span {
+.content__description-pokemon__stats__base-stats__descriptions__skills__list li .bars-red {
+    display: block;
+    position: relative;
+    height: 4px;
+    width: 65%;
+    border-radius: 20px;
+    background-color: #dddddd;
+    overflow: hidden;
+}
+
+.content__description-pokemon__stats__base-stats__descriptions__skills__list li .bars-green > span {
     position: absolute;
     height: 4px;
     background-color: #00bb00;
+
+}
+.content__description-pokemon__stats__base-stats__descriptions__skills__list li .bars-red > span {
+    position: absolute;
+    height: 4px;
+    background-color: #ee0000;
 
 }
 .content__description-pokemon__stats__base-stats__descriptions__skills__type-defenses {
@@ -55,78 +71,3 @@
 .content__description-pokemon__stats__base-stats__observation p {
     opacity: 50%;
 }
-
-/*inicio configuração animando barras de skills com Keyframes do CSS*/
-.hp {
-    width: 45%;
-    animation: hp 1s;
-}
-.attack {
-    width: 60%;
-    animation: attack 1s;
-}
-.defense {
-    width: 48%;
-    animation: defense 1s;
-}
-.sp-atk {
-    width: 65%;
-    animation: sp-atk 1s; 
-}
-.sp-def {
-    width: 65%;
-    animation: sp-def 1s;
-}
-.speed {
-    width: 45%;
-    animation: speed 1s;
-}
-@keyframes hp {
-    0% {
-        width: 0%;
-    }
-    100% {
-        width: 45%;
-    }
-}
-@keyframes attack {
-    0% {
-        width: 0%;
-    }
-    100% {
-        width: 60%;
-    }
-}
-@keyframes defense {
-    0% {
-        width: 0%;
-    }
-    100% {
-        width: 48%;
-    }
-}
-@keyframes sp-atk {
-    0% {
-        width: 0%;
-    }
-    100% {
-        width: 65;
-    }
-}
-@keyframes sp-def {
-    0% {
-        width: 0%;
-    }
-    100% {
-        width: 65%;
-    }
-}
-@keyframes speed {
-    0% {
-        width: 0%;
-    }
-    100% {
-        width: 45%;
-    }
-}
-/*fim configuração da animação das barras de skills*/

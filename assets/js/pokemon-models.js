@@ -19,4 +19,5 @@ class PokemonDetailed {
     eggGroups;
     eggCicle;
     stats = [];
+    totalPercentage;
 }
