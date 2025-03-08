@@ -1,0 +1,31 @@
+.content__description-pokemon__stats__about {
+    height: 100%;
+    width: auto;
+}
+.content__description-pokemon__stats__about__list {
+    display:flex;
+    flex-direction: column;;
+    gap: 1rem;
+    list-style: none;
+    height: 100%;
+    margin-top: 2rem;
+}
+.content__description-pokemon__stats__about__list li{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:7px
+}
+.content__description-pokemon__stats__about__list li p {
+    
+}
+.content__description-pokemon__stats__about__list li span {
+    width: 70%;
+    text-transform: capitalize;
+}
+.subtitle-stats {
+    font-size: larger;
+    font-weight: bold;
+    opacity: 100%;
+    margin: 1rem 0;
+}

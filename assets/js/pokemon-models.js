@@ -18,4 +18,5 @@ class PokemonDetailed {
     gender;
     eggGroups;
     eggCicle;
+    stats = [];
 }

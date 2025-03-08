@@ -22,7 +22,7 @@ pokeApi.getPokemonDetail = (arrayPokemons) => {
         .then((response) => response.json())
         .then(convertPokeApiDetailToPokemonSimple)
 }
-
+/*asdasd
 /**função responsável por puxar as informações dos pokemons da API Poke API */
 pokeApi.getPokemons = (offset, limit) => {
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;

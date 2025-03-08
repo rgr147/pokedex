@@ -1,19 +1,18 @@
 * {
+    margin: 0;
+    padding: 0;
     font-family: 'Roboto', 'sans-serif';
     box-sizing: border-box;
 }
-/* On screens that are 992px or less, set the background color to blue */
-@media screen and (min-width: 992px) {
+/*aplicando as configurações de dimensionamento de tela para dispositivos com telas de 992px ou superiores*/
+@media screen and (min-width: 820px) {
     .content {
-      max-width: 992px;
-      height: auto;
-      margin: 1rem auto;
-      border-radius: 1rem;
+        max-width: 820px;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 1rem;
     }
 }
 .content h1 {
     margin: 0;
-
-        /* referencia visual */
-        /* background-color: #ff00ff; */
 }

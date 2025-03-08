@@ -23,7 +23,25 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
     poke.eggCicle = breeding.eggCicle;
     poke.specie = specie;
 
+    const stats = await pokeApiDetails.calculateTotalBaseStats(jsonBody);
+
+    poke.stats = stats;
+
     return poke;
+}
+
+//função para calcular o total do Status Base do pokemon
+pokeApiDetails.calculateTotalBaseStats = (jsonBody) => {
+    let stats = Object.fromEntries(
+        jsonBody.stats.map(statsSlot => [statsSlot.stat.name, statsSlot.base_stat])
+    );
+    
+    let total = 0;
+    Object.values(stats).forEach(value => total += value);
+
+    stats["total"] = total;
+
+    return stats;
 }
 
 /*função responsável por puxar as informações de Breeding da API  PokeAPI */
@@ -79,10 +97,10 @@ pokeApiDetails.getDataPokeApi = (nameParam) => {
 
     return fetch(url)
     .then(function (response) {
-
         return response.json();
     })
     .then(function (jsonBody) { 
+        console.log(jsonBody);
         return convertPokeApiDetailToPokemonDetailed(jsonBody);
     })
     .then(function (poke) {

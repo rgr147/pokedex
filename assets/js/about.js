@@ -2,8 +2,10 @@
 const url = new URLSearchParams(window.location.search);
 const nameParam = url.get("name");
 
-//selecionando o botão de retornar para a página anterior
+
+//selecionando o botão de retornar  para a página anterior
 const buttonBack = document.getElementById("button-back");
+
 
 //selecionando os campos que receberão as informações básicas do pokemon no HTML
 const nameHtml = document.getElementById("name");
@@ -11,7 +13,7 @@ const numberHtml = document.getElementById("number");
 const typesHtml = document.getElementById("types");
 const spriteHtml = document.getElementById("sprite");
 const backgroundPokemonHtml = document.getElementById("pokemon");
-
+const backgroundHeaderHtml = document.getElementById("header-menu");
 
 
 //selecionando os campos que receberão as informações detalhadas da página About no HTML
@@ -22,6 +24,16 @@ const abilitiesHtml = document.getElementById("abilities");
 const genderHtml = document.getElementById("gender");
 const eggGroupsHtml = document.getElementById("eggGroups");
 const eggCicleHtml = document.getElementById("eggCicle");
+
+
+//selecionando os campos da página base stats
+const baseStatsHp = document.getElementById("base-stats-hp");
+const baseStatsAttack = document.getElementById("base-stats-attack");
+const baseStatsDefense = document.getElementById("base-stats-defense");
+const baseStatsSpAttack = document.getElementById("base-stats-sp-attack");
+const baseStatsSpDefense = document.getElementById("base-stats-sp-defense");
+const baseStatsSpeed = document.getElementById("base-stats-speed");
+const baseStatsTotal = document.getElementById("base-stats-total");
 
 
 //selecionando todas as tags ancoras do menu de navegação
@@ -100,6 +112,7 @@ function inputDetailsInHtml(poke) {
     formatIdPokemon(poke.id);
     createLiTypesHtml(poke.types);
     backgroundPokemonHtml.classList.add(poke.type);
+    backgroundHeaderHtml.classList.add(poke.type);
     spriteHtml.src = poke.sprite;  
     
     inputAboutDataInHtml(poke);
@@ -140,10 +153,11 @@ function inputAboutDataInHtml(poke) {
 
 //preenchendo as informações detalhadas da aba Base Stats
 function inputBaseStatsDataInHtml(poke) {
-
+    baseStatsHp.innerText = poke.stats.hp;
+    baseStatsAttack.innerText = poke.stats.attack;
+    baseStatsDefense.innerText = poke.stats.defense;
+    baseStatsSpAttack.innerText = poke.stats["special-attack"];
+    baseStatsSpDefense.innerText = poke.stats["special-defense"];
+    baseStatsSpeed.innerText = poke.stats.speed;
+    baseStatsTotal.innerText = poke.stats.total;
 }
-
-
-
-
-

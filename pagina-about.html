@@ -8,16 +8,33 @@
     <!-- nosso css global-->
     <link rel="stylesheet" href="./assets/css/global.css"/>
     <link rel="stylesheet" href="./assets/css/pagina-about.css">
-    <link rel="stylesheet" href="./assets/css/bars.css">
+    <link rel="stylesheet" href="./assets/css/base_stats.css">
+    <link rel="stylesheet" href="./assets/css/about.css">
     <!-- fonte Roboto-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
     <title>Pokemon Description</title>
+
+    <style id="barsStyle">
+        .speed{
+            width: 90%;
+            animation: speed 10s;
+        }
+        @keyframes speed {
+            0% {
+                width: 0%;
+            }
+            100% {
+                width: 90%;
+            }
+        }
+    </style>
+
 </head>
 <body>
     <!-- menu com opções de retorno para index.html e favoritar o pokemon -->
-    <header class="menu">
+    <header id="header-menu" class="menu">
         <div class="menu__buttons">
             <button type="button" id="button-back" class="menu__buttons__arrow">&#8592;</button>
             <button type="button" id="button-favorite" class="menu__buttons__heart">&#9825;</button>
@@ -26,19 +43,20 @@
     <!-- fim do trecho de menu -->
     <main class="content">
         <!-- seção com informações básicas do pokemon selecionado, incluindo a imagem-->
-        <section class="content__pokemon" id="pokemon">  
-            <ol class="content__pokemon__details">
-                <li class="content__pokemon__details__selected">
-                    <span class="content__pokemon__details__selected__name" id="name">name</span>
+        <section class="content__pokemon" id="pokemon">
+            <div class="content__pokemon__details">
+                <div class="content__pokemon__details__selected">
+                    <h1 class="content__pokemon__details__selected__name" id="name">Name</h1>
                     <span class="content__pokemon__details__selected__number" id="number">id</span>
-                </li>
-                <ol class="content__pokemon__details__types" id="types">
+                    <ul class="content__pokemon__details__types" id="types">
+                    
+                    </ul>
+                </div> 
+                <div class="content__pokemon__details__sprite">
+                    <img class="content__pokemon__details__sprite__image" id="sprite" src="" alt="Pokemon Sprite">
+                </div>
 
-                </ol>
-                <div class="content__pokemon__details__sprite" alt="Pokemon Sprite">
-                    <img class="content__pokemon__details__sprite__image" id="sprite" src="">
-                </div>    
-            </ol>
+            </div>    
         </section>
         <!-- fim da primeira da orimeira seção que consta as informações básicas do pokemon --> 
 
@@ -55,40 +73,46 @@
                 </nav>
                 <!-- fim do menu de navegação -->
 
-                <!-- inicio página "About" do menu navegação -->
+                <!-- inicio página/div "About" -->
                 <div id="about" class="content__description-pokemon__stats__about content-div">
-                    <section class="content__description-pokemon__stats__about__features">
-                        <div class="content__description-pokemon__stats__about__features__start">
-                            <p>Species</p> 
+                    <ul class="content__description-pokemon__stats__about__list">
+                        <li>
+                            <p>Species</p>
+                            <span id="specie"></span>
+                        </li>
+                        <li>
                             <p>Height</p>
-                            <p>Weight</p> 
+                            <span id="height"></span>
+                        </li>
+                        <li>
+                            <p>Weight</p>
+                            <span id="weight"></span>
+                        </li>
+                        <li>
                             <p>Abilities</p>
-                        </div>
-                        <div class="content__description-pokemon__stats__about__features__end">
-                            <p class="strong"><strong>Breeding</strong></p>
-                            <p>Gender</p> 
-                            <p>Egg Groups</p> 
-                            <p>Egg Cycle</p>
-                        </div>
-                    </section>
-                    <section class="content__description-pokemon__stats__about__status">
-                        <div class="content__description-pokemon__stats__about__status__start" id="about-status-start">
-                            <p id="specie">Seed</p>
-                            <p id="height"></p>
-                            <p id="weight"></p>
-                            <p id="abilities"></p>
-                        </div>
-                        <div class="content__description-pokemon__stats__about__status__end" id="about-status-end">
-                            <br>                            
-                            <p id="gender"   >&#9794; 87.5% &#9792; 12.5%</p>
-                            <p id="eggGroups">Moster</p>
-                            <p id="eggCicle" >Gras</p>
-                        </div>  
-                    </section>
+                            <span id="abilities"></span>
+                        </li>
+                        <li>
+                            <p class="subtitle-stats">Breeding</p>
+                        </li>
+                        <li>
+                            <p>Gender</p>
+                            <span id="gender"></span>
+                        </li>
+                        <li>
+                            <p>Egg Groups</p>
+                            <span id="eggGroups"></span>
+                        </li>
+                        <li>
+                            <p>Egg Cicle</p>
+                            <span id="eggCicle"></span>
+                        </li>
+                    </ul>
+                    
                 </div>
                 <!-- fim da página "About" -->
                 
-                <!-- início da página "Base Stats" do menu de navegação -->
+                <!-- início da página "Base Stats" -->
                 <div id="base-stats" class="content__description-pokemon__stats__base-stats content-div hidden">
                     <section class="content__description-pokemon__stats__base-stats__descriptions">
                         <div class="content__description-pokemon__stats__base-stats__descriptions__skills" id="base-stats-skills">
@@ -96,67 +120,71 @@
                                 <li>
                                     <div class="content__description-pokemon__stats__base-stats__descriptions__skills__list__text">
                                         <p>HP</p>
-                                        <span>45</span>
+                                        <span id="base-stats-hp"></span>
                                     </div>
                                     <span class="bars">
-                                        <span class="hp"></span>
+                                        <span class="bar-hp"></span>
                                     </span>        
                                 </li>
                                 <li>
                                     <div class="content__description-pokemon__stats__base-stats__descriptions__skills__list__text">
                                         <p>Atack</p>
-                                        <span>60</span>
+                                        <span id="base-stats-attack"></span>
                                     </div>
                                     <span class="bars">
-                                        <span class="attack"></span>
+                                        <span class="bar-attack"></span>
                                 </span>        
                                 </li>
                                 <li>
                                     <div class="content__description-pokemon__stats__base-stats__descriptions__skills__list__text">
                                         <p>Defense</p>
-                                        <span>48</span>
+                                        <span id="base-stats-defense"></span>
                                     </div>
                                     <span class="bars">
-                                        <span class="defense"></span>
+                                        <span class="bar-defense"></span>
                                 </span>        
                                 </li>
                                 <li>
                                     <div class="content__description-pokemon__stats__base-stats__descriptions__skills__list__text">
                                         <p>Sp. Atack</p>
-                                        <span>65</span>
+                                        <span id="base-stats-sp-attack"></span>
                                     </div>
                                     <span class="bars">
-                                        <span class="sp-atk"></span>
+                                        <span class="bar-sp-attack"></span>
                                 </span>        
                                 </li>
                                 <li>
                                     <div class="content__description-pokemon__stats__base-stats__descriptions__skills__list__text">
                                         <p>Sp. Def</p>
-                                        <span>65</span>
+                                        <span id="base-stats-sp-defense"></span>
                                     </div>
                                     <span class="bars">
-                                        <span class="sp-def"></span>
+                                        <span class="bar-sp-defense"></span>
                                 </span>        
                                 </li>
                                 <li>
                                     <div class="content__description-pokemon__stats__base-stats__descriptions__skills__list__text">
                                         <p>Speed</p>
-                                        <span>45</span>
+                                        <span id="base-stats-speed"></span>
                                     </div>
                                     <span class="bars">
-                                        <span class="speed"></span>
+                                        <span class="bar-speed"></span>
                                     </span>        
                                 </li>
                                 <li>
                                     <div class="content__description-pokemon__stats__base-stats__descriptions__skills__list__text">
                                         <p>Total</p>
-                                        <span>317</span>
+                                        <span id="base-stats-total"></span>
                                     </div>
                                     <span class="bars">
-                                        <span class="total"></span>
+                                        <span class="bar-total"></span>
                                     </span>        
                                 </li>
-                            </ul>   
+                            </ul>
+                        </div>
+                        <div class="content__description-pokemon__stats__base-stats__observation">
+                            <span class="subtitle-stats">Type defenses</span>
+                            <p>The effectiveness of each type on charmander</p>
                         </div>
                     </section>
                 </div>

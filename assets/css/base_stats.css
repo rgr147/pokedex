@@ -1,8 +1,3 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
 .content__description-pokemon__stats__base-stats__descriptions__skills {
     width: 100%;
 }
@@ -50,6 +45,14 @@
     margin:0.5rem 0;
 }
 .content__description-pokemon__stats__base-stats__descriptions__skills__type-defenses__text {
+    opacity: 50%;
+}
+.content__description-pokemon__stats__base-stats__observation {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+}
+.content__description-pokemon__stats__base-stats__observation p {
     opacity: 50%;
 }
 
