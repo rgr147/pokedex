@@ -26,10 +26,35 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
     const stats = await pokeApiDetails.calculateTotalBaseStats(jsonBody);
 
     poke.stats = stats;
-
     poke.totalPercentage = ((poke.stats.total / 600) * 100).toFixed();
 
+    pokeApiDetails.getDataAboutDefenses(jsonBody.types[0].type.url)
+
     return poke;
+}
+
+//função responsável por puxar do PokeAPI as informações sobre a defesa do pokemon, fraquesas e resistrencias
+pokeApiDetails.getDataAboutDefenses = (urlType) => {
+    const url = `${urlType}`;
+
+    return fetch(url)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (responseJson) {
+            console.log(responseJson.damage_relations);
+            
+            const relations = responseJson.damage_relations;
+
+            let listDamageRelations = []
+            
+            //Object.entries para iterar sobre todas as chaves e valoes
+            // Object.entries(relations).forEach(([key, value]) => {
+
+            // })
+        
+        })
+            
 }
 
 //função para calcular o total do Status Base do pokemon
@@ -102,10 +127,10 @@ pokeApiDetails.getDataPokeApi = (nameParam) => {
         return response.json();
     })
     .then(function (jsonBody) { 
-        console.log(jsonBody);
         return convertPokeApiDetailToPokemonDetailed(jsonBody);
     })
     .then(function (poke) {
         inputDetailsInHtml(poke);
     })
 }
+

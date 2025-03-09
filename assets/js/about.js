@@ -111,7 +111,6 @@ function inputDetailsInHtml(poke) {
     inputAboutDataInHtml(poke);
     inputBaseStatsDataInHtml(poke);
     addAnimationBars(poke);
-
 }
 //função responsável por formatar o ID do pokemon e manter 3 dígitos
 function formatIdPokemon(id){

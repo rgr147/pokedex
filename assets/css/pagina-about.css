@@ -205,7 +205,7 @@ body {
 .fairy {
     background-color: #f9aec7;
 }
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 600px) {
 
     .content__pokemon__details__sprite__image {
         display: none;

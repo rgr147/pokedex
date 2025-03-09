@@ -92,9 +92,6 @@ function addAnimationBars(poke) {
                 width: ${poke.totalPercentage}%;
                 animation: bar-total 1s;
             }
-
-
-
         </style>
     `
     headHtmlForInputStyle.innerHTML += newHtmlStyle;
