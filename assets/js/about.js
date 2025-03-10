@@ -34,6 +34,9 @@ const baseStatsSpAttack = document.getElementById("base-stats-sp-attack");
 const baseStatsSpDefense = document.getElementById("base-stats-sp-defense");
 const baseStatsSpeed = document.getElementById("base-stats-speed");
 const baseStatsTotal = document.getElementById("base-stats-total");
+const baseStatsDefenses = document.querySelector(".content__description-pokemon__stats__base-stats__observation");
+
+
 
 
 //selecionando todas as tags ancoras do menu de navegação
@@ -154,5 +157,6 @@ function inputBaseStatsDataInHtml(poke) {
     baseStatsSpDefense.innerText = poke.stats["special-defense"];
     baseStatsSpeed.innerText = poke.stats.speed;
     baseStatsTotal.innerText = poke.stats.total;
+    baseStatsDefenses.innerHTML += poke.defenses;
 }
 

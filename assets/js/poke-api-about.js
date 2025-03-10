@@ -28,9 +28,35 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
     poke.stats = stats;
     poke.totalPercentage = ((poke.stats.total / 600) * 100).toFixed();
 
-    pokeApiDetails.getDataAboutDefenses(jsonBody.types[0].type.url)
+    poke.defenses = await pokeApiDetails.getDataAboutDefenses(jsonBody.types[0].type.url)
+ 
+    console.log(poke.defenses)
 
     return poke;
+}
+//função responsável por receber o dicionário com a lista de relaçãoes sobre as defesas do pokemon e retornar um texto formatado com as informações para ser usado no HTML
+pokeApiDetails.formatTextAboutDefenses = (dictRelations) => {
+    const dicionario = dictRelations;
+
+    textFormattedForHtml = ``;
+
+    const linesList = [];
+    for(let key in dicionario) {
+        if(key == "double_damage_from" && dicionario["double_damage_from"] != "") {
+            linesList.push("Muito fraco contra: "+ dicionario[key])
+
+        } else if (key == "half_damage_from" && dicionario["half_damage_from"] != "") {
+            linesList.push("Metade do dane de: "+ dicionario[key])
+
+        } else if (key == "no_damage_from" && dicionario["no_damage_from"] != "")
+            linesList.push("Resistente contra: "+ dicionario[key]);
+    }
+
+    for(let i = 0; i < linesList.length; i++) {
+        textFormattedForHtml += `<p id="p${i+1}">${linesList[i].split(",").join(", ")}</p> \n`;
+    }
+
+    return textFormattedForHtml;
 }
 
 //função responsável por puxar do PokeAPI as informações sobre a defesa do pokemon, fraquesas e resistrencias
@@ -42,19 +68,25 @@ pokeApiDetails.getDataAboutDefenses = (urlType) => {
             return response.json();
         })
         .then(function (responseJson) {
-            console.log(responseJson.damage_relations);
+            const relations = responseJson.damage_relations; //variável que recebe o objeto com os dados referente a dano/defesa. 
             
-            const relations = responseJson.damage_relations;
+            const dictRelations = [] //dicionário com o nome da key como chave, e a lista de tipos relaciona a key como valor
+            const listValidation = []; //lista para armazenar o nome de cada key analisada para tomada de decisão
+            // Object.entries para iterar sobre todas as chaves e valoes
+            Object.entries(relations).forEach(([key, value]) => {
+                if(key in listValidation == false) {
+                    const typsList = [] //recebe os tipos relacionados a cada key
+                    for(let i = 0; i < value.length; i++) { 
+                        typsList.push(value[i].name)
+                    }
+                    dictRelations[key] = typsList
+                }
+            })
+            textFormattedForHtml = pokeApiDetails.formatTextAboutDefenses(dictRelations)
 
-            let listDamageRelations = []
-            
-            //Object.entries para iterar sobre todas as chaves e valoes
-            // Object.entries(relations).forEach(([key, value]) => {
 
-            // })
-        
+            return textFormattedForHtml
         })
-            
 }
 
 //função para calcular o total do Status Base do pokemon

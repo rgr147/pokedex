@@ -20,4 +20,5 @@ class PokemonDetailed {
     eggCicle;
     stats = [];
     totalPercentage;
+    defenses;
 }
