@@ -30,6 +30,9 @@ O resultado final foi a oportunidade de adquirir e consolidar meus conhecimentos
 
 ## 📷 Capturas de Tela
 
+![Tela Inicial](prints/index.jpg)   ![Informações Abaout](prints/about.jpg)   ![Informações Abaout](prints/base_stats.jpg)
+
+
 ## 🛠 Como Executar o Projeto
 
 1. Clone o repositório: `git clone https://github.com/rgr147/pokedex.git`
