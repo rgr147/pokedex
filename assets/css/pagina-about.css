@@ -4,7 +4,7 @@ body {
 }
 .menu {
     display: flex;
-    height: 8vh;
+    height: 10%;
     align-items: end;
     border-radius: 1rem 1rem 0 0;
 }
@@ -30,7 +30,7 @@ body {
     cursor: pointer;
 }
 .content {
-    height: 100vh;
+    height: 85%;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -132,7 +132,9 @@ body {
     width: 25%;
     opacity: 50%;
 }
-
+footer {
+    height: 5%;
+}
 /*adicionando as cores de background de acordo com o tipo de pokemon*/
 .normal {
     background-color: #a6a877;
