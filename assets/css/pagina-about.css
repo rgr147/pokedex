@@ -69,7 +69,7 @@ body {
     text-transform: capitalize;
 }
 .content__pokemon__details__sprite {
-    height: 50%;
+    height: 250px;
     z-index: 1;
 }
 .content__description-pokemon {
