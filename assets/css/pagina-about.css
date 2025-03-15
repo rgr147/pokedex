@@ -1,7 +1,7 @@
 /*Arquivo de estilos responsável por estilizar todo o layout da página-about*/
 /*A estilização das DIVs About, Base Stats, Evolution e Moves do menu de navegação estão em arquivos separados*/
 body {
-    height: 100vh;
+    height: 90vh;
     width: auto;
 }
 .menu {
@@ -69,11 +69,12 @@ body {
     text-transform: capitalize;
 }
 .content__pokemon__details__image {
-    height: 15rem;
+    height: 75%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1;
+    padding: 1rem;
 }
 .content__pokemon__details__sprite {
     max-height: 100%;
@@ -110,7 +111,7 @@ body {
     flex-direction: row;
 }
 .content__description-pokemon__nav a {
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-align: center;
     text-decoration: none;
     color: #000000;
