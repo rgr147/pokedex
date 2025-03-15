@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head id="head">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,27 +21,22 @@
     <!-- menu com opções de retorno para index.html e favoritar o pokemon -->
     <header id="header-menu" class="menu">
         <div class="menu__buttons">
-            <button type="button" id="button-back" class="menu__buttons__arrow">&#8592;</button>
-            <button type="button" id="button-favorite" class="menu__buttons__heart">&#9825;</button>
+            <button type="button" id="button-back" class="menu__buttons__button">&#8592;</button>
+            <button type="button" id="button-favorite" class="menu__buttons__button">&#9825;</button>
         </div>
     </header>
     <!-- fim do trecho de menu -->
-    <main class="content">
+    <main class="content" id="content">
         <!-- seção com informações básicas do pokemon selecionado, incluindo a imagem-->
         <section class="content__pokemon" id="pokemon">
             <div class="content__pokemon__details">
-                <div class="content__pokemon__details__selected">
-                    <h1 class="content__pokemon__details__selected__name" id="name">Name</h1>
-                    <span class="content__pokemon__details__selected__number" id="number">id</span>
-                    <ul class="content__pokemon__details__types" id="types">
-                    
-                    </ul>
-                </div> 
-                <div class="content__pokemon__details__sprite">
-                    <img class="content__pokemon__details__sprite__image" id="sprite" src="" alt="Pokemon Sprite">
-                </div>
-
-            </div>    
+                <h1 class="content__pokemon__details__name" id="name">Name</h1>
+                <span class="content__pokemon__details__number" id="number">id</span>
+                <ul class="content__pokemon__details__types" id="types">
+                
+                </ul>
+                <img class="content__pokemon__details__sprite" id="sprite" src="" alt="Pokemon Image">
+            </div>
         </section>
         <!-- fim da primeira da orimeira seção que consta as informações básicas do pokemon --> 
 
@@ -179,7 +174,7 @@
             </div>
         </section>
     </main>
-    <footer>
+    <footer id="footer" class="footer">
 
     </footer>
     <script defer src="./assets/js/poke-api-about.js"></script>

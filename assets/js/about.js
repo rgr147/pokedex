@@ -2,18 +2,17 @@
 const url = new URLSearchParams(window.location.search);
 const nameParam = url.get("name");
 
-
-//selecionando o botão de retornar  para a página anterior
+//selecionando o botão de retornar do Header, para à página principal
 const buttonBack = document.getElementById("button-back");
-
 
 //selecionando os campos que receberão as informações básicas do pokemon no HTML
 const nameHtml = document.getElementById("name");
 const numberHtml = document.getElementById("number");
 const typesHtml = document.getElementById("types");
 const spriteHtml = document.getElementById("sprite");
-const backgroundPokemonHtml = document.getElementById("pokemon");
+const backgroundPokemonHtml = document.getElementById("content");
 const backgroundHeaderHtml = document.getElementById("header-menu");
+const backgroundFooterHtml = document.getElementById("footer");
 
 
 //selecionando os campos que receberão as informações detalhadas da página About no HTML
@@ -25,7 +24,6 @@ const genderHtml = document.getElementById("gender");
 const eggGroupsHtml = document.getElementById("eggGroups");
 const eggCicleHtml = document.getElementById("eggCicle");
 
-
 //selecionando os campos da página base stats
 const baseStatsHp = document.getElementById("base-stats-hp");
 const baseStatsAttack = document.getElementById("base-stats-attack");
@@ -36,14 +34,10 @@ const baseStatsSpeed = document.getElementById("base-stats-speed");
 const baseStatsTotal = document.getElementById("base-stats-total");
 const baseStatsDefenses = document.querySelector(".content__description-pokemon__stats__base-stats__observation");
 
-
-
-
 //selecionando todas as tags ancoras do menu de navegação
 const linkAbout = document.getElementById("link-about"); 
 const linkBaseStats = document.getElementById("link-base-stats");
 const allLinks = document.querySelectorAll(".content__description-pokemon__stats__nav a");
-
 
 //selecionando todas as divs que contem informações sobre o pokemon
 const baseStatsDiv = document.getElementById("base-stats");
@@ -109,6 +103,7 @@ function inputDetailsInHtml(poke) {
     createLiTypesHtml(poke.types);
     backgroundPokemonHtml.classList.add(poke.type);
     backgroundHeaderHtml.classList.add(poke.type);
+    backgroundFooterHtml.classList.add(poke.type);
     spriteHtml.src = poke.sprite;  
     
     inputAboutDataInHtml(poke);

@@ -1,12 +1,14 @@
+/*Arquivo de estilos responsável por estilizar todo o layout da página-about*/
+/*A estilização das DIVs About, Base Stats, Evolution e Moves do menu de navegação estão em arquivos separados*/
 body {
     height: 100vh;
     width: auto;
 }
 .menu {
     display: flex;
-    height: 8vh;
+    height: 8%;
     align-items: end;
-    border-radius: 1rem 1rem 0 0;
+    border-radius: 1rem 1rem 0 0; 
 }
 .menu__buttons {
     height: fit-content;
@@ -15,62 +17,49 @@ body {
     justify-content: space-between;
     padding: 0 2rem;
 }
-.menu__buttons__arrow {
+.menu__buttons__button {
     background-color: unset;
     border: none;
     color: #ffffff;
-    font-size: xx-large;
-    cursor: pointer;
-}
-.menu__buttons__heart {
-    background-color: unset;
-    border: none;
-    color: #ffffff;
-    font-size: xx-large;
+    font-size: 2rem;
     cursor: pointer;
 }
 .content {
-    height: 100vh;
+    height: 90%;
     width: 100vw;
     display: flex;
     flex-direction: column;
-    position: relative;
+    margin-top: -0.2rem;
 }
 .content__pokemon  {
-    position: absolute;
-    height: 50%;
+    height: 40%;
     width: 100%;
 }
 .content__pokemon__details {
     display: flex;
     flex-direction: column;
-    align-items: center;
     height: 100%;
     width: 100%;
-    padding: 1.5rem 2rem 0 2rem;
-    position: absolute;
-    z-index: 1;
-    color: #ffffff;
+    padding: 0 2rem 0 2rem;
     list-style: none;
 }
-.content__pokemon__details__selected {
-    display: grid;
-    width: 100%;
-}
-.content__pokemon__details__selected__name {
+.content__pokemon__details__name {
     width: fit-content;
     font-size: 43px;
     text-transform: capitalize;
+    color: #ffffff;
 }
-.content__pokemon__details__selected__number {
+.content__pokemon__details__number {
     text-align: end;
     font-size: 18px;
+    color: #ffffff;
 }
 .content__pokemon__details__types {
     display: flex;
     flex-direction: row;
     list-style: none;
     padding: 0;
+    color: #ffffff;
 }
 .content__pokemon__details__type {
     border-radius:3rem;
@@ -80,36 +69,27 @@ body {
     text-transform: capitalize;
 }
 .content__pokemon__details__sprite {
-    height: 95%;
-    width: 95%;
-    display: flex;
-    justify-content: center;
-}
-.content__pokemon__details__sprite__image {
-    max-width: 80%;
+    height: 75%;
+    z-index: 1;
 }
 .content__description-pokemon {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    position: absolute;
-    height: 57%;
+    height: 60%;
     width: 100%;
-    bottom: 0;
-    border-radius: 3rem;
+    border-radius: 2.5rem;
     background-color: #ffffff;
 }
 .content__description-pokemon__stats {
-    height: 80%;
+    height: 100%;
     width: 100%;
-    padding: 0 2rem;
+    padding: 1.5rem 2rem 0.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 .content__description-pokemon__stats__nav {
-    position:relative;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    z-index: 1;
 }
 .content__description-pokemon__stats__nav a {
     text-align: center;
@@ -132,76 +112,61 @@ body {
     width: 25%;
     opacity: 50%;
 }
-
+footer {
+    height: 2%;
+}
 /*adicionando as cores de background de acordo com o tipo de pokemon*/
 .normal {
     background-color: #a6a877;
 }
-
 .grass {
     background-color: #77c850;
 }
-
 .fire {
     background-color: #ee7f30;
 }
-
 .water {
     background-color: #678fee;
 }
-
 .electric {
     background-color: #f7cf2e;
 }
-
 .ice {
     background-color: #98d5d7;
 }
-
 .ground {
     background-color: #dfbf69;
 }
-
 .flying {
     background-color: #a98ff0;
 }
-
 .poison {
     background-color: #a040a0;
 }
-
 .fighting {
     background-color: #bf3029;
 }
-
 .psychic {
     background-color: #f65687;
 }
-
 .dark {
     background-color: #725847;
 }
-
 .rock {
     background-color: #b8a137;
 }
-
 .bug {
     background-color: #a8b720;
 }
-
 .ghost {
     background-color: #6e5896;
 }
-
 .steel {
     background-color: #b9b7cf;
 }
-
 .dragon {
     background-color: #6f38f6;
 }
-
 .fairy {
     background-color: #f9aec7;
 }

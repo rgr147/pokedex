@@ -1,10 +1,10 @@
+/*Arquivo de estilos responsável por estilizar a DIV que contém as informações "About" do pokemon*/
 .content__description-pokemon__stats__about {
-    height: 100%;
-    width: auto;
+
 }
 .content__description-pokemon__stats__about__list {
     display:flex;
-    flex-direction: column;;
+    flex-direction: column;
     gap: 1rem;
     list-style: none;
     height: 100%;
