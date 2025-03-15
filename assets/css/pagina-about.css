@@ -1,7 +1,7 @@
 /*Arquivo de estilos responsável por estilizar todo o layout da página-about*/
 /*A estilização das DIVs About, Base Stats, Evolution e Moves do menu de navegação estão em arquivos separados*/
 body {
-    height: 90vh;
+    height: 98vh;
     width: auto;
 }
 .menu {
@@ -110,6 +110,7 @@ body {
 .content__description-pokemon__nav {
     display: flex;
     flex-direction: row;
+    margin-top: 0.5rem;;
 }
 .content__description-pokemon__nav a {
     font-size: 1rem;
