@@ -32,7 +32,7 @@ const baseStatsSpAttack = document.getElementById("base-stats-sp-attack");
 const baseStatsSpDefense = document.getElementById("base-stats-sp-defense");
 const baseStatsSpeed = document.getElementById("base-stats-speed");
 const baseStatsTotal = document.getElementById("base-stats-total");
-const baseStatsDefenses = document.querySelector(".content__description-pokemon__stats__base-stats__observation");
+const baseStatsDefenses = document.querySelector(".content__description-pokemon__base-stats__observation");
 
 //selecionando todas as tags ancoras do menu de navegação
 const linkAbout = document.getElementById("link-about"); 
@@ -52,7 +52,7 @@ linkBaseStats.addEventListener("click", () => {
 
 linkAbout.addEventListener("click", () => {
     selectAbout();
-})
+});
 
 //ouvindo o botão de retornar para a página principal
 buttonBack.addEventListener("click", () => {
@@ -91,10 +91,8 @@ function selectBaseStats() {
     baseStatsDiv.classList.remove("hidden");    
 }
 
-
 //chamando a função responsável por conectar à API PokeAPi para puxar as informações do pokemon tendo o nome como parâmetro
 pokeApiDetails.getDataPokeApi(nameParam);
-
 
 //preenchendo as informações básicas e informações do About sobre o pokemon
 function inputDetailsInHtml(poke) {

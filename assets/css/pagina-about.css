@@ -1,7 +1,7 @@
 /*Arquivo de estilos responsável por estilizar todo o layout da página-about*/
 /*A estilização das DIVs About, Base Stats, Evolution e Moves do menu de navegação estão em arquivos separados*/
 body {
-    height: 98vh;
+    height: 100vh;
     width: auto;
 }
 .menu {
@@ -91,22 +91,7 @@ body {
     justify-content: start;
     padding: 1rem 2rem 0.5rem 2rem;
     /* overflow: hidden; */
-
-    /* align-items: center;
-    height: 60%;
-    width: 100%;
-    border-radius: 2.5rem;
-    background-color: #ffffff; */
 }
-/* .content__description-pokemon__stats {
-
-    height: 100%;
-    width: 100%;
-    padding: 1.5rem 2rem 0.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-} */
 .content__description-pokemon__nav {
     display: flex;
     flex-direction: row;
@@ -192,7 +177,7 @@ footer {
 .fairy {
     background-color: #f9aec7;
 }
-@media screen and (max-height: 600px) {
+/* @media screen and (max-height: 600px) {
 
     .content__pokemon__details__sprite__image {
         display: none;
@@ -228,4 +213,4 @@ footer {
         display: flex;
         justify-content: center;
     }
-}
+} */

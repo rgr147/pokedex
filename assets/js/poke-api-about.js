@@ -29,8 +29,6 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
     poke.totalPercentage = ((poke.stats.total / 600) * 100).toFixed();
 
     poke.defenses = await pokeApiDetails.getDataAboutDefenses(jsonBody.types[0].type.url)
- 
-    console.log(poke.defenses)
 
     return poke;
 }

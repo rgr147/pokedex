@@ -1,6 +1,5 @@
 /*Arquivo de estilos responsável por estilizar a DIV que contém as informações "About" do pokemon*/
 .content__description-pokemon__about {
-    /* margin-top: 1rem; */
     padding: 1rem 0;
 }
 .content__description-pokemon__about__list {

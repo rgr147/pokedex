@@ -1,73 +1,80 @@
-.content__description-pokemon__stats__base-stats__descriptions__skills {
+/*Este arquivo contém a estilização da da DIV "Base Stats"*/
+.content__description-pokemon__base-stats {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+}
+.content__description-pokemon__base-stats__skills {
     width: 100%;
 }
-.content__description-pokemon__stats__base-stats__descriptions__skills__list {
+.content__description-pokemon__base-stats__skills__list {
     list-style-type: none;
     padding: 0;
-
 }
-.content__description-pokemon__stats__base-stats__descriptions__skills__list p {
+.content__description-pokemon__base-stats__skills__list p {
     opacity: 50%;
 }
-.content__description-pokemon__stats__base-stats__descriptions__skills__list li {
+.content__description-pokemon__base-stats__skills__list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
 }
-.content__description-pokemon__stats__base-stats__descriptions__skills__list__text {
+.content__description-pokemon__base-stats__skills__list__text {
     display: flex;
     width: 30%;
     justify-content: space-between;
+    font-size: 1rem;
 }
-.content__description-pokemon__stats__base-stats__descriptions__skills__list li .bars-green {
+.content__description-pokemon__base-stats__skills__list li .bars-green {
     display: block;
     position: relative;
-    height: 4px;
+    height: 0.25rem;
     width: 65%;
-    border-radius: 20px;
+    border-radius: 1rem;
     background-color: #dddddd;
     overflow: hidden;
 }
-.content__description-pokemon__stats__base-stats__descriptions__skills__list li .bars-red {
+.content__description-pokemon__base-stats__skills__list li .bars-red {
     display: block;
     position: relative;
-    height: 4px;
+    height: 0.25rem;
     width: 65%;
-    border-radius: 20px;
+    border-radius: 1rem;
     background-color: #dddddd;
     overflow: hidden;
 }
 
-.content__description-pokemon__stats__base-stats__descriptions__skills__list li .bars-green > span {
+.content__description-pokemon__base-stats__skills__list li .bars-green > span {
     position: absolute;
-    height: 4px;
+    height: 0.25rem;
     background-color: #00bb00;
 
 }
-.content__description-pokemon__stats__base-stats__descriptions__skills__list li .bars-red > span {
+.content__description-pokemon__base-stats__skills__list li .bars-red > span {
     position: absolute;
-    height: 4px;
+    height: 0.25rem;
     background-color: #ee0000;
 
 }
-.content__description-pokemon__stats__base-stats__descriptions__skills__type-defenses {
+.content__description-pokemon__base-stats__skills__type-defenses {
     display: flex;
     flex-direction: column;
     align-items: start;
     padding: 10% 0;
 }
-.content__description-pokemon__stats__base-stats__descriptions__skills__type-defenses > p {
+/* .content__description-pokemon__base-stats__skills__type-defenses > p {
     margin:0.5rem 0;
 }
-.content__description-pokemon__stats__base-stats__descriptions__skills__type-defenses__text {
+.content__description-pokemon__base-stats__skills__type-defenses__text {
     opacity: 50%;
-}
-.content__description-pokemon__stats__base-stats__observation {
-    margin-top: 2.5rem;
+} */
+.content__description-pokemon__base-stats__observation {
+    /* margin-top: 1rem; */
     display: flex;
     flex-direction: column;
 }
-.content__description-pokemon__stats__base-stats__observation p {
+.content__description-pokemon__base-stats__observation p {
+    font-size: 0.9rem;
     opacity: 50%;
 }
