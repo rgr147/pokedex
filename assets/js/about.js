@@ -37,7 +37,7 @@ const baseStatsDefenses = document.querySelector(".content__description-pokemon_
 //selecionando todas as tags ancoras do menu de navegação
 const linkAbout = document.getElementById("link-about"); 
 const linkBaseStats = document.getElementById("link-base-stats");
-const allLinks = document.querySelectorAll(".content__description-pokemon__stats__nav a");
+const allLinks = document.querySelectorAll(".content__description-pokemon__nav a");
 
 //selecionando todas as divs que contem informações sobre o pokemon
 const baseStatsDiv = document.getElementById("base-stats");

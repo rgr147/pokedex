@@ -45,13 +45,13 @@ body {
 }
 .content__pokemon__details__name {
     width: fit-content;
-    font-size: 43px;
+    font-size: 3rem;
     text-transform: capitalize;
     color: #ffffff;
 }
 .content__pokemon__details__number {
     text-align: end;
-    font-size: 18px;
+    font-size: 1.2rem;
     color: #ffffff;
 }
 .content__pokemon__details__types {
@@ -64,34 +64,53 @@ body {
 .content__pokemon__details__type {
     border-radius:3rem;
     margin: 0 0.3rem 0 0;
-    padding: 0.3rem 0.9rem;
+    padding: 0.2rem 0.7rem;
     filter: brightness(1.1);
     text-transform: capitalize;
 }
-.content__pokemon__details__sprite {
-    height: 100px;
+.content__pokemon__details__image {
+    height: 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 1;
 }
+.content__pokemon__details__sprite {
+    max-height: 100%;
+    max-width: auto;
+}
 .content__description-pokemon {
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+    width: 100%;
+    background-color: #faf8fc;
+    border-radius: 2.5rem;
+    justify-content: start;
+    padding: 1rem 2rem 0.5rem 2rem;
+    /* overflow: hidden; */
+
+    /* align-items: center;
     height: 60%;
     width: 100%;
     border-radius: 2.5rem;
-    background-color: #ffffff;
+    background-color: #ffffff; */
 }
-.content__description-pokemon__stats {
+/* .content__description-pokemon__stats {
+
     height: 100%;
     width: 100%;
     padding: 1.5rem 2rem 0.5rem 2rem;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-}
-.content__description-pokemon__stats__nav {
+} */
+.content__description-pokemon__nav {
     display: flex;
     flex-direction: row;
 }
-.content__description-pokemon__stats__nav a {
+.content__description-pokemon__nav a {
+    font-size: 1.1rem;
     text-align: center;
     text-decoration: none;
     color: #000000;
@@ -102,13 +121,13 @@ body {
 }
 .link-active { /*class do botão que foi clicado na navegação*/
     border-bottom: 0.1rem #0000ff solid;
-    padding-bottom: 1.3rem;
+    padding-bottom: 1rem;
     width: 25%;
 
 }
 .link-inactive { /*classe de botões dos links que não estão em exibição no momento*/
     border-bottom: 0.1rem #aaaaaa solid;
-    padding-bottom: 1.3rem;
+    padding-bottom: 1rem;
     width: 25%;
     opacity: 50%;
 }
