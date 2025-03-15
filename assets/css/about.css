@@ -1,6 +1,7 @@
 /*Arquivo de estilos responsável por estilizar a DIV que contém as informações "About" do pokemon*/
 .content__description-pokemon__about {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
+    padding: 1rem;
 }
 .content__description-pokemon__about__list {
     display: flex;

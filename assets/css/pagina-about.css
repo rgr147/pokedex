@@ -73,12 +73,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
-    padding: 1rem;
+
 }
 .content__pokemon__details__sprite {
     max-height: 100%;
     max-width: auto;
+    padding: 1rem;
+    z-index: 1;
 }
 .content__description-pokemon {
     display: flex;
