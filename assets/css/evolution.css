@@ -1,0 +1,28 @@
+.content__description-pokemon__evolution__container {
+    width:100%;
+    border: #ff0000 solid 1px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2rem;
+    gap: 1rem;
+}
+.evolution-img {
+    display: flex;
+    justify-self: center;
+    height: 7rem;
+    width:  7rem;
+}
+#evolution-01 {
+    border: blue solid 1px;
+}
+#evolution-02 {
+    border: green solid 1px;
+}
+#evolution-03 {
+    border: red solid 1px;
+}
+#evolution-04 {
+    border: yellow solid 1px;
+}
+
+

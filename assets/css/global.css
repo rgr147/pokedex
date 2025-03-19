@@ -4,6 +4,9 @@
     font-family: 'Roboto', 'sans-serif';
     box-sizing: border-box;
 }
+.content h1 {
+    margin: 0;
+}
 /*aplicando as configurações de dimensionamento de tela para dispositivos com telas de 992px ou superiores*/
 @media screen and (min-width: 820px) {
     .content {
@@ -12,7 +15,4 @@
         margin: 0 auto;
         border-radius: 1rem;
     }
-}
-.content h1 {
-    margin: 0;
 }

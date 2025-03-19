@@ -30,9 +30,10 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
     poke.stats = stats;
     poke.totalPercentage = ((poke.stats.total / 600) * 100).toFixed();
     poke.defenses = await pokeApiDetails.getDataAboutDefenses(jsonBody.types[0].type.url)
-    
-    teste = pokeApiDetails.getEvolutionSprites(jsonBody.species.url); //passando o link que contém os dados para buscar a cadeia evoutiva do pokemon
 
+    
+    poke.evolutionSprites = await pokeApiDetails.getEvolutionSprites(jsonBody.species.url); //passando o link que contém os dados para buscar a cadeia evoutiva do pokemon
+    console.log(poke.evolutionSprites.forEach(sprite => console.log(sprite)));
     return poke;
 }
 //função que retorna a url de cada sprite dos pokemons
@@ -67,6 +68,7 @@ pokeApiDetails.getEvolutionNamesPokemon = (urlEvolutionChain) => {
             return response.json();
         })
         .then(function (responseJson){
+            // console.log(responseJson)
             if(responseJson.chain.evolves_to != "") {
                 listNames.push(responseJson.chain.species.name);
                 listNames.push(responseJson.chain.evolves_to[0].species.name);
@@ -92,6 +94,7 @@ pokeApiDetails.getEvolutionSprites = (url) => {
             return response.json();
         })
         .then(function (responseJson){
+            console.log()
             return pokeApiDetails.getEvolutionNamesPokemon(responseJson.evolution_chain.url);//passa o link contendo os dados sobre a corrente evolutiva do pokemon
         })
 

@@ -1,11 +1,11 @@
-//recebendo o nome do pokemon como parâmetro
+//recebendo, da página index.html, o nome do pokemon através do parâmetro na url
 const url = new URLSearchParams(window.location.search);
 const nameParam = url.get("name");
 
 //selecionando o botão de retornar do Header, para à página principal
 const buttonBack = document.getElementById("button-back");
 
-//selecionando os campos que receberão as informações básicas do pokemon no HTML
+//selecionando os elementos da pagina-about para adicionar informações do pokemon
 const nameHtml = document.getElementById("name");
 const numberHtml = document.getElementById("number");
 const typesHtml = document.getElementById("types");
@@ -14,8 +14,7 @@ const backgroundPokemonHtml = document.getElementById("content");
 const backgroundHeaderHtml = document.getElementById("header-menu");
 const backgroundFooterHtml = document.getElementById("footer");
 
-
-//selecionando os campos que receberão as informações detalhadas da página About no HTML
+//seleccionando os elementos da div about para adicionar informações do pokemon
 const specieHtml = document.getElementById("specie");
 const heightHtml = document.getElementById("height");
 const weightHtml = document.getElementById("weight");
@@ -24,7 +23,7 @@ const genderHtml = document.getElementById("gender");
 const eggGroupsHtml = document.getElementById("eggGroups");
 const eggCicleHtml = document.getElementById("eggCicle");
 
-//selecionando os campos da página base stats
+//selecionando os elementos da div base stats para adicionar informações do pokemon
 const baseStatsHp = document.getElementById("base-stats-hp");
 const baseStatsAttack = document.getElementById("base-stats-attack");
 const baseStatsDefense = document.getElementById("base-stats-defense");
@@ -34,18 +33,30 @@ const baseStatsSpeed = document.getElementById("base-stats-speed");
 const baseStatsTotal = document.getElementById("base-stats-total");
 const baseStatsDefenses = document.querySelector(".content__description-pokemon__base-stats__observation");
 
-//selecionando todas as tags ancoras do menu de navegação
+//selecionando os elementos da div evolution para adicionar a sequencia de evolução do pokemon
+const evolution01 = document.getElementById("evolution-01");
+const evelution02 = document.getElementById("evolution-02");
+const evolution03 = document.getElementById("evolution-03");
+const evolution04 = document.getElementById("evolution-04");
+
+//selecionando todos elementos das tags ancoras do menu de navegação sobre o pokemon
 const linkAbout = document.getElementById("link-about"); 
 const linkBaseStats = document.getElementById("link-base-stats");
+const linkEvolution = document.getElementById("link-evolution");
 const allLinks = document.querySelectorAll(".content__description-pokemon__nav a");
 
-//selecionando todas as divs que contem informações sobre o pokemon
+//selecionando todas divs relacionadas ao menu de navegação sobre o pokemon
 const baseStatsDiv = document.getElementById("base-stats");
 const aboutDiv = document.getElementById("about");
+const evolutionDiv = document.getElementById("evolution");
 const allDivsContent = document.querySelectorAll(".content-div");
 
 
 //ouvindo cliques nos botões do menu de navegação sobre o pokemon. 
+linkEvolution.addEventListener("click", () => {
+    selectEvolution();
+    
+});
 linkBaseStats.addEventListener("click", () => {
     selectBaseStats();
 });
@@ -58,8 +69,22 @@ linkAbout.addEventListener("click", () => {
 buttonBack.addEventListener("click", () => {
     window.location.href = "./index.html";
 })
+//funcção responsavel por mostrar a div Evolution do pokemon e ocultar as demais divs
+function selectEvolution() {
+    allLinks.forEach(function(link) {
+        link.classList.remove("link-active");
+        link.classList.add("link-inactive");
+    })
 
-//função correspondenteao ao link About do menu de navegação. Puxa os dados do pokemon e dá efeito de botão ativado
+    linkEvolution.classList.remove("link-inactive");
+    linkEvolution.classList.add("link-active");
+
+    allDivsContent.forEach(function(div) {
+        div.classList.add("hidden");
+    })
+    evolutionDiv.classList.remove("hidden");
+}
+//função correspondente ao ao link About do menu de navegação. Puxa os dados do pokemon e dá efeito de botão ativado
 function selectAbout() {
     allLinks.forEach(function(link) {
         link.classList.remove("link-active");
@@ -153,3 +178,7 @@ function inputBaseStatsDataInHtml(poke) {
     baseStatsDefenses.innerHTML += poke.defenses;
 }
 
+//função que atualiza dinâmicamente a div evolucao com a sequencia das evoluções do pokemon
+// function inputEvolutionDataInHtml(poke){
+    
+// }

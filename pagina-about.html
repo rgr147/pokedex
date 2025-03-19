@@ -3,17 +3,24 @@
 <head id="head">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Normalize css -->
+    
+    <!--Normalize css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- nosso css global-->
+    
+    <!--nosso css global-->
     <link rel="stylesheet" href="./assets/css/global.css"/>
+    
+    <!--meus css-->
     <link rel="stylesheet" href="./assets/css/pagina-about.css">
     <link rel="stylesheet" href="./assets/css/base_stats.css">
     <link rel="stylesheet" href="./assets/css/about.css">
-    <!-- fonte Roboto-->
+    <link rel="stylesheet" href="./assets/css/evolution.css">
+
+    <!--fonte Roboto-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
+    
     <title>Pokemon Description</title>
 
 </head>
@@ -164,11 +171,22 @@
                     <div class="content__description-pokemon__base-stats__observation">
                         <span class="subtitle-stats">Defenses</span>
                         
-
                     </div>
                 </div>
             </div>
             <!-- fim da página "Base Stats" -->
+            
+            <!-- inicio da página "evolution"-->
+            <div id="evolution" class="content__description-pokemon__evolution content-div hidden">
+                <div class="content__description-pokemon__evolution__container">
+                    <img id="evolution-01" class="evolution-img"/>
+                    <img id="evolution-02" class="evolution-img"/>
+                    <img id="evolution-03" class="evolution-img"/>
+                    <img id="evolution-04" class="evolution-img"/>
+                </div>
+            </div>
+            <!--- fim da página "evolution" -->
+
         </section>
     </main>
     <footer id="footer" class="footer">
