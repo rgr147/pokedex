@@ -29,11 +29,12 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
     const stats = await pokeApiDetails.calculateTotalBaseStats(jsonBody);
     poke.stats = stats;
     poke.totalPercentage = ((poke.stats.total / 600) * 100).toFixed();
-    poke.defenses = await pokeApiDetails.getDataAboutDefenses(jsonBody.types[0].type.url)
+    poke.defenses = await pokeApiDetails.getDataAboutDefenses(jsonBody.types[0].type.url)   
 
+    const evolutionImages = await pokeApiDetails.getEvolutionSprites(jsonBody.species.url);
     
-    poke.evolutionSprites = await pokeApiDetails.getEvolutionSprites(jsonBody.species.url); //passando o link que contém os dados para buscar a cadeia evoutiva do pokemon
-    console.log(poke.evolutionSprites.forEach(sprite => console.log(sprite)));
+    // console.log(evolutionImages);
+
     return poke;
 }
 //função que retorna a url de cada sprite dos pokemons
@@ -44,7 +45,7 @@ pokeApiDetails.getUrlSprites = (listNames) => {
 
     names.forEach(name =>{
         const urlPokemon = `${url}${name}`;
-        fetch(urlPokemon)
+        return fetch(urlPokemon)
         .then(function(response){
             return response.json();
         })
@@ -57,48 +58,87 @@ pokeApiDetails.getUrlSprites = (listNames) => {
 }
 
 
-
-//função para identificar o nome de cada pokemon da cadeia evolutiva
-pokeApiDetails.getEvolutionNamesPokemon = (urlEvolutionChain) => {
+//função responsável por verificar a sequência evolutiva do pokemon
+pokeApiDetails.checkEvolutionChain = (urlEvolutionChain) => {
     const url = urlEvolutionChain;
-    const listNames = [];
+    const listNamesEvolves = [];
+
+    const hasEvolution = responseJson.chain.evolves_to != "";
+    const itsByLevel =  responseJson.chain.evolves_to[0].evolution_details[0].min_level != null;
 
     return fetch(url)
-        .then(function (response){
-            return response.json();
-        })
-        .then(function (responseJson){
-            // console.log(responseJson)
-            if(responseJson.chain.evolves_to != "") {
-                listNames.push(responseJson.chain.species.name);
-                listNames.push(responseJson.chain.evolves_to[0].species.name);
-                if(responseJson.chain.evolves_to[0].evolves_to != "") {
-                    listNames.push(responseJson.chain.evolves_to[0].evolves_to[0].species.name);
-                }
-
-                return pokeApiDetails.getUrlSprites(listNames);
-
-            } else if (responseJson.chain.evolves_to == "") {
-                console.log("No evolution chain found");
-            }
-        })
-}
-//função retorna sprites com todas evoluções do pokemon
-pokeApiDetails.getEvolutionSprites = (url) => {
-    const urlSpeciesPokemon = url;
-    const listEvolution = [];
-    const listSprites = [];
-
-    return fetch(urlSpeciesPokemon)
         .then(function(response){
             return response.json();
         })
-        .then(function (responseJson){
-            console.log()
-            return pokeApiDetails.getEvolutionNamesPokemon(responseJson.evolution_chain.url);//passa o link contendo os dados sobre a corrente evolutiva do pokemon
-        })
+        .then(function(responseJson) {
+            console.log(responseJson)
+            if(hasEvolutrion && itsBylevel) {
+                listNamesEvolves.push({"nome": responseJson.chain.species.name, "nivel":responseJson.chain.evolves_to[0].evolution_details[0].min_level, "item": none}) 
+                    
+                }
 
+
+
+                console.log(listNamesEvolves)
+            }
+
+        })
 }
+//função para identificar o nome de cada pokemon da cadeia evolutiva
+// pokeApiDetails.getEvolutionNamesPokemon = (urlEvolutionChain) => {
+//     const url = urlEvolutionChain;
+//     const listNames = [];
+
+//     return fetch(url)
+//         .then(function (response){
+//             return response.json();
+//         })
+//         .then(function (responseJson){
+//             // console.log(responseJson)
+//             if(responseJson.chain.evolves_to != "") {
+//                 listNames.push(responseJson.chain.species.name);
+//                 listNames.push(responseJson.chain.evolves_to[0].species.name);
+//                 if(responseJson.chain.evolves_to[0].evolves_to != "") {
+//                     listNames.push(responseJson.chain.evolves_to[0].evolves_to[0].species.name);
+//                 }
+
+//                 return pokeApiDetails.getUrlSprites(listNames);
+
+//             } else if (responseJson.chain.evolves_to == "") {
+//                 console.log("No evolution chain found");
+//             }
+//         })
+// }
+
+//função para retornar a imagem/sprite de cada etapa evolutiva do pokemon
+pokeApiDetails.getEvolutionSprites = (urlEspecie) => {
+    const url = urlEspecie;
+    
+    return fetch(url)
+        .then(function(response) {//transformando a reponse em json
+            return response.json();
+        })
+        .then(function(responseJson) {//buscando o link com a corrente evolutiva
+            return pokeApiDetails.checkEvolutionChain(responseJson.evolution_chain.url);
+        })
+        
+}
+//função retorna sprites com todas evoluções do pokemon
+// pokeApiDetails.getEvolutionSprites = (url) => {
+//     const urlSpeciesPokemon = url;
+//     const listEvolution = [];
+//     const listSprites = [];
+
+//     return fetch(urlSpeciesPokemon)
+//         .then(function(response){
+//             return response.json();
+//         })
+//         .then(function (responseJson){
+//             console.log()
+//             return pokeApiDetails.getEvolutionNamesPokemon(responseJson.evolution_chain.url);//passa o link contendo os dados sobre a corrente evolutiva do pokemon
+//         })
+
+// }
 
 //função responsável por receber o dicionário com a lista de relaçãoes sobre as defesas do pokemon e retornar um texto formatado com as informações para ser usado no HTML
 pokeApiDetails.formatTextAboutDefenses = (dictRelations) => {
