@@ -34,10 +34,16 @@ const baseStatsTotal = document.getElementById("base-stats-total");
 const baseStatsDefenses = document.querySelector(".content__description-pokemon__base-stats__observation");
 
 //selecionando os elementos da div evolution para adicionar a sequencia de evolução do pokemon
-const evolution01 = document.getElementById("evolution-01");
-const evelution02 = document.getElementById("evolution-02");
-const evolution03 = document.getElementById("evolution-03");
-const evolution04 = document.getElementById("evolution-04");
+const evolution01Image = document.getElementById("evolution-01");
+const evolution02Image = document.getElementById("evolution-02");
+const evolution03Image = document.getElementById("evolution-03");
+const evolution04Image = document.getElementById("evolution-04");
+const evolution01Name = document.getElementById("evolution-01-name");
+const evolution01Level = document.getElementById("evolution-01-level");
+const evolution02Name = document.getElementById("evolution-02-name");
+const evolution03Name = document.getElementById("evolution-03-name");
+const evolution03Level = document.getElementById("evolution-03-level");
+const evolution04Name = document.getElementById("evolution-04-name");
 
 //selecionando todos elementos das tags ancoras do menu de navegação sobre o pokemon
 const linkAbout = document.getElementById("link-about"); 
@@ -119,8 +125,9 @@ function selectBaseStats() {
 //chamando a função responsável por conectar à API PokeAPi para puxar as informações do pokemon tendo o nome como parâmetro
 pokeApiDetails.getDataPokeApi(nameParam);
 
-//preenchendo as informações básicas e informações do About sobre o pokemon
+//preenchendo as informações básicas da pagina-about e informações do About sobre o pokemon
 function inputDetailsInHtml(poke) {
+    //inserindo dados básicos da página
     nameHtml.innerText = poke.name;
     formatIdPokemon(poke.id);
     createLiTypesHtml(poke.types);
@@ -129,9 +136,10 @@ function inputDetailsInHtml(poke) {
     backgroundFooterHtml.classList.add(poke.type);
     spriteHtml.src = poke.sprite;  
     
-    inputAboutDataInHtml(poke);
-    inputBaseStatsDataInHtml(poke);
-    addAnimationBars(poke);
+    inputAboutDataInHtml(poke);//inserindo os dados da div about
+    inputBaseStatsDataInHtml(poke);//inserindo os dados da div base stats
+    inputEvolutionDataInHtml(poke);//inserindo os dados da div base stats
+    
 }
 //função responsável por formatar o ID do pokemon e manter 3 dígitos
 function formatIdPokemon(id){
@@ -176,9 +184,31 @@ function inputBaseStatsDataInHtml(poke) {
     baseStatsSpeed.innerText = poke.stats.speed;
     baseStatsTotal.innerText = poke.stats.total;
     baseStatsDefenses.innerHTML += poke.defenses;
+    addAnimationBars(poke);//animação com efeito de carregamento das barras de estatisticas
 }
 
 //função que atualiza dinâmicamente a div evolucao com a sequencia das evoluções do pokemon
-// function inputEvolutionDataInHtml(poke){
-    
-// }
+function inputEvolutionDataInHtml(poke){
+    evolution01Image.src = poke.evolutionChain[0].url_sprite;
+    evolution01Image.alt = `A foto do pokemon ${poke.evolutionChain[0].stage}`;
+    evolution01Image.title = `A foto do pokemon ${poke.evolutionChain[0].stage}`;
+
+    evolution02Image.src = poke.evolutionChain[1].url_sprite;
+    evolution02Image.alt = `A foto do pokemon ${poke.evolutionChain[1].stage}`;
+    evolution02Image.title = `A foto do pokemon ${poke.evolutionChain[1].stage}`;
+
+    evolution03Image.src = poke.evolutionChain[1].url_sprite;
+    evolution03Image.alt = `A foto do pokemon ${poke.evolutionChain[1].stage}`;
+    evolution03Image.title = `A foto do pokemon ${poke.evolutionChain[1].stage}`
+
+    evolution04Image.src = poke.evolutionChain[2].url_sprite;
+    evolution04Image.alt = `A foto do pokemon ${poke.evolutionChain[2].stage}`;
+    evolution04Image.title = `A foto do pokemon ${poke.evolutionChain[2].stage}`;
+
+    evolution01Name.innerText = poke.evolutionChain[0].stage;
+    evolution01Level.innerText = `lvl ${poke.evolutionChain[0].nivel_evolution}`;
+    evolution02Name.innerText = poke.evolutionChain[1].stage;
+    evolution03Name.innerText = poke.evolutionChain[1].stage;
+    evolution03Level.innerText = `lvl ${poke.evolutionChain[1].nivel_evolution}`;
+    evolution04Name.innerText = poke.evolutionChain[2].stage;
+}

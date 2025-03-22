@@ -21,5 +21,5 @@ class PokemonDetailed {
     stats = [];
     totalPercentage;
     defenses;
-    evolutionSprites = [];
+    evolutionChain = [];
 }
