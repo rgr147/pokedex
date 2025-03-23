@@ -34,6 +34,7 @@ const baseStatsTotal = document.getElementById("base-stats-total");
 const baseStatsDefenses = document.querySelector(".content__description-pokemon__base-stats__observation");
 
 //selecionando os elementos da div evolution para adicionar a sequencia de evolução do pokemon
+const evolutionContainer = document.getElementById("evolution-container");
 const evolution01Image = document.getElementById("evolution-01");
 const evolution02Image = document.getElementById("evolution-02");
 const evolution03Image = document.getElementById("evolution-03");
@@ -138,7 +139,7 @@ function inputDetailsInHtml(poke) {
     
     inputAboutDataInHtml(poke);//inserindo os dados da div about
     inputBaseStatsDataInHtml(poke);//inserindo os dados da div base stats
-    inputEvolutionDataInHtml(poke);//inserindo os dados da div base stats
+    // inputEvolutionDataInHtml(poke);//inserindo os dados da div base stats
     
 }
 //função responsável por formatar o ID do pokemon e manter 3 dígitos
@@ -187,28 +188,76 @@ function inputBaseStatsDataInHtml(poke) {
     addAnimationBars(poke);//animação com efeito de carregamento das barras de estatisticas
 }
 
-//função que atualiza dinâmicamente a div evolucao com a sequencia das evoluções do pokemon
-function inputEvolutionDataInHtml(poke){
-    evolution01Image.src = poke.evolutionChain[0].url_sprite;
-    evolution01Image.alt = `A foto do pokemon ${poke.evolutionChain[0].stage}`;
-    evolution01Image.title = `A foto do pokemon ${poke.evolutionChain[0].stage}`;
+//preenchendo as informações da div evolution. função adiciona trecho HTML da div com as 3 evoluções do pokemon 
+function insertHtmlWithTreeEvolution(listEvolutions) {
+    const htmlForAppendInEvolutionContainer = `
+        <div class="content__description-pokemon__evolution__container__item">
+            <img src="${listEvolutions[0].url_sprite}" id="evolution-01" class="evolution-img"/>
+            <span id="evolution-01-name">${listEvolutions[0].stage}</span>
+        </div>
+        <div class="content__description-pokemon__evolution__container__item">
+            <span class="content__description-pokemon__evolution__container-item__arrow">&#10162;</span>
+            <span id="evolution-01-level"> lvl ${listEvolutions[0].nivel_evolution}</span>
+        </div>
+        <div class="content__description-pokemon__evolution__container__item">
+            <img src="${listEvolutions[1].url_sprite}" id="evolution-02" class="evolution-img"/>
+            <span id="evolution-02-name">${listEvolutions[1].stage}</span>
+        </div>
+        <div class="content__description-pokemon__evolution__container__item">
+            <img src="${listEvolutions[1].url_sprite}" id="evolution-03" class="evolution-img"/>
+            <span id="evolution-03-name">${listEvolutions[1].stage}</span>
+        </div>
+        <div class="content__description-pokemon__evolution__container__item">
+            <span class="content__description-pokemon__evolution__container-item__arrow">&#10162;</span>
+            <span id="evolution-03-level">${listEvolutions[1].nivel_evolution}</span>
+        </div>
+        <div class="content__description-pokemon__evolution__container__item">
+            <img src="${listEvolutions[2].url_sprite}" id="evolution-04" class="evolution-img"/>
+            <span id="evolution-04-name">${listEvolutions[2].stage}</span>
+        </div>
+    `;
 
-    evolution02Image.src = poke.evolutionChain[1].url_sprite;
-    evolution02Image.alt = `A foto do pokemon ${poke.evolutionChain[1].stage}`;
-    evolution02Image.title = `A foto do pokemon ${poke.evolutionChain[1].stage}`;
+    evolutionContainer.innerHTML += htmlForAppendInEvolutionContainer;
+}
+function insertHtmlWithTwoEvolution(listEvolutions) {
+    const htmlForAppendInEvolutionContainer = `
+    <div class="content__description-pokemon__evolution__container__item">
+        <img src="${listEvolutions[0].url_sprite}" id="evolution-01" class="evolution-img"/>
+        <span id="evolution-01-name">${listEvolutions[0].stage}</span>
+    </div>
+    <div class="content__description-pokemon__evolution__container__item">
+        <span class="content__description-pokemon__evolution__container-item__arrow">&#10162;</span>
+        <span id="evolution-01-level"> lvl ${listEvolutions[0].nivel_evolution}</span>
+    </div>
+    <div class="content__description-pokemon__evolution__container__item">
+        <img src="${listEvolutions[1].url_sprite}" id="evolution-02" class="evolution-img"/>
+        <span id="evolution-02-name">${listEvolutions[1].stage}</span>
+    </div>
+`;
 
-    evolution03Image.src = poke.evolutionChain[1].url_sprite;
-    evolution03Image.alt = `A foto do pokemon ${poke.evolutionChain[1].stage}`;
-    evolution03Image.title = `A foto do pokemon ${poke.evolutionChain[1].stage}`
+evolutionContainer.innerHTML += htmlForAppendInEvolutionContainer;
+}
 
-    evolution04Image.src = poke.evolutionChain[2].url_sprite;
-    evolution04Image.alt = `A foto do pokemon ${poke.evolutionChain[2].stage}`;
-    evolution04Image.title = `A foto do pokemon ${poke.evolutionChain[2].stage}`;
+//função responsável por gerar o html de acordo com a quantidade de evoluções do pokemon
+function insertHtmlRandomAmountEvolutions(evolutionStageData) {
+    const stagesOfPokemon = evolutionStageData;
 
-    evolution01Name.innerText = poke.evolutionChain[0].stage;
-    evolution01Level.innerText = `lvl ${poke.evolutionChain[0].nivel_evolution}`;
-    evolution02Name.innerText = poke.evolutionChain[1].stage;
-    evolution03Name.innerText = poke.evolutionChain[1].stage;
-    evolution03Level.innerText = `lvl ${poke.evolutionChain[1].nivel_evolution}`;
-    evolution04Name.innerText = poke.evolutionChain[2].stage;
+    let formattedHtml = "";
+    for(let i = 0;i < stagesOfPokemon.length;i++) {
+        formattedHtml = `
+            <div class="content__description-pokemon__evolution__container__item">
+                <img src="${stagesOfPokemon[0].sprite}" class="evolution-img"/>
+                <span>${stagesOfPokemon[0].name}</span>
+            </div>
+            <div class="content__description-pokemon__evolution__container__item">
+                <span class="content__description-pokemon__evolution__container-item__arrow">&#10162;</span>
+                <span> Pedra </span>
+            </div>
+            <div class="content__description-pokemon__evolution__container__item">
+                <img src="${stagesOfPokemon[i].sprite}" class="evolution-img"/>
+                <span id="evolution-02-name">${stagesOfPokemon[i].name}</span>
+            </div>
+        `;
+        evolutionContainer.innerHTML += formattedHtml;
+    }
 }

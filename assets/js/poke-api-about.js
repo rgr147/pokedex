@@ -30,11 +30,10 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
     poke.defenses = await pokeApiDetails.getDataAboutDefenses(jsonBody.types[0].type.url)   
 
     poke.evolutionChain = await pokeApiDetails.checkEvolution(jsonBody.species.url);
-    console.log(poke.evolutionChain);
-    console.log(poke.evolutionChain[0].url_sprite);
 
     return poke;
 }
+
 
 pokeApiDetails.getSpritePokemon = (name) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
@@ -44,10 +43,13 @@ pokeApiDetails.getSpritePokemon = (name) => {
             return response.json();
         })
         .then(function(responseJson) {
-            return responseJson.sprites.other.dream_world.front_default;    
+            try{
+                return responseJson.sprites.other.dream_world.front_default;   
+            }
+            catch{
+                return responseJson.sprites.other.home.front_default;    
+            }
         })
-    
-
 }
 
 //função responsável apenas por criar um objeto apenas com o nome e level do poekmon
@@ -60,41 +62,90 @@ pokeApiDetails.describePokemonLevelEvolution = (formName, nivelEvolution, urlSpr
     
     return pokemonLevel;
 }
+pokeApiDetails.evolutionStageData = async (hasTreeEvolution, dataPokemon) => {
+    const list = [];
+
+    let formName = dataPokemon.chain.species.name;
+    let minLevelEvolution = dataPokemon.chain.evolves_to[0].evolution_details[0].min_level;
+    let urlSprite = await pokeApiDetails.getSpritePokemon(formName);
+    list.push(pokeApiDetails.describePokemonLevelEvolution(formName, minLevelEvolution, urlSprite));
+
+    try {
+        formName = dataPokemon.chain.evolves_to[0].species.name;
+        minLevelEvolution = dataPokemon.chain.evolves_to[0].evolves_to[0].evolution_details[0].min_level;
+        urlSprite = await pokeApiDetails.getSpritePokemon(formName);  
+        list.push(pokeApiDetails.describePokemonLevelEvolution(formName, minLevelEvolution, urlSprite));
+    } catch {
+        formName = dataPokemon.chain.evolves_to[0].species.name;
+        minLevelEvolution;
+        urlSprite = await pokeApiDetails.getSpritePokemon(formName);  
+        list.push(pokeApiDetails.describePokemonLevelEvolution(formName, minLevelEvolution, urlSprite));
+
+    } finally {
+        if(hasTreeEvolution) {
+            formName = dataPokemon.chain.evolves_to[0].evolves_to[0].species.name;
+            minLevelEvolution;
+            urlSprite = await pokeApiDetails.getSpritePokemon(formName);
+            list.push(pokeApiDetails.describePokemonLevelEvolution(formName, minLevelEvolution,urlSprite));
+        }
+    }
+
+    return list;
+}
+pokeApiDetails.modelEvolutionOtherReasons = async (formName, spriteForm) => {
+    const pokemon = new Object();
+
+    pokemon["name"] = formName;
+    pokemon["sprite"] = spriteForm;
+
+    return pokemon;
+}
+
+pokeApiDetails.randomAountEvolutionStageData = async (dataPokemon, howManyEvolution) => {
+    const evolutions = dataPokemon;
+    const amount = howManyEvolution;
+    const list = [];
+
+    let formName = evolutions.chain.species.name;
+    let spriteForm = await pokeApiDetails.getSpritePokemon(formName);
+    list.push(await pokeApiDetails.modelEvolutionOtherReasons(formName, spriteForm));
+
+    for(let i = 0; i < amount; i++){
+        formName =  evolutions.chain.evolves_to[i].species.name;
+        spriteForm = await pokeApiDetails.getSpritePokemon(formName);
+        list.push(await pokeApiDetails.modelEvolutionOtherReasons(formName, spriteForm));
+    }
+
+    return list;
+};
 
 //função que verifica se o pokemon tem evolução e como a evolução acontece
 pokeApiDetails.checkIfHasEvolution = async (responseLinkEvolution) => {
+    
     const dataPokemon = responseLinkEvolution;
     const hasEvolution = dataPokemon.chain.evolves_to != "";
+    const hasTreeEvolution = dataPokemon.chain.evolves_to[0].evolves_to != "";
     const evolutionByMinLevel = dataPokemon.chain.evolves_to[0].evolution_details[0].min_level != null;
-    const listStagesEvolution = [];
-
-    console.log("...Tem evolução? " + hasEvolution);
-    console.log("...Evolui por nível? " + evolutionByMinLevel);
+    const howManyEvolution = dataPokemon.chain.evolves_to.length;
 
     //se verdadeira essa condição, puxa nome poekmon, level que evolui e link da foto do pokemon
     if(hasEvolution) {
         if(evolutionByMinLevel) {
-            let formName = dataPokemon.chain.species.name;
-            let minLevelEvolution = dataPokemon.chain.evolves_to[0].evolution_details[0].min_level;
-            let urlSprite = await pokeApiDetails.getSpritePokemon(formName);
+            const evolutionStageData = await pokeApiDetails.evolutionStageData(hasTreeEvolution, responseLinkEvolution);
             
-            listStagesEvolution.push(pokeApiDetails.describePokemonLevelEvolution(formName, minLevelEvolution, urlSprite));
+            if(evolutionStageData.length == 3){
+                
+                return insertHtmlWithTreeEvolution(evolutionStageData);
 
-            formName = dataPokemon.chain.evolves_to[0].species.name;
-            minLevelEvolution = dataPokemon.chain.evolves_to[0].evolves_to[0].evolution_details[0].min_level
-            urlSprite = await pokeApiDetails.getSpritePokemon(formName);  
+            } else if(evolutionStageData.length == 2) {
+                
+                return insertHtmlWithTwoEvolution(evolutionStageData);
+            }            
+        } else {
+            const evolutionStageData = await pokeApiDetails.randomAountEvolutionStageData(dataPokemon, howManyEvolution);
 
-            listStagesEvolution.push(pokeApiDetails.describePokemonLevelEvolution(formName, minLevelEvolution, urlSprite));
-
-            if(dataPokemon.chain.evolves_to[0].evolves_to != "") {
-                formName = dataPokemon.chain.evolves_to[0].evolves_to[0].species.name;
-                minLevelEvolution;
-                urlSprite = await pokeApiDetails.getSpritePokemon(formName);
-
-                listStagesEvolution.push(pokeApiDetails.describePokemonLevelEvolution(formName, minLevelEvolution,urlSprite));
-            }
+            return insertHtmlRandomAmountEvolutions(evolutionStageData);
         }
-        return listStagesEvolution
     }
 }
 
