@@ -43,12 +43,13 @@ pokeApiDetails.getSpritePokemon = (name) => {
             return response.json();
         })
         .then(function(responseJson) {
-            try{
-                return responseJson.sprites.other.dream_world.front_default;   
-            }
-            catch{
-                return responseJson.sprites.other.home.front_default;    
-            }
+                const hasImage = responseJson.sprites.other.dream_world.front_default;
+
+                if(hasImage) {
+                    return responseJson.sprites.other.dream_world.front_default;
+                } else {
+                    return responseJson.sprites.front_default;
+                }
         })
 }
 

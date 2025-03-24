@@ -1,14 +1,19 @@
 .content__description-pokemon__evolution {
     margin: 1.5rem 0;
+    height: 60%;
 }
 .content__description-pokemon__evolution__container {
     width:100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    margin: 1rem 0 0 0;
     padding: 2rem;
     gap: 1rem;
-    height: 19rem;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 1rem;
     overflow: scroll;
+    background-color: #E9EDF3;
 }
 .content__description-pokemon__evolution__container__item {
     display: flex;
@@ -20,12 +25,12 @@
 .evolution-img {
     display: flex;
     justify-self: center;
-    height: 6rem;
-    width:  6rem;
+    height: 4.5rem;
+    width:  4.5rem;
     filter: drop-shadow(0.7rem 0.9rem 0.3rem rgba(0, 0, 0, 0.5));
 }
 .content__description-pokemon__evolution__container-item__arrow {
-    font-size: 4rem;
+    font-size: 2.5rem;
 }
 
 

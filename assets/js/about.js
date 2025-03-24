@@ -233,17 +233,22 @@ function insertHtmlWithTwoEvolution(listEvolutions) {
         <img src="${listEvolutions[1].url_sprite}" id="evolution-02" class="evolution-img"/>
         <span id="evolution-02-name">${listEvolutions[1].stage}</span>
     </div>
-`;
+    `;
 
-evolutionContainer.innerHTML += htmlForAppendInEvolutionContainer;
+    evolutionContainer.innerHTML += htmlForAppendInEvolutionContainer;
 }
 
 //função responsável por gerar o html de acordo com a quantidade de evoluções do pokemon
 function insertHtmlRandomAmountEvolutions(evolutionStageData) {
     const stagesOfPokemon = evolutionStageData;
-
+    
     let formattedHtml = "";
     for(let i = 0;i < stagesOfPokemon.length;i++) {
+        //condição para garantir que o loop não irá repetir o mesmo indice nos 2 últimos loop.
+        if(i === stagesOfPokemon.length-1) {
+            break;
+        }
+        
         formattedHtml = `
             <div class="content__description-pokemon__evolution__container__item">
                 <img src="${stagesOfPokemon[0].sprite}" class="evolution-img"/>
@@ -254,10 +259,9 @@ function insertHtmlRandomAmountEvolutions(evolutionStageData) {
                 <span> Pedra </span>
             </div>
             <div class="content__description-pokemon__evolution__container__item">
-                <img src="${stagesOfPokemon[i].sprite}" class="evolution-img"/>
-                <span id="evolution-02-name">${stagesOfPokemon[i].name}</span>
-            </div>
-        `;
+                <img src="${(((i+1) < stagesOfPokemon.length) ? stagesOfPokemon[i+1].sprite : stagesOfPokemon[i].sprite)}" class="evolution-img"/>
+                <span id="evolution-02-name">${((i+1) < stagesOfPokemon.length) ? stagesOfPokemon[i+1].name : stagesOfPokemon[i].name}</span>
+            </div>`;
         evolutionContainer.innerHTML += formattedHtml;
     }
 }
