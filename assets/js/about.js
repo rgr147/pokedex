@@ -241,27 +241,44 @@ function insertHtmlWithTwoEvolution(listEvolutions) {
 //função responsável por gerar o html de acordo com a quantidade de evoluções do pokemon
 function insertHtmlRandomAmountEvolutions(evolutionStageData) {
     const stagesOfPokemon = evolutionStageData;
-    
     let formattedHtml = "";
-    for(let i = 0;i < stagesOfPokemon.length;i++) {
-        //condição para garantir que o loop não irá repetir o mesmo indice nos 2 últimos loop.
-        if(i === stagesOfPokemon.length-1) {
-            break;
+    if(stagesOfPokemon === 1) {
+        for(let i = 0;i < stagesOfPokemon.length;i++) {
+            //condição para garantir que o loop não irá repetir o mesmo indice nos 2 últimos loop.
+            if(i === stagesOfPokemon.length-1) {
+                break;
+            }
+            
+            formattedHtml = `
+                <div class="content__description-pokemon__evolution__container__item">
+                    <img src="${stagesOfPokemon[0].sprite}" class="evolution-img"/>
+                    <span>${stagesOfPokemon[0].name}</span>
+                </div>
+                <div class="content__description-pokemon__evolution__container__item">
+                    <span class="content__description-pokemon__evolution__container-item__arrow">&#10162;</span>
+                    <span> Pedra </span>
+                </div>
+                <div class="content__description-pokemon__evolution__container__item">
+                    <img src="${(((i+1) < stagesOfPokemon.length) ? stagesOfPokemon[i+1].sprite : stagesOfPokemon[i].sprite)}" class="evolution-img"/>
+                    <span id="evolution-02-name">${((i+1) < stagesOfPokemon.length) ? stagesOfPokemon[i+1].name : stagesOfPokemon[i].name}</span>
+                </div>
+            `;
+            
+            evolutionContainer.innerHTML += formattedHtml;
         }
-        
+    } else if(stagesOfPokemon == 0) {
+        console.log(stagesOfPokemon)
         formattedHtml = `
             <div class="content__description-pokemon__evolution__container__item">
                 <img src="${stagesOfPokemon[0].sprite}" class="evolution-img"/>
                 <span>${stagesOfPokemon[0].name}</span>
             </div>
-            <div class="content__description-pokemon__evolution__container__item">
-                <span class="content__description-pokemon__evolution__container-item__arrow">&#10162;</span>
-                <span> Pedra </span>
-            </div>
-            <div class="content__description-pokemon__evolution__container__item">
-                <img src="${(((i+1) < stagesOfPokemon.length) ? stagesOfPokemon[i+1].sprite : stagesOfPokemon[i].sprite)}" class="evolution-img"/>
-                <span id="evolution-02-name">${((i+1) < stagesOfPokemon.length) ? stagesOfPokemon[i+1].name : stagesOfPokemon[i].name}</span>
-            </div>`;
+        `;
+            
         evolutionContainer.innerHTML += formattedHtml;
     }
+    
+    
+    
+    
 }
