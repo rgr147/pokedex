@@ -161,7 +161,7 @@ pokeApiDetails.identifiesEvolutions = async (linkChainEvolution) => {
 //função que retorna informações sobre evoluções do pokemon
 pokeApiDetails.checkEvolution = (urlEspecie) => {
     const url = urlEspecie;
-    
+
     return fetch(url)
         .then(function(response) {
             return response.json();
