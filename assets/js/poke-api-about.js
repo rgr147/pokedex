@@ -5,7 +5,7 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
     const poke = new PokemonDetailed();
 
     console.log(jsonBody);
-
+    console.log(jsonBody.abilities);
     //dados utilizados na pagina-about
     const types = jsonBody.types.map((typeSlot) => typeSlot.type.name);//buscando os tipos do pokemon no PokeAPi;
     const [type] = types;//identificando o tipo principal do pokemon
