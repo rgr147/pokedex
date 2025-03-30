@@ -210,7 +210,7 @@ function insertDataEvolutionIntoHtml(poke) {
                         <span>${poke.evolves[i].name}</span>
                     </div>
                     <div class="content__description-pokemon__evolution__container__item">
-                        <span class="content__description-pokemon__evolution__container-item__arrow">&#11166;</span>
+                        <span class="content__description-pokemon__evolution__container-item__arrow">&#11146;</span>
                         <span>level ${poke.evolves[i].levelEvolves}</span>
                     </div>
                     <div class="content__description-pokemon__evolution__container__item" ">
@@ -229,7 +229,7 @@ function insertDataEvolutionIntoHtml(poke) {
                         <span>${poke.evolves[0].name}</span>
                     </div>
                     <div class="content__description-pokemon__evolution__container__item">
-                        <span class="content__description-pokemon__evolution__container-item__arrow">&#11166;</span>
+                        <span class="content__description-pokemon__evolution__container-item__arrow">&#11146;</span>
                         <span>level ${poke.evolves[i].levelEvolves}</span>
                     </div>
                     <div class="content__description-pokemon__evolution__container__item" ">

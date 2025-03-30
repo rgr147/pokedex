@@ -3,6 +3,9 @@ const pokeApiDetails = {};
 //Função responsável por criar o o objeto pokemon com todas as informações necessárias, usando como base o objeto json recebido da função que a chamou.
 async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,type,sprite,height,weight,abilities*/) {
     const poke = new PokemonDetailed();
+
+    console.log(jsonBody);
+
     //dados utilizados na pagina-about
     const types = jsonBody.types.map((typeSlot) => typeSlot.type.name);//buscando os tipos do pokemon no PokeAPi;
     const [type] = types;//identificando o tipo principal do pokemon
@@ -27,8 +30,8 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
     const stats = await pokeApiDetails.calculateTotalBaseStats(jsonBody);
     poke.stats = stats;
     poke.totalPercentage = ((poke.stats.total / 600) * 100).toFixed();
-    poke.defenses = await pokeApiDetails.getDataAboutDefenses(jsonBody.types[0].type.url)   
-
+    poke.defenses = await pokeApiDetails.getDataAboutDefenses(jsonBody.types[0].type.url)
+    //dados utilizados na div Evolution
     poke.evolves = await pokeApiDetails.checkEvolution(jsonBody.species.url);
     
     return poke;
