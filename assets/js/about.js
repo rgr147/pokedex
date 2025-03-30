@@ -189,37 +189,46 @@ function inputBaseStatsDataInHtml(poke) {
 }
 //Função que insere trecho HTML com os detalhes da evolução do pokemon
 function insertDataEvolutionIntoHtml(poke) {
-    console.log('Quantas sequências evolutivas: ' + Object.entries(poke.evolves).length)
-    const howManyForms = Object.entries(poke.evolves).length; 
-
     const formattedHtml = [];
+    console.log(poke.evolves.length);
 
-    if(howManyForms == 1) {
-        formattedHtml.push(`
-            <div class="content__description-pokemon__evolution__container__item">
-                <img src="${poke.evolves[0].sprite}" class="evolution-img"/>
-                <span>${poke.evolves[0].name}</span>
-            <div/>
-        `)
-    } else if(howManyForms > 1) {
-        for(let i = 0; i < howManyForms; i++){
-            if(i<howManyForms-1){
-                formattedHtml.push(`
+    try {
+        const howManyForms = Object.entries(poke.evolves).length; 
+        
+        if(howManyForms == 1) {
+            formattedHtml.push(`
                 <div class="content__description-pokemon__evolution__container__item">
-                    <img class="evolution-img" src="${poke.evolves[0].sprite}"/>
+                    <img src="${poke.evolves[0].sprite}" class="evolution-img"/>
                     <span>${poke.evolves[0].name}</span>
-                </div>
-                <div class="content__description-pokemon__evolution__container__item">
-                    <span class="content__description-pokemon__evolution__container-item__arrow">&#11146; </span>
-                    <span>Pedra</span>
-                </div>
-                <div class="content__description-pokemon__evolution__container__item" ">
-                    <img class="evolution-img" src="${(i < howManyForms-1) ? poke.evolves[i+1].sprite : poke.evolves[i].sprite} "/>
-                    <span>${(i < howManyForms-1) ? poke.evolves[i+1].name : poke.evolves[i].name }</span>
-                </div>
-                `)    
+                <div/>
+            `);
+        } else if(howManyForms > 1) {
+            for(let i = 0; i < howManyForms; i++){
+                if(i<howManyForms-1){
+                    formattedHtml.push(`
+                    <div class="content__description-pokemon__evolution__container__item">
+                        <img class="evolution-img" src="${poke.evolves[0].sprite}"/>
+                        <span>${poke.evolves[0].name}</span>
+                    </div>
+                    <div class="content__description-pokemon__evolution__container__item">
+                        <span class="content__description-pokemon__evolution__container-item__arrow">&#11146; </span>
+                        <span>level ${poke.evolves[i].levelEvolves}</span>
+                    </div>
+                    <div class="content__description-pokemon__evolution__container__item" ">
+                        <img class="evolution-img" src="${(i < howManyForms-1) ? poke.evolves[i+1].sprite : poke.evolves[i].sprite} "/>
+                        <span>${(i < howManyForms-1) ? poke.evolves[i+1].name : poke.evolves[i].name }</span>
+                    </div>
+                    `);    
+                }
             }
         }
+        
+        evolutionContainer.innerHTML = formattedHtml.join("");
+
+    } catch(error) {
+        console.log('erro ao executar pokemon com 3 evoluções');
+        console.log(error);
     }
-    evolutionContainer.innerHTML = formattedHtml.join("");
+
+
 }
