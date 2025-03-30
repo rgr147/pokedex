@@ -12,7 +12,7 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
     poke.id = jsonBody.id;//buscando o ID do pokemon no PokeApi;
     poke.types = types;
     poke.type = type; 
-    poke.sprite = await pokeApiDetails.getSpritePokemon(poke.name); //busanco a imagem do pokemon no PokeApi;
+    poke.sprite = await pokeApiDetails.getPokemonSprite(poke.name); //busanco a imagem do pokemon no PokeApi;
     
     //dados utilizados na div about    
     poke.height = jsonBody.height; //buscando a altura do pokemon no PokeAPI;
@@ -29,13 +29,15 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
     poke.totalPercentage = ((poke.stats.total / 600) * 100).toFixed();
     poke.defenses = await pokeApiDetails.getDataAboutDefenses(jsonBody.types[0].type.url)   
 
-    poke.evolutionChain = await pokeApiDetails.checkEvolution(jsonBody.species.url);
+    poke.evolves = await pokeApiDetails.checkEvolution(jsonBody.species.url);
+    console.log(poke.evolves);
 
+    
     return poke;
 }
 
 
-pokeApiDetails.getSpritePokemon = (name) => {
+pokeApiDetails.getPokemonSprite = (name) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
 
     return fetch(url)
@@ -53,103 +55,6 @@ pokeApiDetails.getSpritePokemon = (name) => {
         })
 }
 
-//função responsável apenas por criar um objeto apenas com o nome e level do poekmon
-pokeApiDetails.describePokemonLevelEvolution = (formName, nivelEvolution, urlSprite) => {
-    const pokemonLevel = new Object();
-
-    pokemonLevel["stage"] = formName;
-    pokemonLevel["nivel_evolution"] = nivelEvolution;
-    pokemonLevel["url_sprite"] = urlSprite;
-    
-    return pokemonLevel;
-}
-pokeApiDetails.evolutionStageData = async (hasTreeEvolution, dataPokemon) => {
-    const list = [];
-
-    let formName = dataPokemon.chain.species.name;
-    let minLevelEvolution = dataPokemon.chain.evolves_to[0].evolution_details[0].min_level;
-    let urlSprite = await pokeApiDetails.getSpritePokemon(formName);
-    list.push(pokeApiDetails.describePokemonLevelEvolution(formName, minLevelEvolution, urlSprite));
-
-    try {
-        formName = dataPokemon.chain.evolves_to[0].species.name;
-        minLevelEvolution = dataPokemon.chain.evolves_to[0].evolves_to[0].evolution_details[0].min_level;
-        urlSprite = await pokeApiDetails.getSpritePokemon(formName);  
-        list.push(pokeApiDetails.describePokemonLevelEvolution(formName, minLevelEvolution, urlSprite));
-    } catch {
-        formName = dataPokemon.chain.evolves_to[0].species.name;
-        minLevelEvolution;
-        urlSprite = await pokeApiDetails.getSpritePokemon(formName);  
-        list.push(pokeApiDetails.describePokemonLevelEvolution(formName, minLevelEvolution, urlSprite));
-
-    } finally {
-        if(hasTreeEvolution) {
-            formName = dataPokemon.chain.evolves_to[0].evolves_to[0].species.name;
-            minLevelEvolution;
-            urlSprite = await pokeApiDetails.getSpritePokemon(formName);
-            list.push(pokeApiDetails.describePokemonLevelEvolution(formName, minLevelEvolution,urlSprite));
-        }
-    }
-
-    return list;
-}
-pokeApiDetails.modelEvolutionOtherReasons = async (formName, spriteForm) => {
-    const pokemon = new Object();
-
-    pokemon["name"] = formName;
-    pokemon["sprite"] = spriteForm;
-
-    return pokemon;
-}
-
-pokeApiDetails.randomAountEvolutionStageData = async (dataPokemon, howManyEvolution) => {
-    const evolutions = dataPokemon;
-    const amount = howManyEvolution;
-    const list = [];
-
-    let formName = evolutions.chain.species.name;
-    let spriteForm = await pokeApiDetails.getSpritePokemon(formName);
-    list.push(await pokeApiDetails.modelEvolutionOtherReasons(formName, spriteForm));
-
-    for(let i = 0; i < amount; i++){
-        formName =  evolutions.chain.evolves_to[i].species.name;
-        spriteForm = await pokeApiDetails.getSpritePokemon(formName);
-        list.push(await pokeApiDetails.modelEvolutionOtherReasons(formName, spriteForm));
-    }
-
-    return list;
-};
-
-//função que verifica se o pokemon tem evolução e como a evolução acontece
-pokeApiDetails.checkIfHasEvolution = async (responseLinkEvolution) => {
-    
-    const dataPokemon = responseLinkEvolution;
-    const hasEvolution = dataPokemon.chain.evolves_to != "";
-    const hasTreeEvolution = dataPokemon.chain.evolves_to[0].evolves_to != "";
-    const evolutionByMinLevel = dataPokemon.chain.evolves_to[0].evolution_details[0].min_level != null;
-    const howManyEvolution = dataPokemon.chain.evolves_to.length;
-
-    //se verdadeira essa condição, puxa nome poekmon, level que evolui e link da foto do pokemon
-    if(hasEvolution) {
-        if(evolutionByMinLevel) {
-            const evolutionStageData = await pokeApiDetails.evolutionStageData(hasTreeEvolution, responseLinkEvolution);
-            
-            if(evolutionStageData.length == 3){
-                
-                return insertHtmlWithTreeEvolution(evolutionStageData);
-
-            } else if(evolutionStageData.length == 2) {
-                
-                return insertHtmlWithTwoEvolution(evolutionStageData);
-            }            
-        } else {
-            const evolutionStageData = await pokeApiDetails.randomAountEvolutionStageData(dataPokemon, howManyEvolution);
-
-            return insertHtmlRandomAmountEvolutions(evolutionStageData);
-        }
-    }
-}
-
 //função responsável por retornar o link que contem informações sobre a sequência evolutiva do pokemon
 pokeApiDetails.getLinkEvolution = (urlEvolutionChain) => {
     const url = urlEvolutionChain;
@@ -162,22 +67,78 @@ pokeApiDetails.getLinkEvolution = (urlEvolutionChain) => {
             return responseJson;
         })
 }
+//função que formata e retorna os dados sobre evolução de pokemon que tem apenas 1 forma 
+pokeApiDetails.getDataEvolves = async (responseJsonEvolves, howManyEvolves) => {
+    const data = responseJsonEvolves;
+
+    const howManyEvolvesHas = howManyEvolves;
+    const chainEvolves = [];
+
+    let pokemonName = data.chain.species.name;
+    let pokemonSprite = await pokeApiDetails.getPokemonSprite(pokemonName);
+    let typeEvolves = null;
+
+    if(howManyEvolvesHas == 0) {
+        chainEvolves.push({'name':pokemonName,'sprite':pokemonSprite,});
+    } else if(howManyEvolvesHas > 1) {
+
+        let levelEvolves = data.chain.evolves_to[0].min_level == undefined ? null : data.chain.evolves_to[0].min_level;
+
+        chainEvolves.push({'name':pokemonName,'sprite':pokemonSprite,'levelEvolves': levelEvolves, typeEvolves,});
+        
+        for(let i = 0; i < howManyEvolvesHas; i++) {
+            pokemonName = data.chain.evolves_to[i].species.name;
+            pokemonSprite = await pokeApiDetails.getPokemonSprite(pokemonName);
+            levelEvolves = levelEvolves = data.chain.evolves_to[i].min_level == undefined ? null : data.chain.evolves_to[0].min_level;
+            
+            chainEvolves.push({'name':pokemonName,'sprite':pokemonSprite,'levelEvolves': levelEvolves, 'typeEvolves': typeEvolves,});
+        }
+    }
+    
+    return chainEvolves;
+}
+
+//função que analisa as evoluções do pokemon.
+pokeApiDetails.identifiesEvolutions = async (linkChainEvolution) => {
+    const url = linkChainEvolution;
+
+    return fetch(url)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(async function(responseJsonEvolves) {
+            console.log(responseJsonEvolves)
+            const hasEvolution = responseJsonEvolves.chain.evolves_to.length ? true : false;
+            const howManyEvolves = responseJsonEvolves.chain.evolves_to.length;
+
+            console.log('tem evolução: ' + hasEvolution);
+            console.log('quantas formas de evolução: ' + howManyEvolves);
+            
+            
+            if(!hasEvolution) {
+                return await pokeApiDetails.getDataEvolves(responseJsonEvolves, howManyEvolves);
+                
+            } else if(hasEvolution && howManyEvolves > 1) {
+   
+                return await pokeApiDetails.getDataEvolves(responseJsonEvolves, howManyEvolves);
+            }
+        })
+}
+
+
 
 //função que retorna informações sobre evoluções do pokemon
 pokeApiDetails.checkEvolution = (urlEspecie) => {
     const url = urlEspecie;
     
     return fetch(url)
-        .then(function(response) {//transforma a response do link da specie em json
+        .then(function(response) {
             return response.json();
         })
-        .then(function(responseJson) {//retorna o link que contém informações sobre evoluções do pokemon
-            return pokeApiDetails.getLinkEvolution(responseJson.evolution_chain.url);
+        .then(function(responseJson) {
+            //passa a url que contém, informações sobre evoluções do pokemon para a função que identifica as evoluções
+            return pokeApiDetails.identifiesEvolutions(responseJson.evolution_chain.url);
         })
-        .then(function(responseLinkEvolution){//verifica se o pokemon possui evoluções
-            return pokeApiDetails.checkIfHasEvolution(responseLinkEvolution);
-        })
-        
 }
 
 
@@ -230,7 +191,6 @@ pokeApiDetails.getDataAboutDefenses = (urlType) => {
                 }
             })
             textFormattedForHtml = pokeApiDetails.formatTextAboutDefenses(dictRelations)
-
 
             return textFormattedForHtml
         })

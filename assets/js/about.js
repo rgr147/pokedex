@@ -139,7 +139,7 @@ function inputDetailsInHtml(poke) {
     
     inputAboutDataInHtml(poke);//inserindo os dados da div about
     inputBaseStatsDataInHtml(poke);//inserindo os dados da div base stats
-    // inputEvolutionDataInHtml(poke);//inserindo os dados da div base stats
+    insertDataEvolutionIntoHtml(poke);//inserindo os dados da div base stats
     
 }
 //função responsável por formatar o ID do pokemon e manter 3 dígitos
@@ -187,81 +187,39 @@ function inputBaseStatsDataInHtml(poke) {
     baseStatsDefenses.innerHTML += poke.defenses;
     addAnimationBars(poke);//animação com efeito de carregamento das barras de estatisticas
 }
+//Função que insere trecho HTML com os detalhes da evolução do pokemon
+function insertDataEvolutionIntoHtml(poke) {
+    console.log('Quantas sequências evolutivas: ' + Object.entries(poke.evolves).length)
+    const howManyForms = Object.entries(poke.evolves).length; 
 
-//preenchendo as informações da div evolution. função adiciona trecho HTML da div com as 3 evoluções do pokemon 
-function insertHtmlWithTreeEvolution(listEvolutions) {
-    const htmlForAppendInEvolutionContainer = `
-        <div class="content__description-pokemon__evolution__container__item">
-            <img src="${listEvolutions[0].url_sprite}" id="evolution-01" class="evolution-img"/>
-            <span id="evolution-01-name">${listEvolutions[0].stage}</span>
-        </div>
-        <div class="content__description-pokemon__evolution__container__item">
-            <span class="content__description-pokemon__evolution__container-item__arrow">&#10162;</span>
-            <span id="evolution-01-level"> lvl ${listEvolutions[0].nivel_evolution}</span>
-        </div>
-        <div class="content__description-pokemon__evolution__container__item">
-            <img src="${listEvolutions[1].url_sprite}" id="evolution-02" class="evolution-img"/>
-            <span id="evolution-02-name">${listEvolutions[1].stage}</span>
-        </div>
-        <div class="content__description-pokemon__evolution__container__item">
-            <img src="${listEvolutions[1].url_sprite}" id="evolution-03" class="evolution-img"/>
-            <span id="evolution-03-name">${listEvolutions[1].stage}</span>
-        </div>
-        <div class="content__description-pokemon__evolution__container__item">
-            <span class="content__description-pokemon__evolution__container-item__arrow">&#10162;</span>
-            <span id="evolution-03-level">${listEvolutions[1].nivel_evolution}</span>
-        </div>
-        <div class="content__description-pokemon__evolution__container__item">
-            <img src="${listEvolutions[2].url_sprite}" id="evolution-04" class="evolution-img"/>
-            <span id="evolution-04-name">${listEvolutions[2].stage}</span>
-        </div>
-    `;
+    const formattedHtml = [];
 
-    evolutionContainer.innerHTML += htmlForAppendInEvolutionContainer;
-}
-function insertHtmlWithTwoEvolution(listEvolutions) {
-    const htmlForAppendInEvolutionContainer = `
-    <div class="content__description-pokemon__evolution__container__item">
-        <img src="${listEvolutions[0].url_sprite}" id="evolution-01" class="evolution-img"/>
-        <span id="evolution-01-name">${listEvolutions[0].stage}</span>
-    </div>
-    <div class="content__description-pokemon__evolution__container__item">
-        <span class="content__description-pokemon__evolution__container-item__arrow">&#10162;</span>
-        <span id="evolution-01-level"> lvl ${listEvolutions[0].nivel_evolution}</span>
-    </div>
-    <div class="content__description-pokemon__evolution__container__item">
-        <img src="${listEvolutions[1].url_sprite}" id="evolution-02" class="evolution-img"/>
-        <span id="evolution-02-name">${listEvolutions[1].stage}</span>
-    </div>
-    `;
-
-    evolutionContainer.innerHTML += htmlForAppendInEvolutionContainer;
-}
-
-//função responsável por gerar o html de acordo com a quantidade de evoluções do pokemon
-function insertHtmlRandomAmountEvolutions(evolutionStageData) {
-    const stagesOfPokemon = evolutionStageData;
-    
-    let formattedHtml = "";
-    for(let i = 0;i < stagesOfPokemon.length;i++) {
-        //condição para garantir que o loop não irá repetir o mesmo indice nos 2 últimos loop.
-        if(i === stagesOfPokemon.length-1) {
-            break;
+    if(howManyForms == 1) {
+        formattedHtml.push(`
+            <div class="content__description-pokemon__evolution__container__item">
+                <img src="${poke.evolves[0].sprite}" class="evolution-img"/>
+                <span>${poke.evolves[0].name}</span>
+            <div/>
+        `)
+    } else if(howManyForms > 1) {
+        for(let i = 0; i < howManyForms; i++){
+            if(i<howManyForms-1){
+                formattedHtml.push(`
+                <div class="content__description-pokemon__evolution__container__item">
+                    <img class="evolution-img" src="${poke.evolves[0].sprite}"/>
+                    <span>${poke.evolves[0].name}</span>
+                </div>
+                <div class="content__description-pokemon__evolution__container__item">
+                    <span class="content__description-pokemon__evolution__container-item__arrow">&#11146; </span>
+                    <span>Pedra</span>
+                </div>
+                <div class="content__description-pokemon__evolution__container__item" ">
+                    <img class="evolution-img" src="${(i < howManyForms-1) ? poke.evolves[i+1].sprite : poke.evolves[i].sprite} "/>
+                    <span>${(i < howManyForms-1) ? poke.evolves[i+1].name : poke.evolves[i].name }</span>
+                </div>
+                `)    
+            }
         }
-        
-        formattedHtml = `
-            <div class="content__description-pokemon__evolution__container__item">
-                <img src="${stagesOfPokemon[0].sprite}" class="evolution-img"/>
-                <span>${stagesOfPokemon[0].name}</span>
-            </div>
-            <div class="content__description-pokemon__evolution__container__item">
-                <span class="content__description-pokemon__evolution__container-item__arrow">&#10162;</span>
-                <span> Pedra </span>
-            </div>
-            <div class="content__description-pokemon__evolution__container__item">
-                <img src="${(((i+1) < stagesOfPokemon.length) ? stagesOfPokemon[i+1].sprite : stagesOfPokemon[i].sprite)}" class="evolution-img"/>
-                <span id="evolution-02-name">${((i+1) < stagesOfPokemon.length) ? stagesOfPokemon[i+1].name : stagesOfPokemon[i].name}</span>
-            </div>`;
-        evolutionContainer.innerHTML += formattedHtml;
     }
+    evolutionContainer.innerHTML = formattedHtml.join("");
 }
