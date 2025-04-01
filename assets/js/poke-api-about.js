@@ -4,8 +4,6 @@ const pokeApiDetails = {};
 async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,type,sprite,height,weight,abilities*/) {
     const poke = new PokemonDetailed();
 
-    console.log(jsonBody);
-    console.log(jsonBody.abilities);
     //dados utilizados na pagina-about
     const types = jsonBody.types.map((typeSlot) => typeSlot.type.name);//buscando os tipos do pokemon no PokeAPi;
     const [type] = types;//identificando o tipo principal do pokemon
@@ -33,10 +31,43 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
     poke.defenses = await pokeApiDetails.getDataAboutDefenses(jsonBody.types[0].type.url)
     //dados utilizados na div Evolution
     poke.evolves = await pokeApiDetails.checkEvolution(jsonBody.species.url);
+
+    pokeApiDetails.getAbilities(jsonBody.abilities);
     
     return poke;
 }
 
+pokeApiDetails.getAbilityDescription = (urlAbility) => {
+    const url = urlAbility;
+    
+
+    return fetch(url)
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(responseJson){
+            
+            for(let i = 0; i < responseJson.effect_entries.length; i++){
+                if(responseJson.effect_entries[i].language.name == 'en'){
+                    return `${responseJson.name} : ${responseJson.effect_entries[i].effect}`;
+                } 
+            }
+        })
+}
+
+pokeApiDetails.getAbilities = async (abilities) => {
+    const abilitiesList = abilities;
+    // console.log(abilitiesList);
+
+    const abilitiesDescriptions = [];
+
+
+    for(let i = 0; i< abilitiesList.length;i++) {
+        abilitiesDescriptions.push(await pokeApiDetails.getAbilityDescription(abilitiesList[i].ability.url));
+    }
+
+    console.log(abilitiesDescriptions);
+}
 
 pokeApiDetails.getPokemonSprite = (name) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${name}`;

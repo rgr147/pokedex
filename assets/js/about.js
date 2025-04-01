@@ -46,16 +46,21 @@ const evolution03Name = document.getElementById("evolution-03-name");
 const evolution03Level = document.getElementById("evolution-03-level");
 const evolution04Name = document.getElementById("evolution-04-name");
 
+//selecionando os elementos da div evolution para adicionar a sequencia de evolução do pokemon
+const movesContainer = document.getElementById("evolution-container");
+
 //selecionando todos elementos das tags ancoras do menu de navegação sobre o pokemon
 const linkAbout = document.getElementById("link-about"); 
 const linkBaseStats = document.getElementById("link-base-stats");
 const linkEvolution = document.getElementById("link-evolution");
+const linkMoves = document.getElementById("link-moves");
 const allLinks = document.querySelectorAll(".content__description-pokemon__nav a");
 
 //selecionando todas divs relacionadas ao menu de navegação sobre o pokemon
 const baseStatsDiv = document.getElementById("base-stats");
 const aboutDiv = document.getElementById("about");
 const evolutionDiv = document.getElementById("evolution");
+const movesDiv = document.getElementById("moves");
 const allDivsContent = document.querySelectorAll(".content-div");
 
 
@@ -70,6 +75,9 @@ linkBaseStats.addEventListener("click", () => {
 
 linkAbout.addEventListener("click", () => {
     selectAbout();
+});
+linkMoves.addEventListener("click", () => {
+    selectMoves();
 });
 
 //ouvindo o botão de retornar para a página principal
@@ -121,6 +129,21 @@ function selectBaseStats() {
     })
     
     baseStatsDiv.classList.remove("hidden");    
+}
+
+function selectMoves() {
+    allLinks.forEach(function(link) {
+        link.classList.remove("link-active");
+        link.classList.add("link-inactive");
+    })
+    linkMoves.classList.remove("link-inactive");
+    linkMoves.classList.add("link-active");
+
+    allDivsContent.forEach(function(div) {
+        div.classList.add("hidden");
+    })
+    
+    movesDiv.classList.remove("hidden");    
 }
 
 //chamando a função responsável por conectar à API PokeAPi para puxar as informações do pokemon tendo o nome como parâmetro
