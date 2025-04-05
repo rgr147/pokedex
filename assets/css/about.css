@@ -43,6 +43,10 @@
     .content-div:not(#evolution){
         overflow: scroll;
     }
+    .content__pokemon__details__sprite {
+        display: none;
+    }
+
 }
 /*Telas de computadores ou maiores*/
 @media screen and (min-width: 820px) {
