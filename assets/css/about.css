@@ -8,13 +8,13 @@
     /* gap: 0.5rem; */
     list-style: none;
 }
-.content__description-pokemon__about__list li{
+.content__description-pokemon__about__list li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 0.5rem;
 }
-.content__description-pokemon__about__list li p:not(.subtitle-stats){
+.content__description-pokemon__about__list li p:not(.subtitle-stats) {
     font-size: 1.1rem;
     width: 30%;
     opacity: 50%;

@@ -163,7 +163,7 @@ function inputDetailsInHtml(poke) {
     inputAboutDataInHtml(poke);//inserindo os dados da div about
     inputBaseStatsDataInHtml(poke);//inserindo os dados da div base stats
     insertDataEvolutionIntoHtml(poke);//inserindo os dados da div base stats
-    
+    insertDataMovesIntoHtml(poke);
 }
 //função responsável por formatar o ID do pokemon e manter 3 dígitos
 function formatIdPokemon(id){
@@ -270,6 +270,20 @@ function insertDataEvolutionIntoHtml(poke) {
         console.log('erro ao executar pokemon com 3 evoluções');
         console.log(error);
     }
+}
+function insertDataMovesIntoHtml(poke) {
+    const howManyAbilities = poke.abilitiesDescription.length;
+    const listAbilities = poke.abilitiesDescription;
+    const listHtml = window.document.querySelector("#moves-list");
+    console.log(listHtml);
+    
+    for(let i = 0; i < howManyAbilities; i++){
+        const ability = Object.entries(listAbilities[i]);
+        
+        const listItem = window.document.createElement("li");
 
+        listHtml.appendChild(listItem);
 
+        listItem.innerHTML = `<p>${ability[0][0]}</p> <span>${ability[0][1]}</span>`;
+    }
 }

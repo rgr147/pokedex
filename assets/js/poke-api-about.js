@@ -31,8 +31,8 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
     poke.defenses = await pokeApiDetails.getDataAboutDefenses(jsonBody.types[0].type.url)
     //dados utilizados na div Evolution
     poke.evolves = await pokeApiDetails.checkEvolution(jsonBody.species.url);
-
-    pokeApiDetails.getAbilities(jsonBody.abilities);
+    //dados utilizados na div moves
+    poke.abilitiesDescription = await pokeApiDetails.getAbilities(jsonBody.abilities);
     
     return poke;
 }
@@ -40,17 +40,20 @@ async function convertPokeApiDetailToPokemonDetailed(jsonBody /**name,id,types,t
 pokeApiDetails.getAbilityDescription = (urlAbility) => {
     const url = urlAbility;
     
-
     return fetch(url)
         .then(function(response){
             return response.json();
         })
         .then(function(responseJson){
             
+
             for(let i = 0; i < responseJson.effect_entries.length; i++){
                 if(responseJson.effect_entries[i].language.name == 'en'){
-                    return `${responseJson.name} : ${responseJson.effect_entries[i].effect}`;
-                } 
+                    const dict = {}; 
+                    dict[responseJson.name] = responseJson.effect_entries[i].effect;       
+                    
+                    return dict;
+                }
             }
         })
 }
@@ -65,8 +68,7 @@ pokeApiDetails.getAbilities = async (abilities) => {
     for(let i = 0; i< abilitiesList.length;i++) {
         abilitiesDescriptions.push(await pokeApiDetails.getAbilityDescription(abilitiesList[i].ability.url));
     }
-
-    console.log(abilitiesDescriptions);
+    return abilitiesDescriptions;
 }
 
 pokeApiDetails.getPokemonSprite = (name) => {
@@ -189,8 +191,6 @@ pokeApiDetails.identifiesEvolutions = async (linkChainEvolution) => {
             }
         })
 }
-
-
 
 //função que retorna informações sobre evoluções do pokemon
 pokeApiDetails.checkEvolution = (urlEspecie) => {
@@ -333,4 +333,3 @@ pokeApiDetails.getDataPokeApi = (nameParam) => {
         inputDetailsInHtml(poke);
     })
 }
-

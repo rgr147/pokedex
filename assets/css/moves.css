@@ -1,0 +1,29 @@
+.content__description-pokemon__moves__list {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: #fcfcfc;
+    border-radius: 1.5rem;
+}
+
+#moves-list {
+    list-style: none;
+}
+#moves-list li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+#moves-list li p {
+    font-size: 1.1rem;
+    width: 30%;
+    opacity: 50%;
+}
+#moves-list li span {
+    font-size: 1.1rem;
+    width: 70%;
+    text-transform: capitalize;
+}

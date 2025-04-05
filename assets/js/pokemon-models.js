@@ -22,4 +22,5 @@ class PokemonDetailed {
     totalPercentage;
     defenses;
     evolutionChain = [];
+    abilitiesDescription = [];
 }
