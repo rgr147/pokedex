@@ -2,6 +2,8 @@
 
 Este projeto foi desenvolvido para fins didáticos, como parte do [Bootcamp da DIO, em parceria com a Ri Happy](https://www.dio.me/bootcamp/coding-future-front-end-do-zero), com foco no desenvolvimento front-end. A aplicação permite a visualização detalhadas de Pokemon, consumindo a [PokeAPI](http://pokeapi.co/) para exibição dinâmica dos dados. 
 
+### 👀 Se quiser ver o resultado, o deploy do projeto está no GitHub, na página: [index.html](http://127.0.0.1:5500/index.html)
+
  O designer da aplicação teve como base o projeto publicado no [Dribbble](https://dribbble.com/shots/6540871-Pokedex-App) pelo autor Saepul Nahwan.
 
 # 🚀 Funcionalidades
