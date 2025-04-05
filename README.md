@@ -4,7 +4,7 @@ Este projeto foi desenvolvido para fins didáticos, como parte do [Bootcamp da D
 
 O designer da aplicação teve como base o projeto publicado no [Dribbble](https://dribbble.com/shots/6540871-Pokedex-App) pelo autor Saepul Nahwan.
 
-### 👀 Se quiser ver o resultado, o deploy do projeto está no GitHub, na página: [index.html](http://127.0.0.1:5500/index.html)
+### 👀 Se quiser ver o resultado, o deploy do projeto está no GitHub, na página: [Pokedex](http://127.0.0.1:5500/index.html)
 
 # 🚀 Funcionalidades
 - 📌Listagem de Pokémon com informações básicas.
