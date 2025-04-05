@@ -30,7 +30,6 @@
     opacity: 100%;
     margin: 1rem 0;
 }
-
 /*tratando a aresponsividade para telas de tamanhos variado*/
 
 /*telas de smatphones*/
@@ -55,10 +54,16 @@
         margin: auto;
         width: 100vw;
     }
+    .footer {
+        max-width: 820px;
+        margin: auto;
+        width: 100vw;
+    }
     #content {
-        border-radius: 0 0 2rem 2rem; 
+        border-radius: 0 ; 
     }
     .menu, .content__pokemon, .content__description-pokemon, .content__description-pokemon__nav, .content-div{
         padding: 0 4rem;
     }
 }
+
