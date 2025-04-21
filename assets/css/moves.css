@@ -3,9 +3,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
-    background-color: #fcfcfc;
     border-radius: 1.5rem;
+    height:22rem;
+    overflow: scroll;
+    background-color: #E9EDF3;
 }
 
 #moves-list {
@@ -20,7 +21,7 @@
 #moves-list li p {
     font-size: 1.1rem;
     width: 30%;
-    opacity: 50%;
+    opacity: 50%;    
 }
 #moves-list li span {
     font-size: 1.1rem;
