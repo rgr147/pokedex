@@ -1,5 +1,7 @@
 # 📖 Projeto: Pokedex com API REST da PokeAPI
 
+Link para acessar o deploy do projeto: https://rgr147.github.io/pokedex/
+
 Este projeto foi desenvolvido para fins didáticos, como parte do [Bootcamp da DIO, em parceria com a Ri Happy](https://www.dio.me/bootcamp/coding-future-front-end-do-zero), com foco no desenvolvimento front-end. A aplicação permite a visualização detalhadas de Pokemon, consumindo a [PokeAPI](http://pokeapi.co/) para exibição dinâmica dos dados. 
 
 O designer da aplicação teve como base o projeto publicado no [Dribbble](https://dribbble.com/shots/6540871-Pokedex-App) pelo autor Saepul Nahwan.
