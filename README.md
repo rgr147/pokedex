@@ -1,10 +1,10 @@
 # 📖 Projeto: Pokedex com API REST da PokeAPI
 
-Link para acessar o deploy do projeto: https://rgr147.github.io/pokedex/
+Link para acessar o deploy do projeto: https://acervodoroger.com.br/pokedex/
 
-Este projeto foi desenvolvido para fins didáticos, como parte do [Bootcamp da DIO, em parceria com a Ri Happy](https://www.dio.me/bootcamp/coding-future-front-end-do-zero), com foco no desenvolvimento front-end. A aplicação permite a visualização detalhadas de Pokemon, consumindo a [PokeAPI](http://pokeapi.co/) para exibição dinâmica dos dados. 
+Este projeto foi desenvolvido para fins didáticos, como parte do [Bootcamp da DIO, em parceria com a Ri Happy](https://www.dio.me/bootcamp/coding-future-front-end-do-zero), com foco no desenvolvimento front-end, ministrado pelo instrutor **Renan Johannsen**. A aplicação permite a visualização detalhadas de Pokemon, consumindo a [PokeAPI](http://pokeapi.co/) para exibição dinâmica dos dados. 
 
-O designer da aplicação teve como base o projeto publicado no [Dribbble](https://dribbble.com/shots/6540871-Pokedex-App) pelo autor Saepul Nahwan.
+O designer da aplicação teve como base o projeto publicado no [Dribbble](https://dribbble.com/shots/6540871-Pokedex-App) pelo autor **Saepul Nahwan**.
 
 ### 👀 Se quiser ver o resultado, o deploy do projeto está no GitHub, na página: [Pokedex](http://127.0.0.1:5500/index.html)
 
@@ -65,9 +65,11 @@ Quer sugerir melhorias ou corrigir algo? Faça um fork do repositório e envie u
 
 Toda sugestão é bem-vinda! Vamos trocar conhecimentos e melhorar juntos. 🚀
 
-## 🖌 Créditos ao Design
+## 🖌 Créditos
 
- O designer da aplicação teve como base o projeto do autor Saepul Nahwan publicado no [Dribbble](https://dribbble.com/shots/6540871-Pokedex-App). Todas as funcionalidades e adaptações foram implementadas com base no aprendizado do bootcamp.
+ Projeto desenvolvido durante o [Bootcamp da DIO, em parceria com a Ri Happy](https://www.dio.me/bootcamp/coding-future-front-end-do-zero), ministrado pelo instrutor **Renan Johannsen**. 
+ 
+ Designer do autor **Saepul Nahwan** publicado no [Dribbble](https://dribbble.com/shots/6540871-Pokedex-App).
 
 ## 📜 Licença
 Este projeto foi desenvolvido para fins educacionais e não possui fins lucrativos.
