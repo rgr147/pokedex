@@ -6,22 +6,15 @@ body {
     height: 100vh;
     padding: 1rem;
     background-color: #ffffff;
-}.pokemons {
+}
+.pokemons {
     display: grid;
     grid-template-columns: 1fr 1fr;
     list-style: none;
     padding: 0;
     margin: 0;
 }
-.teste {
-    width: 500px;
-    height: 700px;
-    background-image: url('../images/logo-pokebola.png');
-    background-color: #000000;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size:contain;
-}
+
 .normal {
     background-color: #a6a877;
 }
@@ -99,7 +92,28 @@ body {
     margin: .5rem;
     padding: 1rem;
     border-radius: 1rem;
+    position: relative;
 }
+
+.pokemon::before {
+    content: "";
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border-radius: 1rem;
+    background-image: url("../images/pokebola.png");
+    background-repeat: no-repeat;
+    background-size: 140%;
+    background-position: 144% -72%;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    opacity: 0.2;
+    mix-blend-mode: luminosity;
+}
+
 .pokemon:hover {
     cursor: pointer;
 }
@@ -107,18 +121,25 @@ body {
     color: #ffffff;    
     margin-bottom: 0.25rem;
     text-transform: capitalize;
+    z-index: 2;
 }
+
 .pokemon .number {
     color: #000000;
     opacity: .3;
     text-align: right;
     font-size: .625rem;
+    z-index: 2;
 }
+
 .pokemon .detail {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;}
+    justify-content: space-between;
+    z-index: 2;
+}
+
 .pokemon .detail .types {
     padding: 0;
     margin: 0;
