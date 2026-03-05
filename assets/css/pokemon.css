@@ -1,4 +1,6 @@
-/*configurações globais e layout da página index*/
+/* ==========================================================================
+   layout global
+   ========================================================================== */
 body {
     background-color: #f6f8fc;
 }
@@ -13,10 +15,10 @@ body {
 .content h1 {
     margin: 0 1rem;
 }
-/*fim configurações globais e layout da página index*/
 
-
-/*classe da lista ordenada que organiza todos os cards de pokemon*/
+/* ==========================================================================
+   lista de pokemons (grid)
+   ========================================================================== */
 .pokemons {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -24,10 +26,11 @@ body {
     padding: 0;
     margin: 0;
 }
-/*fim classe da lista ordenada que organiza todos os cards de pokemon*/
 
 
-/*item da lista orednada que representa o modelo padrão dos cards de pokemon*/
+/* ==========================================================================
+   card do pokemon
+   ========================================================================== */
 .pokemon {
     display: flex;
     flex-direction: column;
@@ -61,10 +64,11 @@ body {
 .pokemon:hover {
     cursor: pointer;
 }
-/*fim item da lista orednada que representa o modelo padrão dos cards de pokemon*/
 
 
-/*clases que, de acordo com o tipo do pokemon, define a cor do card de pokemon*/
+/* --------------------------------------------------------------------------
+   modificadores de tipo para personalizar card do pokemon (Cores)
+   -------------------------------------------------------------------------- */
 .normal {
     background-color: #a6a877;
 }
@@ -136,10 +140,11 @@ body {
 .fairy {
     background-color: #f9aec7;
 }
-/*fim clases que, de acordo com o tipo do pokemon, define a cor do card de pokemon*/
 
 
-/*configuração dos cards com informações do pokemon*/
+/* --------------------------------------------------------------------------
+   detalhes do pokemon no card
+   -------------------------------------------------------------------------- */
 .pokemon .name {
     color: #ffffff;    
     margin-bottom: 0.25rem;
@@ -170,6 +175,7 @@ body {
     filter: brightness(1.1);
     z-index: 2;
 }
+
 .pokemon .detail .types .type {
     color: #ffffff;
     padding: .25rem .5rem;
@@ -180,6 +186,7 @@ body {
     text-transform:capitalize;
     z-index: 2;
 }
+
 .pokemon .detail img {
     max-width: 100%;
     height: 60%;
@@ -188,10 +195,11 @@ body {
     bottom: 0.5rem;
     z-index: 1;
 }
-/*fim 'configuração dos cards com informações do pokemon*/
 
 
-/*div com botão load para carregar mais itens de pokemon*/
+/* ==========================================================================
+   paginação (botão Load More)
+   ========================================================================== */
 .pagination {
     display: flex;
     flex-direction: row;
@@ -199,6 +207,7 @@ body {
     align-items: center;
     width: 100%;
     padding: 1rem;
+    margin-top: .5rem;
 }
 
 .pagination button {
@@ -218,11 +227,12 @@ body {
     cursor:pointer;
     background-color: #9c79db;
 }
-/*fim div com botão load para carregar mais itens de pokemon*/
 
 
-/*início configurações de media queries para diferentes formatos de tela*/
-/*telas 384px ou menor (1 coluna de pokemon)*/
+/* ==========================================================================
+   media queries (responsividade)
+   ========================================================================== */
+/* telas com largura 384px ou menor (1 coluna) */
 @media screen and (max-width: 384px) {
     .pokemons {
         grid-template-columns: 1fr;
@@ -240,21 +250,42 @@ body {
         bottom: 1rem;
     }
 }
-/*fim telas 384px ou menor*/
 
-/*telas a partir de 576px (3 colunas de pokemon)*/
+/*telas com largura entre 385px e 575px (2 colunas) */
+@media screen and (min-width: 500px) and (max-width: 575px) {
+    .pokemon {
+        max-width: 250px
+    }
+
+    .pokemon .detail img {
+        right: 2rem;
+        bottom: 1rem;
+    }
+}
+
+/* telas com largura a partir de 576px (3 colunas) */
 @media screen and (min-width: 576px) {
     .pokemons {
         grid-template-columns: 1fr 1fr 1fr;
     }
-}
-/*fim telas a partir de 576px (3 colunas de pokemon)*/
 
-/*telas a partir de 992px (4 colunas de pokemon)*/
+    .pokemon {
+        max-width: 250px
+    }
+
+    .pokemon .detail img {
+        right: 2rem;
+        bottom: 1rem;
+    }
+}
+
+/* Telas grandes: a partir de 992px (4 colunas) */
 @media screen and (min-width: 992px) {
     .pokemons {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
+
+    .pokemon .detail img {
+        right: .5rem;
+    }
 }
-/*fim telas a partir de 992px (4 colunas de pokemon)*/
-/*fim configurações de media queries para diferentes formatos de tela*/
