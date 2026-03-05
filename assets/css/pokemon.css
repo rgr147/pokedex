@@ -1,12 +1,22 @@
+/*configurações globais e layout da página index*/
 body {
     background-color: #f6f8fc;
 }
+
 .content {
     width: 100vw;
     height: 100vh;
     padding: 1rem;
     background-color: #ffffff;
 }
+
+.content h1 {
+    margin: 0 1rem;
+}
+/*fim configurações globais e layout da página index*/
+
+
+/*classe da lista ordenada que organiza todos os cards de pokemon*/
 .pokemons {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -14,7 +24,47 @@ body {
     padding: 0;
     margin: 0;
 }
+/*fim classe da lista ordenada que organiza todos os cards de pokemon*/
 
+
+/*item da lista orednada que representa o modelo padrão dos cards de pokemon*/
+.pokemon {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    position: relative;
+    height: 160px;
+    overflow: hidden;
+}
+
+.pokemon::before {
+    content: "";
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border-radius: 1rem;
+    background-image: url("../images/pokebola.png");
+    background-repeat: no-repeat;
+    background-size: 140%;
+    background-position: 144% -72%;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    opacity: 0.2;
+    mix-blend-mode: luminosity;
+}
+
+.pokemon:hover {
+    cursor: pointer;
+}
+/*fim item da lista orednada que representa o modelo padrão dos cards de pokemon*/
+
+
+/*clases que, de acordo com o tipo do pokemon, define a cor do card de pokemon*/
 .normal {
     background-color: #a6a877;
 }
@@ -86,37 +136,10 @@ body {
 .fairy {
     background-color: #f9aec7;
 }
-.pokemon {
-    display: flex;
-    flex-direction: column;
-    margin: .5rem;
-    padding: 1rem;
-    border-radius: 1rem;
-    position: relative;
-}
+/*fim clases que, de acordo com o tipo do pokemon, define a cor do card de pokemon*/
 
-.pokemon::before {
-    content: "";
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    border-radius: 1rem;
-    background-image: url("../images/pokebola.png");
-    background-repeat: no-repeat;
-    background-size: 140%;
-    background-position: 144% -72%;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    opacity: 0.2;
-    mix-blend-mode: luminosity;
-}
 
-.pokemon:hover {
-    cursor: pointer;
-}
+/*configuração dos cards com informações do pokemon*/
 .pokemon .name {
     color: #ffffff;    
     margin-bottom: 0.25rem;
@@ -142,9 +165,10 @@ body {
 
 .pokemon .detail .types {
     padding: 0;
-    margin: 0;
+    margin-top: 1rem;
     list-style: none;
-    filter: brightness(1.1)
+    filter: brightness(1.1);
+    z-index: 2;
 }
 .pokemon .detail .types .type {
     color: #ffffff;
@@ -154,12 +178,20 @@ body {
     border-radius: 1rem;
     text-align: center;
     text-transform:capitalize;
+    z-index: 2;
 }
 .pokemon .detail img {
     max-width: 100%;
-    height: 90px;
-    overflow: hidden;
+    height: 60%;
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    z-index: 1;
 }
+/*fim 'configuração dos cards com informações do pokemon*/
+
+
+/*div com botão load para carregar mais itens de pokemon*/
 .pagination {
     display: flex;
     flex-direction: row;
@@ -168,6 +200,7 @@ body {
     width: 100%;
     padding: 1rem;
 }
+
 .pagination button {
     padding: .25rem .5rem;
     margin: .25rem 0;
@@ -176,27 +209,52 @@ body {
     background-color: #6c79db;
     border: none;
     border-radius: 1rem;
-    font-size: .825rem;
+    font-size: 1.2rem;
+    height: 2.2rem;
+    width: 8rem;
 }
+
 .pagination button:hover {
     cursor:pointer;
     background-color: #9c79db;
 }
-/* On screens that are 992px or less, set the background color to blue */
+/*fim div com botão load para carregar mais itens de pokemon*/
+
+
+/*início configurações de media queries para diferentes formatos de tela*/
+/*telas 384px ou menor (1 coluna de pokemon)*/
 @media screen and (max-width: 384px) {
     .pokemons {
         grid-template-columns: 1fr;
     }
+
+    .pokemon {
+        margin: .5rem 2rem;
+        padding: 1rem 2rem 1rem 2rem;
+        min-width: 180px;
+        max-width: 250px
+    }
+
+    .pokemon .detail img {
+        right: 2rem;
+        bottom: 1rem;
+    }
 }
-/* On screens that are 992px or less, set the background color to blue */
+/*fim telas 384px ou menor*/
+
+/*telas a partir de 576px (3 colunas de pokemon)*/
 @media screen and (min-width: 576px) {
     .pokemons {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
-/* On screens that are 992px or less, set the background color to blue */
+/*fim telas a partir de 576px (3 colunas de pokemon)*/
+
+/*telas a partir de 992px (4 colunas de pokemon)*/
 @media screen and (min-width: 992px) {
     .pokemons {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
+/*fim telas a partir de 992px (4 colunas de pokemon)*/
+/*fim configurações de media queries para diferentes formatos de tela*/
