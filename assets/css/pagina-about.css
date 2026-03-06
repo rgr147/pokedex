@@ -1,31 +1,47 @@
-/*Arquivo de estilos responsável por estilizar todo o layout da página-about*/
-/*A estilização das DIVs About, Base Stats, Evolution e Moves do menu de navegação estão em arquivos separados*/
-body {
+/*============================================================================
+  layout global - pagina-about.html 
+  ============================================================================*/
+.container {
     height: 100vh;
-    width: auto;
-}
-.menu {
+    width: 100vw;
     display: flex;
-    height: 8%;
-    align-items: end;
-    border-radius: 1rem 1rem 0 0; 
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
 }
+
+
+/*============================================================================
+  header
+  ============================================================================*/
+.menu {
+    border-radius: 1rem 1rem 0 0;
+    width: 100%;
+    padding: .5rem 2rem;
+}
+
 .menu__buttons {
-    height: fit-content;
+    height: auto;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0 2rem;
 }
+
 .menu__buttons__button {
     background-color: unset;
     border: none;
     color: #ffffff;
-    font-size: 2rem;
     cursor: pointer;
+    font-weight: bold;
+    font-size: 2.2rem;
 }
+
+
+/*============================================================================
+  main
+  ============================================================================*/
 .content {
-    height: 90%;
+    /* height: 90%; */
     width: 100vw;
     display: flex;
     flex-direction: column;
