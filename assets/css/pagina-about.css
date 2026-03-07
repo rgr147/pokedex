@@ -11,7 +11,7 @@
 
 
 /*============================================================================
-  header
+  header - menu navegação da página
   ============================================================================*/
 .menu {
     border-radius: 1rem 1rem 0 0;
@@ -40,15 +40,14 @@
   main
   ============================================================================*/
 .content {
-    /* height: 90%; */
     display: flex;
     flex-direction: column;
     flex: 1;
     min-height: 0;
     width: 100vw;
-    /* margin-top: -0.2rem; */   
 }
 
+/*nome, número, tipo e imagem do pokemon*/
 .content__pokemon  {
     height: 40%;
     width: 100%;
@@ -69,6 +68,8 @@
     font-size: 3rem;
     text-transform: capitalize;
     color: #ffffff;
+    font-style: italic;
+    animation: animate-text .3s ease-in-out 1 normal forwards;
 }
 
 .content__pokemon__details__number {
@@ -76,6 +77,7 @@
     font-size: 1.2rem;
     color: #ffffff;
     z-index: 2;
+    animation: animate-text .3s ease-in-out 1 normal forwards;
 }
 
 .content__pokemon__details__types {
@@ -93,12 +95,12 @@
     filter: brightness(1.1);
     text-transform: capitalize;
     z-index: 2;
+    animation: animate-text .3s ease-in-out 1 normal forwards;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, .5);
 }
 
 .content__pokemon__details__image {
-    height: 75%;
     display: flex;
-    /* align-items: center; */
     justify-content: center;
 }
 
@@ -109,48 +111,87 @@
     z-index: 1;
     position: absolute;
     top: 50%;
-    transform: translateY(-25%);
-
+    transform: translateY(-40%);
+    animation: animate-image .3s ease-in-out 1 normal forwards;
 }
 
+@keyframes animate-image {
+    from {
+        transform: translateY(+30%);
+        opacity: 0;
+        filter: blur(2px);
+    } 
+    to {
+        transform: translateY(-40%);
+    }
+}
+
+/*animação dos textos*/
+@keyframes animate-text {
+    from {
+        transform: translateX(-50%);
+        opacity: 0;
+        filter: blur(2px);
+    }
+    to {
+        
+    }
+}
+/*fim animação dos textos*/
+/*fim nome, número, tipo e imagem do pokemon*/
+
+/*estatisticas do pokemon*/
 .content__description-pokemon {
     display: flex;
     flex-direction: column;
-    height: 60%;
-    width: 100%;
+    justify-content: flex-start;
+    flex: 1;
+    min-height: 0;
+    width: auto;
+    margin: 1.5rem 2rem 0 2rem;
     background-color: #faf8fc;
-    border-radius: 2.5rem;
-    justify-content: start;
-    padding: 1rem 2rem 0.5rem 2rem;
-    /* overflow: hidden; */
+    border-radius: .5rem;    
+    padding: 0.5rem .5rem .5rem .5rem;
+    position: relative;
 }
+
 .content__description-pokemon__nav {
     display: flex;
     flex-direction: row;
-    margin-top: 0.5rem;;
+    justify-content: space-around;
+    align-items: center;
+    height: 1.5rem;
+    width: 100%;
 }
+
 .content__description-pokemon__nav a {
-    font-size: 1rem;
-    text-align: center;
-    text-decoration: none;
-    color: #000000;
-    cursor:pointer;
+    /* font-size: 1rem; */
+    /* text-align: center; */
+    /* text-decoration: none; */
+    /* color: #000000; */
+    /* cursor:pointer; */
 }
 .hidden { /*classe que será utilizada para ocultar as divs que não foram clicadas*/
-    display: none;
+    /* display: none; */
 }
 .link-active { /*class do botão que foi clicado na navegação*/
-    border-bottom: 0.1rem #0000ff solid;
-    padding-bottom: 1rem;
-    width: 25%;
+    /* border-bottom: 0.1rem #0000ff solid; */
+    /* padding-bottom: 1rem; */
+    /* width: 25%; */
 
+    /* display: none; apagar esse teste */
+    
 }
 .link-inactive { /*classe de botões dos links que não estão em exibição no momento*/
-    border-bottom: 0.1rem #aaaaaa solid;
-    padding-bottom: 1rem;
-    width: 25%;
-    opacity: 50%;
+    /* border-bottom: 0.1rem #aaaaaa solid; */
+    /* padding-bottom: 1rem; */
+    /* width: 25%; */
+    /* opacity: 50%; */
+
+        /* display: none; apagar esse teste */
 }
+/*fim estatisticas do pokemon*/
+
 footer {
     height: 2rem;
     width: 100%;

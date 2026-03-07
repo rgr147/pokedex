@@ -158,7 +158,8 @@ function inputDetailsInHtml(poke) {
     backgroundPokemonHtml.classList.add(poke.type);
     backgroundHeaderHtml.classList.add(poke.type);
     backgroundFooterHtml.classList.add(poke.type);
-    spriteHtml.src = poke.sprite;  
+    spriteHtml.src = poke.sprite;
+    spriteHtml.alt = `Imagem do pokemon ${poke.name}`;
     
     inputAboutDataInHtml(poke);//inserindo os dados da div about
     inputBaseStatsDataInHtml(poke);//inserindo os dados da div base stats
