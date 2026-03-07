@@ -2,12 +2,11 @@
   layout global - pagina-about.html 
   ============================================================================*/
 .container {
-    height: 100vh;
+    height: 100svh;
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;
 }
 
 
@@ -42,15 +41,19 @@
   ============================================================================*/
 .content {
     /* height: 90%; */
-    width: 100vw;
     display: flex;
     flex-direction: column;
-    margin-top: -0.2rem;
+    flex: 1;
+    min-height: 0;
+    width: 100vw;
+    /* margin-top: -0.2rem; */   
 }
+
 .content__pokemon  {
     height: 40%;
     width: 100%;
 }
+
 .content__pokemon__details {
     display: flex;
     flex-direction: column;
@@ -58,18 +61,23 @@
     width: 100%;
     padding: 0 2rem 0 2rem;
     list-style: none;
+    position: relative;
 }
+
 .content__pokemon__details__name {
     width: fit-content;
     font-size: 3rem;
     text-transform: capitalize;
     color: #ffffff;
 }
+
 .content__pokemon__details__number {
     text-align: end;
     font-size: 1.2rem;
     color: #ffffff;
+    z-index: 2;
 }
+
 .content__pokemon__details__types {
     display: flex;
     flex-direction: row;
@@ -77,26 +85,34 @@
     padding: 0;
     color: #ffffff;
 }
+
 .content__pokemon__details__type {
     border-radius:3rem;
     margin: 0 0.3rem 0 0;
     padding: 0.2rem 0.7rem;
     filter: brightness(1.1);
     text-transform: capitalize;
+    z-index: 2;
 }
+
 .content__pokemon__details__image {
     height: 75%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
+}
+
+.content__pokemon__details__sprite {
+    max-height: 100%;
+    max-width: auto;
+    /* padding: 1rem; */
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-25%);
 
 }
-.content__pokemon__details__sprite {
-    max-height: 90%;
-    max-width: auto;
-    padding: 1rem;
-    z-index: 1;
-}
+
 .content__description-pokemon {
     display: flex;
     flex-direction: column;
@@ -136,7 +152,8 @@
     opacity: 50%;
 }
 footer {
-    height: 2%;
+    height: 2rem;
+    width: 100%;
 }
 /*adicionando as cores de background de acordo com o tipo de pokemon*/
 .normal {
