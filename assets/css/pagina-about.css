@@ -37,7 +37,7 @@
 
 
 /*============================================================================
-  main
+  main - informações básicas do pokemon
   ============================================================================*/
 .content {
     display: flex;
@@ -134,13 +134,16 @@
         filter: blur(2px);
     }
     to {
-        
+        transform: translateX(0%);
     }
 }
 /*fim animação dos textos*/
 /*fim nome, número, tipo e imagem do pokemon*/
 
-/*estatisticas do pokemon*/
+
+/*============================================================================
+  main - estatisticas do pokemon
+  ============================================================================*/
 .content__description-pokemon {
     display: flex;
     flex-direction: column;
@@ -155,6 +158,7 @@
     position: relative;
 }
 
+/*barra de navegação das estatísticas*/
 .content__description-pokemon__nav {
     display: flex;
     flex-direction: row;
@@ -165,38 +169,49 @@
 }
 
 .content__description-pokemon__nav a {
-    /* font-size: 1rem; */
-    /* text-align: center; */
-    /* text-decoration: none; */
-    /* color: #000000; */
-    /* cursor:pointer; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    cursor:pointer;
 }
-.hidden { /*classe que será utilizada para ocultar as divs que não foram clicadas*/
-    /* display: none; */
-}
-.link-active { /*class do botão que foi clicado na navegação*/
-    /* border-bottom: 0.1rem #0000ff solid; */
-    /* padding-bottom: 1rem; */
-    /* width: 25%; */
 
-    /* display: none; apagar esse teste */
-    
+.link-active { 
+    border-bottom: 0.1rem #0000ff solid;
+    padding-bottom: 0.5rem;
+    width: 25%;    
 }
-.link-inactive { /*classe de botões dos links que não estão em exibição no momento*/
-    /* border-bottom: 0.1rem #aaaaaa solid; */
-    /* padding-bottom: 1rem; */
-    /* width: 25%; */
-    /* opacity: 50%; */
 
-        /* display: none; apagar esse teste */
+.link-inactive { 
+    border-bottom: 0.1rem #aaaaaa solid;
+    padding-bottom: .5rem;
+    width: 25%;
+    opacity: 50%;
 }
-/*fim estatisticas do pokemon*/
+/*fim barra de navegação das estatísticas*/
+
+
+/*classe responsável por esconder estatiscas que não estão selecionadas*/
+.hidden { 
+    display: none;
+}
+
+
+
+
 
 footer {
     height: 2rem;
     width: 100%;
 }
-/*adicionando as cores de background de acordo com o tipo de pokemon*/
+
+
+
+/*============================================================================
+  backgound color por tipo de pokemon
+  ============================================================================*/
 .normal {
     background-color: #a6a877;
 }
@@ -251,6 +266,10 @@ footer {
 .fairy {
     background-color: #f9aec7;
 }
+
+
+
+
 /* @media screen and (max-height: 600px) {
 
     .content__pokemon__details__sprite__image {
