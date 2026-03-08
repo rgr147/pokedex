@@ -166,6 +166,7 @@
     align-items: center;
     height: 1.5rem;
     width: 100%;
+    margin-top: .3rem;
 }
 
 .content__description-pokemon__nav a {
@@ -193,9 +194,60 @@
 /*fim barra de navegação das estatísticas*/
 
 
-/*classe responsável por esconder estatiscas que não estão selecionadas*/
+/*configuração global das DIVs com estatísticas*/
 .hidden { 
     display: none;
+}
+
+
+.content-div {
+    margin: 1rem;
+}
+
+.content-div ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+
+    /* border: solid 1px red; */
+}
+
+.content-div ul li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.3rem;
+
+
+    /* border: solid .1rem blue; */
+}
+
+.content-div ul li p:not(.subtitle-stats) {
+    width: 30%;
+    opacity: 50%;
+    font-size: 1.1rem;
+
+    
+    /* border: solid 1px black; */
+}
+
+.content-div ul li span {
+    width: 70%;
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    
+
+    /* border: solid .1rem green; */
+}
+/*fim configuração global das DIVs com estatísticas*/
+
+
+/*statísticas about*/
+.subtitle-stats {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 1rem 0;
 }
 
 
