@@ -126,7 +126,6 @@
     }
 }
 
-/*animação dos textos*/
 @keyframes animate-text {
     from {
         transform: translateX(-50%);
@@ -137,8 +136,6 @@
         transform: translateX(0%);
     }
 }
-/*fim animação dos textos*/
-/*fim nome, número, tipo e imagem do pokemon*/
 
 
 /*============================================================================
@@ -158,7 +155,7 @@
     position: relative;
 }
 
-/*barra de navegação das estatísticas*/
+/*menu navegação*/
 .content__description-pokemon__nav {
     display: flex;
     flex-direction: row;
@@ -191,16 +188,17 @@
     width: 25%;
     opacity: 50%;
 }
-/*fim barra de navegação das estatísticas*/
+/*fim menu navegação*/
 
 
-/*configuração global das DIVs com estatísticas*/
+/*configuração global das DIVs das estatísticas*/
 .hidden { 
     display: none;
 }
 
-
-.content-div {
+.content-div:not(.hidden) {
+    display: flex;
+    flex-direction: column;
     margin: 1rem;
 }
 
@@ -208,8 +206,6 @@
     display: flex;
     flex-direction: column;
     list-style: none;
-
-    /* border: solid 1px red; */
 }
 
 .content-div ul li {
@@ -217,39 +213,170 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.3rem;
-
-
-    /* border: solid .1rem blue; */
+    margin-top: 0.5rem;
 }
 
-.content-div ul li p:not(.subtitle-stats) {
+.content-div ul li > p:not(.subtitle-stats) {
     width: 30%;
     opacity: 50%;
     font-size: 1.1rem;
-
-    
-    /* border: solid 1px black; */
 }
 
-.content-div ul li span {
+.content-div ul li > span {
     width: 70%;
     text-transform: capitalize;
     font-size: 1.1rem;
-    
-
-    /* border: solid .1rem green; */
 }
-/*fim configuração global das DIVs com estatísticas*/
 
-
-/*statísticas about*/
 .subtitle-stats {
     font-size: 1.4rem;
     font-weight: bold;
     margin: 1rem 0;
 }
+/*fim configuração global das DIVs das estatísticas*/
 
+
+
+/*============================================================================
+  Base Stats - estatísticas
+  ============================================================================*/
+.content__description-pokemon__base-stats__skills__list__text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;;
+    width: 30%;
+}
+
+.content__description-pokemon__base-stats__skills__list__text > p {
+    opacity: 50%;
+    font-size: .95rem;
+
+}
+.content__description-pokemon__base-stats__skills__list__text > span {
+    font-size: .9rem;
+}
+
+.bars-green {
+    display: block;
+    position: relative;
+    height: 0.25rem;
+    width: 65%;
+    border-radius: 1rem;
+    background-color: #dddddd;
+    overflow: hidden;
+}
+
+.bars-green > span {
+    position: absolute;
+    height: 0.25rem;
+    background-color: #00bb00;
+}
+
+.bars-red {
+    display: block;
+    position: relative;
+    height: 0.25rem;
+    width: 65%;
+    border-radius: 1rem;
+    background-color: #dddddd;
+    overflow: hidden;
+}
+
+.bars-red > span {
+    display: block;
+    position: absolute;
+    height: 0.25rem;
+    background-color: #ee0000;
+}
+
+.content__description-pokemon__base-stats__observation {
+    display: flex;
+    flex-direction: column;   
+}
+
+.content__description-pokemon__base-stats__observation p {
+    font-size: 0.9rem;
+    opacity: 50%;
+    margin-top: 0.7rem;
+}
+
+/*============================================================================
+  main - evoluções pokemon
+  ============================================================================*/
+.content__description-pokemon__evolution {
+    overflow: scroll;
+}
+
+.content__description-pokemon__evolution__subtitle {
+    margin: .4rem 0;
+}
+
+.content__description-pokemon__evolution__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: .5rem;
+    background-color: #E9EDF3;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.content__description-pokemon__evolution__container__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 6rem; */
+    width: 6rem;
+    padding: .1rem;
+}
+
+.evolution-img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.evolution-img:hover {
+    transform: scale(1.1);
+    filter: drop-shadown(0.8rem 1rem 0.4rem rgba(0, 0, 0, 0.5));
+}
+
+.content__description-pokemon__evolution__container-item__arrow {
+    font-size: 4rem;
+}
+
+
+
+/*============================================================================
+  main - moves
+  ============================================================================*/
+.content__description-pokemon__moves {
+    overflow: scroll;
+    background-color: #E9EDF3;
+}
+
+.content__description-pokemon__moves > p{
+    margin: .4rem 0 0 .4rem;
+}
+
+.content__description-pokemon__moves__list {
+    margin: 0 0 .4rem .4rem;
+}
+
+#moves-list li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#moves-list li > p {
+    font-size: 1.1rem;
+    text-transform: capitalize;
+}
+
+#moves-list li span {
+    width: 65%;
+    font-size: 1.1rem;
+}
 
 
 
@@ -318,44 +445,3 @@ footer {
 .fairy {
     background-color: #f9aec7;
 }
-
-
-
-
-/* @media screen and (max-height: 600px) {
-
-    .content__pokemon__details__sprite__image {
-        display: none;
-    }
-}
-@media screen and (min-width: 820px) {
-     header {
-        max-width: 820px;
-        margin: 0 auto;
-        border-radius: 1rem;
-    }
-    .menu__buttons {
-        padding: 0 4rem;
-    }
-    .content__pokemon__details__selected {
-        padding: 0 2rem;
-    }
-    .content__description-pokemon__stats__nav {
-        padding: 0 2rem;
-    }
-    .content__description-pokemon__stats__about {
-        padding: 0 2rem;
-    }
-    .content__description-pokemon__stats__base-stats__descriptions__skills {
-        padding: 0 2rem;
-    }
-    .content__description-pokemon__stats__base-stats__observation {
-        padding: 0 2rem;
-    }
-    .content__pokemon__details__sprite {
-        height: 70%;
-        width: 70%;
-        display: flex;
-        justify-content: center;
-    }
-} */

@@ -74,7 +74,7 @@
                 </nav>
                 <!--fim menu navegação estatisticas-->
                 
-                <!--div About-->
+                <!--About estatísticas-->
                 <div id="about" class="content__description-pokemon__about content-div">
                     <ul class="content__description-pokemon__about__list">
                         <li>
@@ -110,31 +110,100 @@
                         </li>
                     </ul>
                 </div>
-                <!--fim div About-->
-                
-                <!-- início da página "Base Stats" -->
-                
-                <!-- fim da página "Base Stats" -->
-                
-                <!-- inicio da página "evolution"-->
-                <div id="evolution" class="content__description-pokemon__evolution content-div hidden">
-                    <span class="content__description-pokemon__evolution__subtitle subtitle-stats">Evolution Chain</span>
-                    <div id="evolution-container" class="content__description-pokemon__evolution__container">
-        
+                <!--fim About estatísticas-->
+
+                <!--Base Stats estatísticas-->
+                <div id="base-stats" class="content__description-pokemon__base-stats content-div hidden"> 
+                    <ul class="content__description-pokemon__base-stats__skills__list">
+                        <li>
+                            <div class="content__description-pokemon__base-stats__skills__list__text">
+                                <p>HP</p>
+                                <span id="base-stats-hp"></span>
+                            </div>
+                            <span class="bars-red">
+                                <span class="bar-hp"></span>
+                            </span>        
+                        </li>
+                        <li>
+                            <div class="content__description-pokemon__base-stats__skills__list__text">
+                                <p class="teste">Atack</p>
+                                <span id="base-stats-attack"></span>
+                            </div>
+                            <span class="bars-green">
+                                <span class="bar-attack"></span>
+                        </span>        
+                        </li>
+                        <li>
+                            <div class="content__description-pokemon__base-stats__skills__list__text">
+                                <p>Defense</p>
+                                <span id="base-stats-defense"></span>
+                            </div>
+                            <span class="bars-red">
+                                <span class="bar-defense"></span>
+                        </span>        
+                        </li>
+                        <li>
+                            <div class="content__description-pokemon__base-stats__skills__list__text">
+                                <p class="teste">Sp. Atack</p>
+                                <span id="base-stats-sp-attack"></span>
+                            </div>
+                            <span class="bars-green">
+                                <span class="bar-sp-attack"></span>
+                            </span>        
+                        </li>
+                        <li>
+                            <div class="content__description-pokemon__base-stats__skills__list__text">
+                                <p>Sp. Def</p>
+                                <span id="base-stats-sp-defense"></span>
+                            </div>
+                            <span class="bars-green">
+                                <span class="bar-sp-defense"></span>
+                            </span>        
+                        </li>
+                        <li>
+                            <div class="content__description-pokemon__base-stats__skills__list__text">
+                                <p>Speed</p>
+                                <span id="base-stats-speed"></span>
+                            </div>
+                            <span class="bars-red">
+                                <span class="bar-speed"></span>
+                            </span>        
+                        </li>
+                        <li>
+                            <div class="content__description-pokemon__base-stats__skills__list__text">
+                                <p>Total</p>
+                                <span id="base-stats-total"></span>
+                            </div>
+                            <span class="bars-green">
+                                <span class="bar-total"></span>
+                            </span>        
+                        </li>
+                    </ul>
+                    <div class="content__description-pokemon__base-stats__observation">
+                        <span class="subtitle-stats">Defenses</span>
+                        
                     </div>
                 </div>
-                <!--- fim da página "evolution" -->
-        
-                <!-- inicio da página "Moves"-->
-                <div id="moves" class="content__description-pokemon__moves content-div hidden">
-                    <div class="content__description-pokemon__moves__list">
-                        <span class="subtitle-stats">Abilities Description</span>
-                        <ul id="moves-list">
-        
-                        </ul>
+                <!--fim Base Stats estatísticas-->
+                
+                <!--Evolution estatísticas-->
+                <div id="evolution" class="content__description-pokemon__evolution content-div hidden">
+                    <p class="content__description-pokemon__evolution__subtitle subtitle-stats">Evolution Chain</p>
+                    <div id="evolution-container" class="content__description-pokemon__evolution__container">
+
                     </div>
+                </div>
+                <!--fim Evolution estatísticas-->
+
+                <!--página "Moves"-->
+                <div id="moves" class="content__description-pokemon__moves content-div hidden">
+                    <p class="subtitle-stats">Abilities Description</p>
+                    <ul class="content__description-pokemon__moves__list" id="moves-list">
+
+                    </ul>
                 </div>
                 <!-- fim da página "Moves"-->
+                
         
             </section>
             <!--fim seção com estatiscas do pokemon-->
