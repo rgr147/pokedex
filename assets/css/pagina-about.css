@@ -314,9 +314,11 @@
 .content__description-pokemon__evolution__container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
     border-radius: .5rem;
     background-color: #E9EDF3;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, .01) 0px -3px 0px inset;
 }
 
 .content__description-pokemon__evolution__container__item {
@@ -340,9 +342,21 @@
     filter: drop-shadown(0.8rem 1rem 0.4rem rgba(0, 0, 0, 0.5));
 }
 
-.content__description-pokemon__evolution__container-item__arrow {
-    font-size: 4rem;
+#evolution {
 }
+
+#evolution-seta {
+    
+}
+
+#evolution-seta > span:nth-child(1) {
+    font-size: 2rem;
+}
+
+#evolution-seta > span:nth-child(2) {
+    font-size: 1rem;
+}
+
 
 
 

@@ -233,8 +233,8 @@ function insertDataEvolutionIntoHtml(poke) {
                         <img class="evolution-img" src="${poke.evolves[i].sprite}"/>
                         <figcaption>${poke.evolves[i].name}</figcaption>
                     </figure>
-                    <div class="content__description-pokemon__evolution__container__item">
-                        <span class="content__description-pokemon__evolution__container-item__arrow">&#11146;</span>
+                    <div class="content__description-pokemon__evolution__container__item" id="evolution-seta">
+                        <span class="content__description-pokemon__evolution__container-item__arrow">→</span>
                         <span>level ${poke.evolves[i].levelEvolves}</span>
                     </div>
                     <figure class="content__description-pokemon__evolution__container__item" ">
@@ -252,8 +252,8 @@ function insertDataEvolutionIntoHtml(poke) {
                         <img class="evolution-img" src="${poke.evolves[0].sprite}"/>
                         <span>${poke.evolves[0].name}</span>
                     </figure>
-                    <div class="content__description-pokemon__evolution__container__item">
-                        <span class="content__description-pokemon__evolution__container-item__arrow">&#11146;</span>
+                    <div class="content__description-pokemon__evolution__container__item" id="evolution-seta">
+                        <span class="content__description-pokemon__evolution__container-item__arrow">→</span>
                         <span>level ${poke.evolves[i].levelEvolves}</span>
                     </div>
                     <figure class="content__description-pokemon__evolution__container__item" ">
