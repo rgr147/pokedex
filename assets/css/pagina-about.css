@@ -163,7 +163,7 @@
     align-items: center;
     height: 1.5rem;
     width: 100%;
-    margin-top: .3rem;
+    margin-top: .7rem;
 }
 
 .content__description-pokemon__nav a {
@@ -202,6 +202,14 @@
     margin: 1rem;
 }
 
+.content-div:not(.content__description-pokemon__evolution ) {
+    overflow: scroll;
+    border-radius: .5rem;
+    background-color: #F0F2F5;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    height: 100%;
+}
+
 .content-div ul {
     display: flex;
     flex-direction: column;
@@ -238,8 +246,22 @@
 
 
 /*============================================================================
+  About - estatísticas
+  ============================================================================*/
+.content__description-pokemon__about {
+    padding: .5rem;
+}
+
+
+
+
+/*============================================================================
   Base Stats - estatísticas
   ============================================================================*/
+.content__description-pokemon__base-stats {
+    padding: .2rem;
+}
+
 .content__description-pokemon__base-stats__skills__list__text {
     display: flex;
     flex-direction: row;
@@ -304,8 +326,11 @@
   main - evoluções pokemon
   ============================================================================*/
 .content__description-pokemon__evolution {
+    height: 100%;
     overflow: scroll;
+    
 }
+
 
 .content__description-pokemon__evolution__subtitle {
     margin: .4rem 0;
@@ -315,10 +340,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
-    justify-content: center;
+    justify-items: center;
     border-radius: .5rem;
-    background-color: #E9EDF3;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, .01) 0px -3px 0px inset;
+    background-color: #F0F2F5;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    
 }
 
 .content__description-pokemon__evolution__container__item {
@@ -326,9 +352,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: 6rem; */
-    width: 6rem;
-    padding: .1rem;
+    width: 4rem;
+    margin-top:1rem;
 }
 
 .evolution-img {
@@ -342,13 +367,6 @@
     filter: drop-shadown(0.8rem 1rem 0.4rem rgba(0, 0, 0, 0.5));
 }
 
-#evolution {
-}
-
-#evolution-seta {
-    
-}
-
 #evolution-seta > span:nth-child(1) {
     font-size: 2rem;
 }
@@ -359,37 +377,37 @@
 
 
 
-
 /*============================================================================
   main - moves
   ============================================================================*/
 .content__description-pokemon__moves {
-    overflow: scroll;
-    background-color: #E9EDF3;
+
 }
 
 .content__description-pokemon__moves > p{
-    margin: .4rem 0 0 .4rem;
+    margin: 1rem 0 1.5rem .4rem;
 }
 
 .content__description-pokemon__moves__list {
-    margin: 0 0 .4rem .4rem;
+    margin: 0 .2rem .4rem .4rem;
+
 }
 
 #moves-list li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: start;
 }
 
 #moves-list li > p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-transform: capitalize;
 }
 
 #moves-list li span {
     width: 65%;
-    font-size: 1.1rem;
+    font-size: .9rem;
 }
 
 
