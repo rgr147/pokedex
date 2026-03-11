@@ -1,3 +1,6 @@
+/*============================================================================
+  Reset
+  ============================================================================*/
 * {
     margin: 0;
     padding: 0;
@@ -5,10 +8,43 @@
     box-sizing: border-box;
     user-select: none;
 }
+
 .content h1 {
     margin: 0;
 }
 
+
+
+/*============================================================================
+  definição de cores por tipo de pokemon para o background 
+  ============================================================================*/
+:root {
+    --color-normal: #a6a877;
+    --color-grass: #77c850;
+    --color-fire: #ee7f30;
+    --color-water: #678fee;
+    --color-electric: #f7cf2e;
+    --color-ice: #98d5d7;
+    --color-ground: #dfbf69;
+    --color-flying: #a98ff0;
+    --color-poison: #a040a0;
+    --color-fighting: #bf3029;
+    --color-psychic: #f65687;
+    --color-dark: #725847;
+    --color-rock: #b8a137;
+    --color-bug: #a8b720;
+    --color-ghost: #6e5896;
+    --color-steel: #b9b7cf;
+    --color-dragon: #6f38f6;
+    --color-fairy: #f9aec7;
+}
+
+
+
+/*============================================================================
+  responsividade - media queries
+  ============================================================================*/
+  
 /*aplicando as configurações de dimensionamento de tela para dispositivos com telas de 992px ou superiores*/
 @media screen and (min-width: 820px) {
     .content {

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   layout global - pagina index.html
+   layout
    ========================================================================== */
 body {
     background-color: #f6f8fc;
@@ -19,6 +19,8 @@ body {
     color: #353535;
 }
 
+
+
 /* ==========================================================================
    lista de pokemons (grid)
    ========================================================================== */
@@ -29,6 +31,7 @@ body {
     padding: 0;
     margin: 0;
 }
+
 
 
 /* ==========================================================================
@@ -69,85 +72,10 @@ body {
 }
 
 
-/* --------------------------------------------------------------------------
-   modificadores de tipo para personalizar card do pokemon (Cores)
-   -------------------------------------------------------------------------- */
-.normal {
-    background-color: #a6a877;
-}
 
-.grass {
-    background-color: #77c850;
-}
-
-.fire {
-    background-color: #ee7f30;
-}
-
-.water {
-    background-color: #678fee;
-}
-
-.electric {
-    background-color: #f7cf2e;
-}
-
-.ice {
-    background-color: #98d5d7;
-}
-
-.ground {
-    background-color: #dfbf69;
-}
-
-.flying {
-    background-color: #a98ff0;
-}
-
-.poison {
-    background-color: #a040a0;
-}
-
-.fighting {
-    background-color: #bf3029;
-}
-
-.psychic {
-    background-color: #f65687;
-}
-
-.dark {
-    background-color: #725847;
-}
-
-.rock {
-    background-color: #b8a137;
-}
-
-.bug {
-    background-color: #a8b720;
-}
-
-.ghost {
-    background-color: #6e5896;
-}
-
-.steel {
-    background-color: #b9b7cf;
-}
-
-.dragon {
-    background-color: #6f38f6;
-}
-
-.fairy {
-    background-color: #f9aec7;
-}
-
-
-/* --------------------------------------------------------------------------
-   detalhes do pokemon no card
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   informações do card do pokemon
+   ========================================================================== */
 .pokemon .name {
     color: #ffffff;    
     margin-bottom: 0.25rem;
@@ -202,7 +130,7 @@ body {
 
 
 /* ==========================================================================
-   paginação (botão Load More)
+   botão load more
    ========================================================================== */
 .pagination {
     display: flex;
@@ -233,8 +161,112 @@ body {
 }
 
 
+
 /* ==========================================================================
-   media queries (responsividade)
+   Footer
+   ========================================================================== */
+.footer {
+    padding: .5rem 1rem 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+}
+
+.footer a {
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+/*============================================================================
+ cores de background
+  ============================================================================*/
+.normal {
+    background-color: var(--color-normal);
+}
+
+.grass {
+    background-color: var(--color-grass);
+}
+
+.fire {
+    background-color: var(--color-fire);
+}
+
+.water {
+    background-color: var(--color-water);
+}
+
+.electric {
+    background-color: var(--color-electric);
+}
+
+.ice {
+    background-color: var(--color-ice);
+}
+
+.ground {
+    background-color: var(--color-ground);
+}
+
+.flying {
+    background-color: var(--color-flying);
+}
+
+.poison {
+    background-color: var(--color-poison);
+}
+
+.fighting {
+    background-color: var(--color-fighting);
+}
+
+.psychic {
+    background-color: var(--color-psychic);
+}
+
+.dark {
+    background-color: var(--color-dark);
+}
+
+.rock {
+    background-color: var(--color-rock);
+}
+
+.bug {
+    background-color: var(--color-bug);
+}
+
+.ghost {
+    background-color: var(--color-ghost);
+}
+
+.steel {
+    background-color: var(--color-steel);
+}
+
+.dragon {
+    background-color: var(--color-dragon);
+}
+
+.fairy {
+    background-color: var(--color-fairy);
+}
+
+
+
+/* ==========================================================================
+   responsividade - media queries
    ========================================================================== */
 /* telas com largura 384px ou menor (1 coluna) */
 @media screen and (max-width: 384px) {
