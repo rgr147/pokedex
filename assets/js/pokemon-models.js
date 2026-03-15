@@ -1,3 +1,6 @@
+/*===================================================================
+  denifindo as classes que representam o pokemon
+  =================================================================*/
 class PokemonSimple {
     number;
     name;
