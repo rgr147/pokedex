@@ -1,82 +1,11 @@
-//organizando as referencias ao DOM
-const state = {
-    view: {
-        //navegação
-        backButton: document.getElementById('back-button'), //elemento botão retorno para index.html
-        linkAbout: document.getElementById('link-about'),
-        linkBaseStats: document.getElementById('link-base-stats'),
-        linkEvolution: document.getElementById('link-evolution'),
-        linkMoves: document.getElementById('link-moves'),
-        allLinks: document.querySelectorAll('.content__description-pokemon__nav a'),
 
-        //conteúdo
-        contentDivs: document.querySelectorAll('.content-div'),
-        baseStatsDiv: document.getElementById('base-stats'),
-        aboutDiv: document.getElementById('about'),
-        evolutionDiv: document.getElementById('evolution'),
-        movesDiv: document.getElementById('moves'),
 
-        //background
-        pokemonBackground: document.getElementById('content'),
-        HeaderBackground: document.getElementById('header-menu'), // unificar o background do header main e footer
-        footerBackground: document.getElementById('footer'),
-                
-        //informações básicas
-        Name: document.getElementById('name'),
-        Number: document.getElementById('number'),
-        Types: document.getElementById('types'), //elemento com ul com os tipos do pokemon
-        Sprite: document.getElementById('sprite'), //elemento com imagem do pokemon
-
-        //aba about
-        Specie: document.getElementById('specie'),
-        Height: document.getElementById('height'),
-        Weight: document.getElementById('weight'),
-        Abilities: document.getElementById('abilities'),
-        gender: document.getElementById(''),
-        eggGroups: document.getElementById('eggGroups'),
-        eggCicle: document.getElementById('eggCicle'),
-
-        //aba base stats
-        hp: document.getElementById('base-stats-hp'),
-        attack: document.getElementById('base-stats-attack'),
-        defense: document.getElementById('base-stats-defense'),
-        AttackSpeed: document.getElementById('base-stats-sp-attack'),
-        DefenseSpeed: document.getElementById('base-stats-sp-defense'),
-        speed: document.getElementById('base-stats-speed'),
-        total: document.getElementById('base-stats-total'),
-        defenses: document.querySelector('.content__description-pokemon__base-stats__observation'),
-
-        //aba evolution
-        evolutionContainer: document.getElementById('evolution-container'),
-        evolution01Image: document.getElementById('evolution-01'),
-        evolution02Image: document.getElementById('evolution-02'),
-        evolution03Image: document.getElementById('evolution-03'),
-        evolution04Image: document.getElementById('evolution-04'),
-        evolution01Name: document.getElementById('evolution-01-name'),
-        evolution02Name: document.getElementById('evolution-02-name'),
-        evolution03Name: document.getElementById('evolution-03-name'),
-        evolution04Name: document.getElementById('evolution-04-name'),
-        evolution01Level: document.getElementById('evolution-01-level'),
-        evolution03Level: document.getElementById('evolution-03-level'),
-
-        //aba moves
-        movesContainer: document.getElementById('evolution-container'),
-    },
-    values: {
-        //recebe o nome do pokemon clicado na  index.html via url
-        currentPokemonName: new URLSearchParams(window.location.search).get('name'),
-        homePage: './index.html',
-    },
-}
-
-//recebe, da página index.html, o nome do pokemon selecionado através do parâmetro na url
+//recebe, da página index.html, o nome do pokemon através do parâmetro na url
 const url = new URLSearchParams(window.location.search);
 const nameParam = url.get("name");
 
-
-
 //selecionando o botão de retornar do Header, para à página principal
-// const buttonBack = document.getElementById("button-back");
+const buttonBack = document.getElementById("button-back");
 
 //selecionando os elementos da pagina-about para adicionar informações do pokemon
 const nameHtml = document.getElementById("name");
@@ -123,106 +52,101 @@ const evolution04Name = document.getElementById("evolution-04-name");
 const movesContainer = document.getElementById("evolution-container");
 
 //selecionando todos elementos das tags ancoras do menu de navegação sobre o pokemon
-// const linkAbout = document.getElementById("link-about"); 
-// const linkBaseStats = document.getElementById("link-base-stats");
-// const linkEvolution = document.getElementById("link-evolution");
-// const linkMoves = document.getElementById("link-moves");
-// const allLinks = document.querySelectorAll(".content__description-pokemon__nav a");
+const linkAbout = document.getElementById("link-about"); 
+const linkBaseStats = document.getElementById("link-base-stats");
+const linkEvolution = document.getElementById("link-evolution");
+const linkMoves = document.getElementById("link-moves");
+const allLinks = document.querySelectorAll(".content__description-pokemon__nav a");
 
 //selecionando todas divs relacionadas ao menu de navegação sobre o pokemon
-// const baseStatsDiv = document.getElementById("base-stats");
-// const aboutDiv = document.getElementById("about");
-// const evolutionDiv = document.getElementById("evolution");
-// const movesDiv = document.getElementById("moves");
-// const allDivsContent = document.querySelectorAll(".content-div");
+const baseStatsDiv = document.getElementById("base-stats");
+const aboutDiv = document.getElementById("about");
+const evolutionDiv = document.getElementById("evolution");
+const movesDiv = document.getElementById("moves");
+const allDivsContent = document.querySelectorAll(".content-div");
 
-//ouvindo cliques no menu de navegação das estatísticas 
-state.view.linkEvolution.addEventListener('click', () => {
+
+//ouvindo cliques nos botões do menu de navegação sobre o pokemon. 
+linkEvolution.addEventListener("click", () => {
     selectEvolution();
+    
 });
-
-state.view.linkBaseStats.addEventListener("click", () => {
+linkBaseStats.addEventListener("click", () => {
     selectBaseStats();
 });
 
-state.view.linkAbout.addEventListener("click", () => {
+linkAbout.addEventListener("click", () => {
     selectAbout();
 });
-state.view.linkMoves.addEventListener("click", () => {
+linkMoves.addEventListener("click", () => {
     selectMoves();
 });
 
-//ouvindo botão de retorno para a home page
-state.view.backButton.addEventListener("click", () => {
-    window.location.href = state.values.homePage;
+//ouvindo o botão de retornar para a página principal
+buttonBack.addEventListener("click", () => {
+    window.location.href = "./index.html";
 })
-
-//mostra as estatísticas da DIV evolution e oculta as demais. adiciona efeito de link ativado
+//funcção responsavel por mostrar a div Evolution do pokemon e ocultar as demais divs
 function selectEvolution() {
-    state.view.allLinks.forEach(function(link) {
+    allLinks.forEach(function(link) {
         link.classList.remove("link-active");
         link.classList.add("link-inactive");
     })
 
-    state.view.linkEvolution.classList.remove("link-inactive");
-    state.view.linkEvolution.classList.add("link-active");
+    linkEvolution.classList.remove("link-inactive");
+    linkEvolution.classList.add("link-active");
 
-    state.view.contentDivs.forEach(function(div) {
+    allDivsContent.forEach(function(div) {
         div.classList.add("hidden");
     })
-    state.view.evolutionDiv.classList.remove('hidden');
+    evolutionDiv.classList.remove("hidden");
 }
-
-//mostra estatísticas referente a DIV About e oculta as demais DIVs. adiciona efeito de link ativado
+//função correspondente ao ao link About do menu de navegação. Puxa os dados do pokemon e dá efeito de botão ativado
 function selectAbout() {
-    state.view.allLinks.forEach(function(link) {
+    allLinks.forEach(function(link) {
         link.classList.remove("link-active");
         link.classList.add("link-inactive");
     })
-    state.view.linkAbout.classList.remove("link-inactive");
-    state.view.linkAbout.classList.add("link-active");
+    
+    linkAbout.classList.remove("link-inactive");
+    linkAbout.classList.add("link-active");
 
-    state.view.contentDivs.forEach(function(div) {
+    allDivsContent.forEach(function(div) {
         div.classList.add("hidden");
     })
-    state.view.aboutDiv.classList.remove("hidden");
-}
 
-//mostra estatísticas da DIV Base Stats e oculta as demais. adiciona efeito de link ativado na DIV
+    aboutDiv.classList.remove("hidden");
+}
+//função correspondenteao ao link Base Stats do menu de navegação. Puxa os dados do pokemon e dá efeito de botão ativado
 function selectBaseStats() {
-    state.view.allLinks.forEach(function(link) {
+    allLinks.forEach(function(link) {
         link.classList.remove("link-active");
         link.classList.add("link-inactive");
     })
-    state.view.linkBaseStats.classList.remove("link-inactive");
-    state.view.linkBaseStats.classList.add("link-active");
+    linkBaseStats.classList.remove("link-inactive");
+    linkBaseStats.classList.add("link-active");
 
-    state.view.contentDivs.forEach(function(div) {
+    allDivsContent.forEach(function(div) {
         div.classList.add("hidden");
     })
-    state.view.baseStatsDiv.classList.remove("hidden");    
+    
+    baseStatsDiv.classList.remove("hidden");    
 }
 
-//mostra estatísticas da DIV Moves e oculta as demais. adiciona efeito de link ativado na DIV
 function selectMoves() {
-    state.view.allLinks.forEach(function(link) {
+    allLinks.forEach(function(link) {
         link.classList.remove("link-active");
         link.classList.add("link-inactive");
     })
-    state.view.linkMoves.classList.remove("link-inactive");
-    state.view.linkMoves.classList.add("link-active");
+    linkMoves.classList.remove("link-inactive");
+    linkMoves.classList.add("link-active");
 
-    state.view.contentDivs.forEach(function(div) {
+    allDivsContent.forEach(function(div) {
         div.classList.add("hidden");
     })
-    state.view.movesDiv.classList.remove("hidden");
+    
+    movesDiv.classList.remove("hidden");    
 }
-
-// ==========================================================================================
-// ==========================================================================================
-// Atualizei os nomes de variáveis até esse ponto. 
-// ==========================================================================================
-// ==========================================================================================
 
 //chamando a função responsável por conectar à API PokeAPi para puxar as informações do pokemon tendo o nome como parâmetro
 pokeApiDetails.getDataPokeApi(nameParam);

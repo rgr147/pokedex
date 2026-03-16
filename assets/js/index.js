@@ -13,7 +13,7 @@ const state = {
 //manipula o DOM para listar os pokemons da página principal no index.html
 function loadPokemonItens(offset,limit) {
 
-    //recebe os dados do pokemon, vindos da função getPokemons(), e faz a manipulação do DOM inserindo os dados
+    //recebe os dados do pokemon, vindos da função pokeapi.getPokemons(), e faz a manipulação do DOM inserindo os dados
     function convertPokemonToHtml(pokemon) {
         
         const liPokemon = document.createElement('li');
@@ -63,8 +63,6 @@ function loadPokemonItens(offset,limit) {
     });
 }
 
-loadPokemonItens(state.values.offset, state.values.limit);
-
 //evento que identifica clique no bottão responsável por carregar mais pokemons
 state.view.loadMoreButton.addEventListener('click', () => {
     state.values.offset += state.values.limit;
@@ -91,7 +89,7 @@ state.view.pokemonList.addEventListener("click", (event) => {
     }
 });
 
-//recebe os dados do pokemon, vindos da função convertPokemonToHtml(), para identificar e tratar a quantidade de tipos que o pokemon possui 
+//identifica os tipos que o pokemon possui e trata os dados. Recebe os dados do pokemon, vindos da função convertPokemonToHtml(). 
 function listTypesPokemon(pokemon) {
     if (pokemon.types.length > 1) {
             const fragment = document.createDocumentFragment();
@@ -111,3 +109,9 @@ function listTypesPokemon(pokemon) {
             return liType;
         };
 }
+
+function init () {
+    loadPokemonItens(state.values.offset, state.values.limit);
+}
+
+init();
