@@ -241,6 +241,11 @@
     font-size: 1.1rem;
 }
 
+#height, #weight {
+    text-transform: none;
+}
+
+
 .subtitle-stats {
     font-size: 1.4rem;
     font-weight: bold;
@@ -265,6 +270,9 @@
   ============================================================================*/
 .content__description-pokemon__base-stats {
     padding: .2rem;
+}
+.content__description-pokemon__base-stats__skills__list {
+
 }
 
 .content__description-pokemon__base-stats__skills__list__text {
@@ -295,6 +303,7 @@
 
 .bars-green > span {
     position: absolute;
+    justify-content: center;
     height: 0.25rem;
     background-color: #00bb00;
 }

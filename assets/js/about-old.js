@@ -66,7 +66,7 @@ const movesDiv = document.getElementById("moves");
 const allDivsContent = document.querySelectorAll(".content-div");
 
 
-//ouvindo cliques nos botões do menu de navegação sobre o pokemon. 
+//ouvindo cliques nos botões do menu de navegação sobre o pokemon.
 linkEvolution.addEventListener("click", () => {
     selectEvolution();
     
